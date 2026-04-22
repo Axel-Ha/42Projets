@@ -6,12 +6,11 @@
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 13:56:06 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/22 14:46:45 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/22 19:09:44 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int	ft_memcmp(const void *ptr1, const void *ptr2, size_t size)
 {
@@ -31,6 +30,7 @@ int	ft_memcmp(const void *ptr1, const void *ptr2, size_t size)
 	return (0);
 }
 
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -41,3 +41,4 @@ int	main(void)
 
 	return (0);
 }
+*/
