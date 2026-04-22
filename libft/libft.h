@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 09:58:51 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/21 17:13:06 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/22 18:50:06 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 # define LIBFT_H
 
+# include <bsd/string.h>
 # include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int nb);

@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 18:05:56 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/22 17:40:09 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/22 18:44:58 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,16 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	return (dest_len + src_len);
 }
 
-
+/*
 int	main(void)
 {
-	char	dest[12] = "un";
+	char	dest[10] = "Hello";
 	char	dest2[12] = "un";
-	char	src[] = "deux";
+	char	src[] = "World";
 
-	printf("%d\n", strlcat(dest, src, 1));
+	printf("%d\n", strlcat(dest, src, 8));
 	printf("%s\n", dest);
 	printf("%d\n", strlcat(dest2, src, 1));
 	printf("%s\n", dest2);
 }
+*/
