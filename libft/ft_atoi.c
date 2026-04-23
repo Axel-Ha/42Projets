@@ -4,10 +4,11 @@ int	ft_atoi(const char *str)
 {
 	int		sign;
 	int		i;
-	size_t	result;
+	long	result;
 
 	sign = 1;
 	result = 0;
+	i = 0;
 	while (str[i] == ' ')
 		i++;
 	if (str[i] == '+' || str[i] == '-')
