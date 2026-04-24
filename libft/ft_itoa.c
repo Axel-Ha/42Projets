@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char	*ft_putnbr(char *s, int n, int *pos)
+void	ft_putnbr(char *s, int n, int *pos)
 {
 	if (n > 9)
 	{

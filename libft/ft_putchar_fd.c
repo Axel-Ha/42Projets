@@ -1,44 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/21 15:47:19 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/24 13:55:28 by ahalifa          ###   ########.fr       */
+/*   Created: 2026/04/24 10:41:22 by ahalifa           #+#    #+#             */
+/*   Updated: 2026/04/24 11:24:44 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t	i;
-	size_t	src_len;
-
-	src_len = ft_strlen(src);
-	if (size == 0)
-		return (src_len);
-	i = 0;
-	while (src[i] && i < (size - 1))
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (src_len);
+	write(fd, &c, 1);
 }
 
-
+/*
 int	main(void)
 {
-	char	dest[] = "";
-	char	dest2[] = "axel";
-	char	src[] = "test";
-	
-	printf("%d\n", ft_strlcpy(dest, src, 5));
-	puts(dest);
-	printf("%d\n", strlcpy(dest2, src, 5));
-	puts(dest2);
+	ft_putchar_fd('j', 1);
+	return (0);
 }
+*/
