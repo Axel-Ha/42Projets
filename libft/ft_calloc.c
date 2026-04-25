@@ -1,15 +1,15 @@
 #include "libft.h"
 
-void	*ft_calloc(size_t elementCount, size_t elementSize)
+void	*ft_calloc(size_t count, size_t size)
 {
 	void *result;
 	size_t total_size;
 
-	if (elementCount != 0)
+	total_size = count * size;
+	if(count == 0 || size == 0)
+		return (malloc(0));
+	if ((total_size) / size != size)
 		return (NULL);
-	if ((elementCount * elementSize) / elementSize > elementSize)
-		return (NULL);
-	total_size = elementCount * elementSize;
 	result = malloc(total_size);
 	if (!result)
 		return (NULL);

@@ -14,25 +14,21 @@
 
 void	*ft_memchr(const void *memBlock, int searchedChar, size_t size)
 {
-	const unsigned char	*buf;
+	unsigned char	*buf;
 	size_t	i;
 	
-	buf = memBlock;
+	buf = (unsigned char *)memBlock;
 	i = 0;
-	while (*buf && i < size)
+	while (i < size)
 	{
-		if (*buf == searchedChar)
-			return ((void *)buf);
-		buf++;
+		if (buf[i] == (unsigned char)searchedChar)
+			return ((void *)buf + i);
 		i++;
 	}
 	return (NULL);
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
-
 int	main(void)
 {
 	printf("%s\n", ft_memchr("Je s7uis", '7', 3));
@@ -40,3 +36,4 @@ int	main(void)
 	return (0);
 }
 */
+

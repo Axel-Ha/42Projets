@@ -14,23 +14,24 @@
 
 int	ft_strncmp(const char *first, const char *second, size_t n)
 {
-	while ((*first && (*first == *second) && n > 0))
-	{
-		first++;
-		second++;
-		n--;
-	}
-	return (*first - *second);
+	size_t	i;
+
+	i = 0;
+	if(n == 0)
+		return (0);
+	while (first[i] && (first[i] == second[i]) && i < n - 1)
+		i++;
+	return ((unsigned char)first[i] - (unsigned char)second[i]);
 }
 
-/*
+
 #include <stdio.h>
 #include <string.h>
 
 int	main(void)
 {
-	printf("%d\n", ft_strncmp("Jea suis", "Jea suia", 3));
-	printf("%d\n", strncmp("Jea suis", "Jex suib", 3));
+	printf("%d\n", ft_strncmp("Jea suis", "", 0));
+	printf("%d\n", strncmp("Jea suis", "", 0));
 	return (0);
 }
-*/
+

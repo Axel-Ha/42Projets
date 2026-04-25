@@ -14,28 +14,22 @@
 
 char	*ft_strrchr(const char *str, int searchedChar)
 {
-	size_t	i;
+	int	i;
 
 	i = ft_strlen(str);
-	while (1)
+	while (i >= 0)
 	{
-		if (str[i] == searchedChar)
-			return ((char *)&str[i]);
-		if(i == 0)
-			break;
+		if (str[i] == (char)searchedChar)
+			return ((char *)str + i);
 		i--;
 	}
 	return (NULL);
 }
 
-/*
-#include <stdio.h>
-#include <string.h>
 
 int	main(void)
 {
-	printf("%s\n", ft_strrchr("Je suis", 'J'));
-	printf("%s\n", strrchr("Je suuis", 'J'));
+	printf("%s\n", ft_strrchr("Je suis", 'J' + 256));
+	printf("%s\n", strrchr("Je suuis", 'J' + 256));
 	return (0);
 }
-*/

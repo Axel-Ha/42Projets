@@ -16,20 +16,22 @@ char	*ft_strchr(const char *str, int searchedChar)
 {
 	while (*str)
 	{
-		if (*str == searchedChar)
+		if (*str == (char)searchedChar)
 			return ((char *)str);
 		str++;
 	}
+	if ((char)searchedChar == '\0')
+		return ((char *)str);
 	return (NULL);
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
-
 int	main(void)
 {
-	printf("%s\n", ft_strchr("Je suis", 'a'));
-	printf("%s\n", strchr("Je suis", 'a'));
+	printf("%s\n", ft_strchr("Je suis", 0));
+	printf("%s\n", strchr("Je suis", 0));
+	printf("%s\n", ft_strchr("Je suis", 'J'));
+	printf("%s\n", strchr("Je suis", 'J'));
 	return (0);
-}*/
+}
+*/

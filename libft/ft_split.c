@@ -39,7 +39,9 @@ char	*ft_word(char const *s, char c)
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
-	newString = malloc(sizeof(char) * i + 1);
+	newString = malloc(sizeof(char) * (i + 1));
+	if(!newString)
+		return (NULL);
 	i = 0;
 	while (s[i] && s[i] != c)
 	{
@@ -55,7 +57,7 @@ char	**ft_split(char const *s, char c)
 	char	**newarr;
 	int		i;
 
-	newarr = malloc(sizeof(char *) * ft_countword(s, c) + 1);
+	newarr = malloc(sizeof(char *) * (ft_countword(s, c) + 1));
 	if (!newarr)
 		return (NULL);
 	i = 0;
@@ -71,6 +73,7 @@ char	**ft_split(char const *s, char c)
 				s++;
 		}
 	}
+	newarr[i] = NULL;
 	return (newarr);
 }
 
@@ -78,7 +81,7 @@ int	main(void)
 {
 	char **arr;
 
-	char *phrase = "   Hello, je suis cela !  ";
+	char *phrase = "  tripouille  42  ";
 	arr = ft_split(phrase, ' ');
 	int i = 0;
 	while (arr[i])

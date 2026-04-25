@@ -19,12 +19,11 @@ int	ft_getlen(int n)
 	int	i;
 
 	i = 0;
+	if (n == 0)
+		return (1);
 	if (n < 0)
-	{
 		i++;
-		n *= -1;
-	}
-	while (n)
+	while (n != 0)
 	{
 		n = n / 10;
 		i++;
@@ -36,20 +35,20 @@ char	*ft_itoa(int n)
 {
 	char	*newString;
 	int		i;
-    long    nb;
 
 	i = 0;
-    nb = n;
-	newString = malloc(ft_getlen(nb) + 1);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	newString = malloc(ft_getlen(n) + 1);
 	if (!newString)
 		return (NULL);
-	if (nb < 0)
+	if (n < 0)
 	{
-		newString[i] = '-';
 		i++;
-		nb *= -1;
+		newString[i] = '-';
+		n *= -1;
 	}
-	ft_putnbr(newString, nb, &i);
+	ft_putnbr(newString, n, &i);
 	newString[i] = '\0';
 	return (newString);
 }
