@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 10:36:36 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/22 11:18:37 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/27 12:24:36 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,16 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 
 int	main(void)
 {
+	int	a;
+	int	b;
+
 	// Initialize a variable
-	int a = 20;
-	int b = 10;
-    
-	printf("Value of b before calling memcpy: %d\n", b);
-    
+	a = 20;
+	b = 10;
+	printf("b avant: %d\n", b);
 	// Use memcpy to copy the value of 'a' into 'b'
 	ft_memcpy(&b, &a, sizeof(int));
-    
-	printf("Value of b after calling memcpy: %d\n", b);
-    
+	printf("b apres: %d\n", b);
 	return (0);
 }
 */

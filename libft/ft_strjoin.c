@@ -1,18 +1,40 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/27 12:21:40 by ahalifa           #+#    #+#             */
+/*   Updated: 2026/04/27 12:23:44 by ahalifa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
-	size_t	lens1;
-	size_t	lentotal;
+	int		i;
+	int		j;
 
-	lens1 = ft_strlen(s1);
-	lentotal = lens1 + ft_strlen(s2);
-	result = malloc(lentotal);
+	i = 0;
+	j = 0;
+	result = malloc(sizeof(char) * (ft_strlen(s2) + ft_strlen(s1) + 1));
 	if (!result)
 		return (NULL);
-	ft_strlcpy(result, s1, lens1 + 1);
-	ft_strlcat(result, s2, lentotal + 1);
+	while (s1[i])
+	{
+		result[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		result[i] = s2[j];
+		i++;
+		j++;
+	}
+	result[i] = '\0';
 	return (result);
 }
 /*

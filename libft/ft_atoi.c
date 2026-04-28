@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/27 12:19:59 by ahalifa           #+#    #+#             */
+/*   Updated: 2026/04/27 12:22:21 by ahalifa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_atoi(const char *str)
@@ -26,9 +38,11 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
+/*
 int	main(void)
 {
 	printf("%d\n", ft_atoi("      +12a3"));
 	printf("%d\n", atoi("     +12a3"));
 	return (0);
 }
+*/

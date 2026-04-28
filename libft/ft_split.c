@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:03:07 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/24 10:17:52 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/27 12:34:25 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,37 @@ int	ft_countword(char const *s, char c)
 
 char	*ft_word(char const *s, char c)
 {
-	char	*newString;
+	char	*newstring;
 	int		i;
 
 	i = 0;
 	while (s[i] && s[i] != c)
 		i++;
-	newString = malloc(sizeof(char) * (i + 1));
-	if(!newString)
+	newstring = malloc(sizeof(char) * (i + 1));
+	if (!newstring)
 		return (NULL);
 	i = 0;
 	while (s[i] && s[i] != c)
 	{
-		newString[i] = s[i];
+		newstring[i] = s[i];
 		i++;
 	}
-	newString[i] = '\0';
-	return (newString);
+	newstring[i] = '\0';
+	return (newstring);
+}
+
+void	*ft_freearr(char **arr, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -68,6 +82,8 @@ char	**ft_split(char const *s, char c)
 		if (*s && *s != c)
 		{
 			newarr[i] = ft_word(s, c);
+			if (!newarr[i])
+				return (ft_freearr(newarr, i));
 			i++;
 			while (*s && *s != c)
 				s++;
@@ -77,16 +93,20 @@ char	**ft_split(char const *s, char c)
 	return (newarr);
 }
 
+/*
 int	main(void)
 {
-	char **arr;
+	char	**arr;
+	char	*phrase;
+	int		i;
 
-	char *phrase = "  tripouille  42  ";
+	phrase = "  tripouille  42  ";
 	arr = ft_split(phrase, ' ');
-	int i = 0;
+	i = 0;
 	while (arr[i])
 	{
 		printf("%s\n", arr[i]);
 		i++;
 	}
 }
+*/

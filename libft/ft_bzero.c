@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 17:41:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/22 17:41:38 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/27 12:22:23 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char *c;
+	unsigned char	*c;
 
 	c = s;
 	while (n--)
@@ -23,4 +23,3 @@ void	ft_bzero(void *s, size_t n)
 		c++;
 	}
 }
-

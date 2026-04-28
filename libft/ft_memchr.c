@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 12:26:55 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/23 12:12:02 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/27 12:24:47 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	*ft_memchr(const void *memBlock, int searchedChar, size_t size)
 {
 	unsigned char	*buf;
-	size_t	i;
-	
+	size_t			i;
+
 	buf = (unsigned char *)memBlock;
 	i = 0;
 	while (i < size)
@@ -36,4 +36,3 @@ int	main(void)
 	return (0);
 }
 */
-

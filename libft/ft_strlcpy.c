@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 15:47:19 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/24 13:55:28 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/27 12:23:30 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,16 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	return (src_len);
 }
 
-
+/*
 int	main(void)
 {
 	char	dest[] = "";
 	char	dest2[] = "axel";
 	char	src[] = "test";
-	
+
 	printf("%d\n", ft_strlcpy(dest, src, 5));
 	puts(dest);
 	printf("%d\n", strlcpy(dest2, src, 5));
 	puts(dest2);
 }
+*/

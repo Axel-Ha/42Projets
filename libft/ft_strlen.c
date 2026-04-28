@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 18:52:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/21 19:10:59 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/27 12:23:27 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ size_t	ft_strlen(const char *str)
 
 /*
 #include <stdio.h>
-int main(void)
+
+int	main(void)
 {
 	printf("%d",ft_strlen("test"));
 	return (0);

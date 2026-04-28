@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 13:24:14 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/24 10:30:09 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/27 15:15:18 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,17 @@ void	*ft_memmove(void *to, const void *from, size_t size)
 }
 
 /*
-#include <stdio.h>
-#include <string.h>
-
 int	main(void)
 {
-	char	dest[] = "testt";
-	char	dest2[] = "testt";
-	char	src[] = "Quiz";
+	char	dest[20] = "ABCDEF";
+	char	dest2[20] = "ABCDEF";
 
 	puts("dest avant ft_memmove ");
 	puts(dest);
-	ft_memmove(dest, src, 2);
+	ft_memmove(dest, dest+1, 2);
 	puts("\ndest apres ft_memmove ");
 	puts(dest);
-	memmove(dest2, src, 2);
+	memmove(dest2, dest2+1, 2);
 	puts("\ndest2 apres memmove ");
 	puts(dest2);
 	return (0);

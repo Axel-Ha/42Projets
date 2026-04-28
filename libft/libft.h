@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/21 09:58:51 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/24 19:08:31 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/27 18:43:36 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 # define LIBFT_H
 
-# include <bsd/string.h>
-# include <stddef.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 
 typedef struct s_list

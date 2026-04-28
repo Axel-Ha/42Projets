@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/27 12:20:13 by ahalifa           #+#    #+#             */
+/*   Updated: 2026/04/27 12:35:12 by ahalifa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_putnbr(char *s, int n, int *pos)
@@ -33,28 +45,27 @@ int	ft_getlen(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*newString;
+	char	*newstring;
 	int		i;
 
 	i = 0;
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	newString = malloc(ft_getlen(n) + 1);
-	if (!newString)
+	newstring = malloc(ft_getlen(n) + 1);
+	if (!newstring)
 		return (NULL);
 	if (n < 0)
 	{
+		newstring[i] = '-';
 		i++;
-		newString[i] = '-';
 		n *= -1;
 	}
-	ft_putnbr(newString, n, &i);
-	newString[i] = '\0';
-	return (newString);
+	ft_putnbr(newstring, n, &i);
+	newstring[i] = '\0';
+	return (newstring);
 }
 
 /*
-int	main(void)
 {
 	printf("%s", ft_itoa(-123));
 	return (0);

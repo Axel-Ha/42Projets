@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/04/27 12:21:53 by ahalifa           #+#    #+#             */
+/*   Updated: 2026/04/27 12:23:19 by ahalifa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strnstr(const char *str1, const char *str2, size_t len)
@@ -25,11 +37,11 @@ char	*ft_strnstr(const char *str1, const char *str2, size_t len)
 /*
 int	main(void)
 {
-	const char *largestring = "Bar Fah ";
-	const char *smallstring = "Bar";
+	const char	*largestring = "Bar Fah ";
+	const char	*smallstring = "Bar";
 
-    printf("%s",ft_strnstr(largestring, smallstring, 4));
-    printf("%s",strnstr(largestring, smallstring, 8));
+	printf("%s",ft_strnstr(largestring, smallstring, 4));
+	printf("%s",strnstr(largestring, smallstring, 8));
 	return (0);
 }
 */
