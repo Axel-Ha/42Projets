@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 09:59:58 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/29 18:13:06 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/04/30 14:43:37 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,12 @@ int	ft_printf(const char *str, ...)
 int	main(void)
 {
 	int a = 20;
-	// printf("%%");
-	// printf("%d", printf(0));
-
-	ft_printf("%s", NULL);
+	ft_printf("%p\n", &a);
+	printf("%p\n", &a);
 	ft_printf("%p", NULL);
-	// ft_printf("%s","");
-	// ft_printf("blabla %s\n test %d ", "Je suis un test", 20);
-	// printf("%p\n", &a);
-
+	ft_printf("%s",NULL);
+	ft_printf("blabla %s\n test %d ", "Je suis un test", 20);
+	printf("%p\n", &a);
 	return (0);
 }
 */
