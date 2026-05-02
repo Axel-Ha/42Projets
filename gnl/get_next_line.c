@@ -24,24 +24,19 @@ char	*get_next_line(int fd)
 	bufread = 1;
 	if (!stash)
 		stash = ft_strdup("");
-	// bufread = read(fd, buf, BUFFER_SIZE);
-	while (!ft_strchr(stash, '\n') && bufread > 0)
+	while (!(ft_strchr(stash, '\n')) && bufread > 0)
 	{
+		bufread = read(fd, buf, BUFFER_SIZE);
 		buf[bufread] = '\0';
 		if (bufread <= 0)
 			break ;
 		stash = ft_strjoin(stash, buf);
-		bufread = read(fd, buf, BUFFER_SIZE);
 	}
-	printf("JE SUIS TEST %s",stash);
-	// buffer size a 2, des caracteres sont pas lus.
-	// le programme ne s'arrete pas
-	// stash a tout mon fichier ?
-	// je dois normalement m'arreter a \n
-	// j ai meme pas toute ma ligne hmmm
-	// je dois m'arreter a \n ou eof
-	// line retourne tout mon fichier 
-	line = ft_strdup(stash);
+	line = ft_substr(stash,0,(ft_strchr(stash, '\n') - stash) + 1);
+	stash = ft_substr(stash,line - stash + 1, ft_strlen(stash) - (line - stash + 1) );
+	// printf("je print la stash %s", stash);
+	//ne sais pas quand finir le programme
+	printf("bufread %d\n", bufread);
 	return (line);
 }
 
@@ -49,9 +44,14 @@ int	main(int ac, char **av)
 {
 	int fd = open(av[1], O_RDONLY);
 	char *line;
-	while (line = get_next_line(fd))
-		printf("\n"	);
-	// free(line);
-	// close(fd);
+	line = get_next_line(fd);
+	while (line)
+	{
+		printf("%s", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
+	close(fd);
 	return (0);
 }

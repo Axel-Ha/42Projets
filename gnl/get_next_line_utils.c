@@ -80,3 +80,27 @@ char	*ft_strdup(const char *source)
 	res[i] = '\0';
 	return (res);
 }
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*result;
+	size_t	i;
+	size_t	strlen;
+
+	strlen = ft_strlen(s);
+	if (start >= strlen)
+		len = 0;
+	else if (len > strlen - start)
+		len = strlen - start;
+	result = malloc(len + 1);
+	if (!result)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		result[i] = s[start + i];
+		i++;
+	}
+	result[i] = '\0';
+	return (result);
+}
