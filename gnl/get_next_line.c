@@ -18,6 +18,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		buf[BUFFER_SIZE];
 	int			bufread;
+	char 		*temp;
 
 	if (BUFFER_SIZE <= 0 || read(fd, "", 0) == -1)
 		return (NULL);
@@ -27,16 +28,19 @@ char	*get_next_line(int fd)
 	while (!(ft_strchr(stash, '\n')) && bufread > 0)
 	{
 		bufread = read(fd, buf, BUFFER_SIZE);
-		buf[bufread] = '\0';
 		if (bufread <= 0)
 			break ;
-		stash = ft_strjoin(stash, buf);
+		buf[bufread] = '\0';
+		temp = stash;
+		stash = ft_strjoin(temp, buf);
+		free(temp);
 	}
-	line = ft_substr(stash,0,(ft_strchr(stash, '\n') - stash) + 1);
-	stash = ft_substr(stash,line - stash + 1, ft_strlen(stash) - (line - stash + 1) );
-	// printf("je print la stash %s", stash);
-	//ne sais pas quand finir le programme
-	printf("bufread %d\n", bufread);
+	temp = ft_strchr(stash, '\n');
+	line = ft_substr(stash,0,(temp - stash) + 1);
+	temp = ft_strdup(temp + 1);
+	free(stash);
+	stash = temp;
+	printf("je test %s", stash);
 	return (line);
 }
 
@@ -45,12 +49,12 @@ int	main(int ac, char **av)
 	int fd = open(av[1], O_RDONLY);
 	char *line;
 	line = get_next_line(fd);
-	while (line)
-	{
-		printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
-	}
+	// while (line)
+	// {
+	// 	printf("%s", line);
+	// 	free(line);
+	// 	line = get_next_line(fd);
+	// }
 	free(line);
 	close(fd);
 	return (0);
