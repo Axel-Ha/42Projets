@@ -1,4 +1,2 @@
-Je suisf du text de
-fun exefmple
-testf 
-tesftblafbla
+je veux un texte d'une longueure de 42 pour voir ce que ca fait 
+et la je fais une ligne moins longue

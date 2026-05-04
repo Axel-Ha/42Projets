@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 16:10:23 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/04 12:03:02 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/04 14:16:44 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 char	*ft_read_line(int fd, char *stash)
 {
-	char	buf[BUFFER_SIZE + 1];
+	char	*buf;
 	char	*temp;
 	int		bufread;
 
-
+	if (BUFFER_SIZE <= 0 || fd < 0)
+		return (NULL);
 	bufread = 1;
+	buf = malloc(BUFFER_SIZE + 1);
+	if(!buf)
+		return (NULL);
 	if (!stash)
 		stash = ft_strdup("");
-	temp = ft_strdup("");
 	while (!(ft_strchr(stash, '\n')) && bufread > 0)
 	{
 		bufread = read(fd, buf, BUFFER_SIZE);
 		if (bufread < 0)
 		{
-			free(temp);
+			free(buf);
 			free(stash);
-			// free(buf);
 			return (NULL);
 		}
 		buf[bufread] = '\0';
@@ -38,21 +40,23 @@ char	*ft_read_line(int fd, char *stash)
 		stash = ft_strjoin(temp, buf);
 		free(temp);
 	}
-	// free(buf);
+	free(buf);
 	return (stash);
 }
+
 char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char		*line;
 	char		*temp;
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
-		return (NULL);
 	stash = ft_read_line(fd, stash);
+	printf("stash : %s\n\n\n",stash);
+
 	if (!stash || stash[0] == '\0')
 	{
 		free(stash);
+		stash = NULL;
 		return (NULL);
 	}
 	temp = ft_strchr(stash, '\n');
@@ -72,8 +76,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*
-int	main(int ac, char **av)
+int main(int ac, char **av)
 {
 	(void)ac;
 	
@@ -82,7 +85,7 @@ int	main(int ac, char **av)
 	line = get_next_line(fd);
 	while (line)
 	{
-		printf("ligne :%s\n", line);
+		// printf("ligne :%s\n", line);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -90,4 +93,4 @@ int	main(int ac, char **av)
 	close(fd);
 	return (0);
 }
-*/
+
