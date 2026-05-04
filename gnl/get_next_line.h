@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 16:10:40 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/01 18:53:48 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/04 11:32:13 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ char	*ft_strchr(const char *str, int searchedChar);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *source);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_read_line(int fd, char *stash);
 
 #endif

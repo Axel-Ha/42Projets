@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 16:10:35 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/01 18:53:52 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/04 13:07:48 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ size_t	ft_strlen(const char *str)
 
 char	*ft_strdup(const char *source)
 {
-	size_t len;
-	size_t i;
-	char *res;
+	size_t	len;
+	size_t	i;
+	char	*res;
 
 	i = 0;
 	len = ft_strlen(source) + 1;
