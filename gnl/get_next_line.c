@@ -6,11 +6,23 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 16:10:23 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/04 14:16:44 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/05 11:32:42 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	*ft_free_all(char **stash, char *buf)
+{
+	if (buf)
+		free(buf);
+	if (stash && *stash)
+	{
+		free(*stash);
+		*stash = NULL;
+	}
+	return (NULL);
+}
 
 char	*ft_read_line(int fd, char *stash)
 {
@@ -22,7 +34,7 @@ char	*ft_read_line(int fd, char *stash)
 		return (NULL);
 	bufread = 1;
 	buf = malloc(BUFFER_SIZE + 1);
-	if(!buf)
+	if (!buf)
 		return (NULL);
 	if (!stash)
 		stash = ft_strdup("");
@@ -30,17 +42,13 @@ char	*ft_read_line(int fd, char *stash)
 	{
 		bufread = read(fd, buf, BUFFER_SIZE);
 		if (bufread < 0)
-		{
-			free(buf);
-			free(stash);
-			return (NULL);
-		}
+			return(ft_free_all(&stash, buf));
 		buf[bufread] = '\0';
 		temp = stash;
 		stash = ft_strjoin(temp, buf);
 		free(temp);
 	}
-	free(buf);
+	ft_free_all(NULL, buf);
 	return (stash);
 }
 
@@ -51,13 +59,9 @@ char	*get_next_line(int fd)
 	char		*temp;
 
 	stash = ft_read_line(fd, stash);
-	printf("stash : %s\n\n\n",stash);
-
 	if (!stash || stash[0] == '\0')
 	{
-		free(stash);
-		stash = NULL;
-		return (NULL);
+		return(ft_free_all(&stash, NULL));
 	}
 	temp = ft_strchr(stash, '\n');
 	if (temp)
@@ -70,27 +74,25 @@ char	*get_next_line(int fd)
 	else
 	{
 		line = ft_substr(stash, 0, ft_strlen(stash));
-		free(stash);
-		stash = NULL;
+		ft_free_all(&stash, NULL);
 	}
 	return (line);
 }
 
-int main(int ac, char **av)
-{
-	(void)ac;
-	
-	int fd = open(av[1], O_RDONLY);
-	char *line;
-	line = get_next_line(fd);
-	while (line)
-	{
-		// printf("ligne :%s\n", line);
-		free(line);
-		line = get_next_line(fd);
-	}
-	free(line);
-	close(fd);
-	return (0);
-}
+// int main(int ac, char **av)
+// {
+// 	(void)ac;
 
+// 	int fd = open(av[1], O_RDONLY);
+// 	char *line;
+// 	line = get_next_line(fd);
+// 	while (line)
+// 	{
+// 		// printf("ligne :%s\n", line);
+// 		free(line);
+// 		line = get_next_line(fd);
+// 	}
+// 	free(line);
+// 	close(fd);
+// 	return (0);
+// }

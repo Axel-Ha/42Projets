@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 16:10:35 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/04 13:23:09 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/05 11:06:12 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 char	*ft_strchr(const char *str, int searchedChar)
 {
-	if(!str)
+	if (!str)
 		return (NULL);
 	while (*str)
 	{
