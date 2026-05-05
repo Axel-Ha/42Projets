@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/30 16:10:23 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/05 11:32:42 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/05 12:18:59 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*ft_read_line(int fd, char *stash)
 	{
 		bufread = read(fd, buf, BUFFER_SIZE);
 		if (bufread < 0)
-			return(ft_free_all(&stash, buf));
+			return (ft_free_all(&stash, buf));
 		buf[bufread] = '\0';
 		temp = stash;
 		stash = ft_strjoin(temp, buf);
@@ -60,9 +60,7 @@ char	*get_next_line(int fd)
 
 	stash = ft_read_line(fd, stash);
 	if (!stash || stash[0] == '\0')
-	{
-		return(ft_free_all(&stash, NULL));
-	}
+		return (ft_free_all(&stash, NULL));
 	temp = ft_strchr(stash, '\n');
 	if (temp)
 	{
@@ -79,20 +77,24 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-// int main(int ac, char **av)
-// {
-// 	(void)ac;
+/*
+int	main(int ac, char **av)
+{
+	int		fd;
+	char	*line;
 
-// 	int fd = open(av[1], O_RDONLY);
-// 	char *line;
-// 	line = get_next_line(fd);
-// 	while (line)
-// 	{
-// 		// printf("ligne :%s\n", line);
-// 		free(line);
-// 		line = get_next_line(fd);
-// 	}
-// 	free(line);
-// 	close(fd);
-// 	return (0);
-// }
+	(void)ac;
+	fd = open(av[1], O_RDONLY);
+	// int fd = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		// printf("ligne :%s\n", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	free(line);
+	close(fd);
+	return (0);
+}
+*/
