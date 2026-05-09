@@ -1,0 +1,49 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/08 14:13:06 by ahalifa           #+#    #+#             */
+/*   Updated: 2026/05/09 18:28:27 by ahalifa          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+t_stack	*ft_lstlast(t_stack *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
+}
+
+t_stack	*ft_lstnew(int content)
+{
+	t_stack	*node;
+
+	node = malloc(sizeof(t_stack));
+	if (!node)
+		return (NULL);
+	node->nbr = content;
+	node->next = NULL;
+	return (node);
+}
+
+void    ft_stack_clear(t_stack **stack)
+{
+    t_stack *current;
+    t_stack *next;
+
+    current = *stack;
+    while (current)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    *stack = NULL;
+}
