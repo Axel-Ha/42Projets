@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_list_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:13:06 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/09 18:28:27 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/09 19:11:11 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,34 @@ t_stack	*ft_lstnew(int content)
 	return (node);
 }
 
-void    ft_stack_clear(t_stack **stack)
+void	ft_stack_clear(t_stack **stack)
 {
-    t_stack *current;
-    t_stack *next;
+	t_stack	*current;
+	t_stack	*next;
 
-    current = *stack;
-    while (current)
-    {
-        next = current->next;
-        free(current);
-        current = next;
-    }
-    *stack = NULL;
+	current = *stack;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*stack = NULL;
+}
+
+int	ft_lst_size(t_stack *stack)
+{
+	t_stack *current;
+	int count;
+
+	if (!stack || *stack)
+		return (0);
+	current = stack;
+	count = 0;
+	while (current)
+	{
+		current = current->next;
+		count++;
+	}
+	return (count);
 }

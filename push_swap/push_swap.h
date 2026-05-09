@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/09 18:37:43 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/09 19:15:29 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void				ft_rra(t_stack **stack_a);
 void				ft_rrb(t_stack **stack_b);
 void				ft_ss(t_stack **stack_a, t_stack **stack_b);
 t_stack				*ft_lstnew(int content);
-void    ft_stack_clear(t_stack **stack);
-
+void				ft_stack_clear(t_stack **stack);
+int					ft_lst_size(t_stack *stack);
+t_stack	*ft_init_stack(int **av, int pos)
 
 #endif
