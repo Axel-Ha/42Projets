@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:44:46 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/08 13:16:16 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/09 13:35:17 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,4 @@ void ft_ss(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap(*stack_a);
 	ft_swap(*stack_b);
-	ft_printf("ss\n",);
 }

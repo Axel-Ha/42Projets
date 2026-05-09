@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/08 17:32:48 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/09 13:49:37 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 # define PUSH_SWAP_H
 
+# include "ft_printf.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+
 typedef struct stack
 {
 	int				nbr;
@@ -35,5 +37,9 @@ void				ft_rb(t_stack **stack_b);
 void				ft_ra(t_stack **stack_a);
 void				ft_rotate(t_stack **stack);
 t_stack				*ft_lstlast(t_stack *lst);
+void				ft_rotate_reverse(t_stack **stack);
+void				ft_rra(t_stack **stack_a);
+void				ft_rrb(t_stack **stack_b);
+void				ft_ss(t_stack **stack_a, t_stack **stack_b);
 
 #endif

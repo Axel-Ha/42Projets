@@ -6,20 +6,13 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:04:01 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/08 17:34:17 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/09 13:35:09 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_lstlast(t_stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next != NULL)
-		lst = lst->next;
-	return (lst);
-}
+
 
 void	ft_rotate(t_stack **stack)
 {
@@ -52,7 +45,6 @@ void	ft_rr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_rotate(stack_a);
 	ft_rotate(stack_b);
-	write(1, "rr\n", 3);
 }
 
 // t_stack	*ft_lstnew(int content)
