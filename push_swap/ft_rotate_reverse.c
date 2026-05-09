@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 13:34:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/09 13:48:05 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/09 13:59:54 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void ft_rrb(t_stack **stack_b)
 	ft_printf("sb\n");
 }
 
-void ft_ss(t_stack **stack_a, t_stack **stack_b)
+void ft_rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_rotate_reverse(stack_a);
 	ft_rotate_reverse(stack_b);
