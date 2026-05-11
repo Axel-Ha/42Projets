@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/09 19:15:29 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/11 13:10:20 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@ typedef struct stack
 	struct stack	*next;
 }					t_stack;
 
+typedef struct flags
+{
+	int				algo;
+	int				bench;
+}					t_flags;
+
 void				ft_pa(t_stack **stack_a, t_stack **stack_b);
 void				ft_pb(t_stack **stack_a, t_stack **stack_b);
 void				ft_swap(t_stack *stack);
@@ -44,6 +50,10 @@ void				ft_ss(t_stack **stack_a, t_stack **stack_b);
 t_stack				*ft_lstnew(int content);
 void				ft_stack_clear(t_stack **stack);
 int					ft_lst_size(t_stack *stack);
-t_stack	*ft_init_stack(int **av, int pos)
+t_stack				*ft_init_stack(int **av, int pos);
+int					ft_strncmp(const char *first, const char *second, size_t n);
+t_flags	ft_get_args(char **av, int *start);
+
+
 
 #endif
