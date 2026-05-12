@@ -2,15 +2,14 @@
 
 float	ft_compute_disorder(t_stack **stack_a)
 {
-	int mistakes;
-	int total_pairs;
-	t_stack *j;
-	t_stack *i;
+	int		mistakes;
+	int		total_pairs;
+	t_stack	*j;
+	t_stack	*i;
 
 	mistakes = 0;
 	total_pairs = 0;
 	i = *stack_a;
-
 	while (i != NULL)
 	{
 		j = i->next;

@@ -22,11 +22,15 @@ int	main(int ac, char **av)
 	else
 		args = av + start;
 	if (!ft_check_args(args))
+	{
+		printf("test\n");
 		return (0);
-
-	stack_a = ft_init_stack(args);
-	printf("%d\n", stack_a->nbr);
+	}
+	// stack_a = ft_init_stack(args);
+	// ft_bubble_sort(&stack_a, ft_lst_size(stack_a));
+	// printf("%d\n", stack_a->nbr);
 	(void)stack_a;
 	(void)stack_b;
 	(void)flag;
+	return (0);
 }

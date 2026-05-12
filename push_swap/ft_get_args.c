@@ -23,64 +23,6 @@ t_flags	ft_get_flags(char **flag, int *start)
 	return (flags);
 }
 
-int	ft_issign(char c)
-{
-	return (c == '+' || c == '-');
-}
-
-int	ft_isdigit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int	ft_check_duplicate(char **args)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (args[i])
-	{
-		j = i + 1;
-		while (args[j])
-		{
-			if (ft_atoi(args[i]) == ft_atoi(args[j]))
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-int	ft_check_nbr(char *nbr)
-{
-	int	i;
-
-	i = 0;
-	if (ft_issign(nbr[i]) && nbr[i + 1] != '\0')
-		i++;
-	if (!ft_isdigit(nbr[i]))
-		return (0);
-	while (nbr[i])
-	{
-		if (!ft_isdigit(nbr[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	ft_check_ranges(char *nbr)
-{
-	long	n;
-
-	n = ft_atoi(nbr);
-	if (n > 2147483647 || n < -2147483648)
-		return (0);
-	return (1);
-}
-
 int	ft_check_args(char **args)
 {
 	int	i;
@@ -95,7 +37,7 @@ int	ft_check_args(char **args)
 		}
 		i++;
 	}
-	if (ft_check_duplicate(args))
+	if (!ft_check_duplicate(args))
 	{
 		ft_printf("Error\n");
 		return (0);
