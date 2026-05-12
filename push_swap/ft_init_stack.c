@@ -1,38 +1,23 @@
 #include "push_swap.h"
 
-t_stack	*ft_init_stack(int **av, int pos)
+t_stack *ft_init_stack(char **args)
 {
-	t_stack *current;
-	t_stack *head;
+    t_stack *head;
+    t_stack *new;
+    int i;
 
-	int i;
-	/*
-	changer les params je pense
-	check	si les chiffres dans av sont goods
-	ft_check_nbrs(int **av);
-	regarder si on est av est entre int min et int max
-	si pendant le check on a autre chose qu'un nbr return null
-	pour au final avoir un error
-	faire ca dans le main je pense
-	*/
-	head = NULL;
-	while (av[pos])
-	{
-		if (!head)
-		{
-			head = ft_lstnew(ft_atoi(av[pos]));
-			if (!head)
-				return (NULL);
-			current = head;
-		}
-		else
-		{
-			current->next = ft_lstnew(ft_atoi(av[pos]));
-			if (!current->next)
-				return (ft_lstclear(&head));
-			current = current->next;
-		}
-		i++;
-	}
-	return (head);
+    head = NULL;
+    i = 0;
+    while (args[i])
+    {
+        new = ft_lstnew(ft_atoi(args[i]));
+        if (!new)
+        {
+            ft_stack_clear(&head);
+            return (NULL);
+        }
+        ft_lstadd_back(&head, new);
+        i++;
+    }
+    return (head);
 }

@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/11 13:10:20 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/12 11:42:38 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ void				ft_ss(t_stack **stack_a, t_stack **stack_b);
 t_stack				*ft_lstnew(int content);
 void				ft_stack_clear(t_stack **stack);
 int					ft_lst_size(t_stack *stack);
-t_stack				*ft_init_stack(int **av, int pos);
+t_stack				*ft_init_stack(char **args);
 int					ft_strncmp(const char *first, const char *second, size_t n);
-t_flags	ft_get_args(char **av, int *start);
-
-
+t_flags				ft_get_flags(char **av, int *start);
+int					ft_atoi(const char *str);
+int					ft_check_args(char **args);
+char				**ft_split(char const *s, char c);
+void				ft_lstadd_back(t_stack **lst, t_stack *new);
 
 #endif

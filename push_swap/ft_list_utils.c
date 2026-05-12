@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:13:06 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/09 19:11:11 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/12 11:29:37 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ void	ft_stack_clear(t_stack **stack)
 
 int	ft_lst_size(t_stack *stack)
 {
-	t_stack *current;
-	int count;
+	t_stack	*current;
+	int		count;
 
-	if (!stack || *stack)
+	if (!stack)
 		return (0);
 	current = stack;
 	count = 0;
@@ -63,4 +63,16 @@ int	ft_lst_size(t_stack *stack)
 		count++;
 	}
 	return (count);
+}
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
+{
+	t_stack	*tmp;
+
+	if (*lst == NULL)
+	{
+		*lst = new;
+		return ;
+	}
+	tmp = ft_lstlast(*lst);
+	tmp->next = new;
 }
