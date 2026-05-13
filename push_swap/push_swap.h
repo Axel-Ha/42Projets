@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/12 13:48:47 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/12 15:07:57 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ int					ft_isdigit(char c);
 int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
 int					ft_check_ranges(char *nbr);
+float				ft_compute_disorder(t_stack **stack_a);
 
 #endif

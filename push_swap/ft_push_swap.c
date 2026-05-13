@@ -1,5 +1,17 @@
 #include "push_swap.h"
 
+void	ft_lst_print(t_stack **stack)
+{
+	t_stack	*a;
+
+	a = *stack;
+	while (a)
+	{
+		printf("%d\n", a->nbr);
+		a = a->next;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	int		start;
@@ -22,13 +34,14 @@ int	main(int ac, char **av)
 	else
 		args = av + start;
 	if (!ft_check_args(args))
-	{
-		printf("test\n");
 		return (0);
-	}
-	// stack_a = ft_init_stack(args);
-	// ft_bubble_sort(&stack_a, ft_lst_size(stack_a));
-	// printf("%d\n", stack_a->nbr);
+	stack_a = ft_init_stack(args);
+	/*faire une fonction qui va selectionner l'algo 
+		ft_select_algo(t_stack stack_a, t_flags flags, int compute_disorder())
+	*/
+	ft_bubble_sort(&stack_a, ft_lst_size(stack_a));
+	ft_lst_print(&stack_a);
+	
 	(void)stack_a;
 	(void)stack_b;
 	(void)flag;

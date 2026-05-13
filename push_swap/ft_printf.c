@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 09:59:58 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/12 13:50:41 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/12 15:22:44 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,6 @@ int	ft_format(char c, va_list *args)
 		return (ft_putchar(va_arg(*args, int)));
 	else if (c == 's')
 		return (ft_putstr(va_arg(*args, char *)));
-	else if (c == 'p')
-		return (ft_putvoid(va_arg(*args, uintptr_t)));
-	else if (c == 'd' || c == 'i')
-		return (ft_putnbr(va_arg(*args, int)));
-	else if (c == 'u')
-		return (ft_unsdeci(va_arg(*args, unsigned int)));
-	else if (c == 'x')
-		return (ft_puthexa(va_arg(*args, unsigned int), c));
-	else if (c == 'X')
-		return (ft_puthexa(va_arg(*args, unsigned int), c));
-	else if (c == '%')
-		return (ft_putchar('%'));
 	return (0);
 }
 
