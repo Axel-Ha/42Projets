@@ -21,7 +21,8 @@ int	ft_check_duplicate(char **args)
 		j = i + 1;
 		while (args[j])
 		{
-			return (ft_atoi(args[i]) == ft_atoi(args[j]));
+			if(ft_atoi(args[i]) == ft_atoi(args[j]))
+				return (0);
 			j++;
 		}
 		i++;
