@@ -6,13 +6,13 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:13:06 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/13 13:32:52 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/13 15:55:31 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	*ft_lstlast(t_stack *lst)
+t_stack	*ft_listlast(t_stack *lst)
 {
 	if (!lst)
 		return (NULL);
@@ -21,7 +21,7 @@ t_stack	*ft_lstlast(t_stack *lst)
 	return (lst);
 }
 
-t_stack	*ft_lstnew(int content)
+t_stack	*ft_listnew(int content)
 {
 	t_stack	*node;
 
@@ -48,7 +48,7 @@ void	ft_stack_clear(t_stack **stack)
 	*stack = NULL;
 }
 
-int	ft_lst_size(t_stack *stack)
+int	ft_list_size(t_stack *stack)
 {
 	t_stack	*current;
 	int		count;
@@ -64,7 +64,7 @@ int	ft_lst_size(t_stack *stack)
 	}
 	return (count);
 }
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
+void	ft_add_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*tmp;
 
@@ -73,6 +73,6 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new)
 		*lst = new;
 		return ;
 	}
-	tmp = ft_lstlast(*lst);
+	tmp = ft_listlast(*lst);
 	tmp->next = new;
 }

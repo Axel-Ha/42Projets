@@ -5,10 +5,10 @@ int	ft_issign(char c)
 	return (c == '+' || c == '-');
 }
 
-int	ft_isdigit(char c)
-{
-	return (c >= '0' && c <= '9');
-}
+// int	ft_isdigit(char c)
+// {
+// 	return (c >= '0' && c <= '9');
+// }
 
 int	ft_check_duplicate(char **args)
 {

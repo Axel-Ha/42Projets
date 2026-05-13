@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:04:01 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/12 13:49:26 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/13 16:16:28 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_rotate(t_stack **stack)
 	if (!stack || !*stack || !(*stack)->next)
 		return ;
 	first = *stack;
-	last = ft_lstlast(*stack);
+	last = ft_listlast(*stack);
 	*stack = (*stack)->next;
 	last->next = first;
 	first->next = NULL;

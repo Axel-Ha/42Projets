@@ -1,16 +1,19 @@
-NAME = pushswap.a
+NAME = pushswap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+LIBFT = libft/libft.a
 
-SOURCES = ft_nbrs_utils.c ft_get_args.c ft_list_utils.c ft_printf.c ft_push_swap.c  ft_split.c ft_init_stack.c ft_utils.c ft_swap.c ft_rotate.c ft_rotate_reverse.c ft_push.c ft_compute_disorder.c ft_select_sort.c ft_printf.c ft_list_utils.c
+SOURCES = ft_nbrs_utils.c ft_get_args.c ft_list_utils.c ft_push_swap.c ft_split.c \
+          ft_init_stack.c ft_utils.c ft_swap.c ft_rotate.c ft_rotate_reverse.c \
+          ft_push.c ft_compute_disorder.c ft_select_sort.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
-
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
+	
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@ 
 	

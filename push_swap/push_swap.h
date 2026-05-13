@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/13 12:20:04 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/13 15:54:40 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 # define PUSH_SWAP_H
 
-# include "ft_printf.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "libft/libft.h"
 
 typedef struct stack
 {
@@ -42,26 +42,26 @@ void				ft_rr(t_stack **stack_a, t_stack **stack_b);
 void				ft_rb(t_stack **stack_b);
 void				ft_ra(t_stack **stack_a);
 void				ft_rotate(t_stack **stack);
-t_stack				*ft_lstlast(t_stack *lst);
+t_stack				*ft_listlast(t_stack *lst);
+t_stack				*ft_listnew(int content);
+int					ft_list_size(t_stack *stack);
+void				ft_add_back(t_stack **lst, t_stack *new);
 void				ft_rotate_reverse(t_stack **stack);
 void				ft_rra(t_stack **stack_a);
 void				ft_rrb(t_stack **stack_b);
 void				ft_ss(t_stack **stack_a, t_stack **stack_b);
-t_stack				*ft_lstnew(int content);
 void				ft_stack_clear(t_stack **stack);
-int					ft_lst_size(t_stack *stack);
 t_stack				*ft_init_stack(char **args);
 int					ft_strncmp(const char *first, const char *second, size_t n);
 t_flags				ft_get_flags(char **av, int *start);
 int					ft_atoi(const char *str);
 int					ft_check_args(char **args);
 char				**ft_split(char const *s, char c);
-void				ft_lstadd_back(t_stack **lst, t_stack *new);
 void				ft_bubble_sort(t_stack **stack_a, int size);
 void				ft_select_sort(t_stack **stack_a, t_stack **stack_b,
 						int size);
 int					ft_issign(char c);
-int					ft_isdigit(char c);
+// int					ft_isdigit(char c);
 int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
 int					ft_check_ranges(char *nbr);
