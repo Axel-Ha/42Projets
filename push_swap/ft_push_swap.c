@@ -37,10 +37,10 @@ int	main(int ac, char **av)
 		return (0);
 	stack_a = ft_init_stack(args);
 	/*faire une fonction qui va selectionner l'algo 
-		ft_select_algo(t_stack stack_a, t_flags flags, int compute_disorder())
+	directement donner les 2 stacks ig
+	ft_select_algo(t_stack stack_a, t_flags flags, int compute_disorder())
 	*/
-	ft_bubble_sort(&stack_a, ft_lst_size(stack_a));
-	ft_lst_print(&stack_a);
+	ft_select_sort(&stack_a,&stack_b, ft_lst_size(stack_a));
 	
 	(void)stack_a;
 	(void)stack_b;

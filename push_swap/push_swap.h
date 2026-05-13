@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/12 15:07:57 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/13 12:20:04 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ int					ft_check_args(char **args);
 char				**ft_split(char const *s, char c);
 void				ft_lstadd_back(t_stack **lst, t_stack *new);
 void				ft_bubble_sort(t_stack **stack_a, int size);
+void				ft_select_sort(t_stack **stack_a, t_stack **stack_b,
+						int size);
 int					ft_issign(char c);
 int					ft_isdigit(char c);
 int					ft_check_duplicate(char **args);
