@@ -1,45 +1,30 @@
 #include "push_swap.h"
 
-t_flags ft_get_flags(char **flag, int *start)
+t_flags	ft_get_flags(char **args, int *start)
 {
-    t_flags flags;
-    int     found;
+	t_flags	flag;
+	int		found;
 
-    flags.algo = 4;
-    flags.bench = 0;
-    while (flag[*start] && flag[*start][0] == '-')
-    {
-        found = 0;
-        if (ft_strncmp("--simple", flag[*start], 9) == 0)
-        {
-            flags.algo = 1;
-            found = 1;
-        }
-        else if (ft_strncmp("--medium", flag[*start], 9) == 0)
-        {
-            flags.algo = 2;
-            found = 1;
-        }
-        else if (ft_strncmp("--complex", flag[*start], 10) == 0)
-        {
-            flags.algo = 3;
-            found = 1;
-        }
-        else if (ft_strncmp("--adaptive", flag[*start], 11) == 0)
-        {
-            flags.algo = 4;
-            found = 1;
-        }
-        else if (ft_strncmp("--bench", flag[*start], 8) == 0)
-        {
-            flags.bench = 1;
-            found = 1;
-        }
-        if (!found)
-            break ;
-        (*start)++;
-    }
-    return (flags);
+	while (args[*start] && args[*start][0] == '-')
+	{
+		found = 1;
+		if (!ft_strncmp("--simple", args[*start], 9))
+			flag.algo = 1;
+		else if (!ft_strncmp("--medium", args[*start], 9))
+			flag.algo = 2;
+		else if (!ft_strncmp("--complex", args[*start], 10))
+			flag.algo = 3;
+		else if (!ft_strncmp("--adaptive", args[*start], 11))
+			flag.algo = 4;
+		else if (!ft_strncmp("--bench", args[*start], 8))
+			flag.bench = 1;
+		else
+			found = 0;
+		if (!found)
+			break ;
+		(*start)++;
+	}
+	return (flag);
 }
 
 int	ft_check_args(char **args)

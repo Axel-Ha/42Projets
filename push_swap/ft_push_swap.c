@@ -1,17 +1,5 @@
 #include "push_swap.h"
 
-void	ft_lst_print(t_stack **stack)
-{
-	t_stack	*a;
-
-	a = *stack;
-	while (a)
-	{
-		printf("%d\n", a->nbr);
-		a = a->next;
-	}
-}
-
 int	main(int ac, char **av)
 {
 	int		start;
