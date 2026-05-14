@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:13:06 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/13 15:55:31 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/14 14:17:33 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_stack_clear(t_stack **stack)
 	t_stack	*current;
 	t_stack	*next;
 
+	if (!stack || !*stack)
+		return ;
 	current = *stack;
 	while (current)
 	{

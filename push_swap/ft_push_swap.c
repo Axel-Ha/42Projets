@@ -1,13 +1,17 @@
 #include "push_swap.h"
 
-void	ft_select_algo(t_stack **stack_a, t_stack **stack_b, t_flags flags,
+void	ft_select_algo(t_stack **stack_a, t_stack **stack_b, t_flags *flags,
 		float disorder_metric)
 {
-	if (flags.algo == 1)
+	// t_stats stats;
+	// stats.
+	if (!flags)
+		return ;
+	if (flags->algo == 1)
 		ft_select_sort(stack_a, stack_b, ft_list_size(*stack_a));
 	// else if (flags.algo == 2)
-		// ft_chunk_sort();
-		// ft_printf("test");
+	// ft_chunk_sort();
+	// ft_printf("test");
 	// else if (flags.algo == 3)
 	// ft_radix_sort();
 	else
@@ -49,12 +53,9 @@ int	main(int ac, char **av)
 	stack_a = ft_init_stack(args);
 	if (!ft_compute_disorder(&stack_a))
 		return (0);
-	/*faire une fonction qui va selectionner l'algo
-	directement donner les 2 stacks ig
-	*/
-	ft_select_algo(&stack_a, &stack_b, flag, ft_compute_disorder(&stack_a));
-	(void)stack_a;
-	(void)stack_b;
-	(void)flag;
+	ft_select_algo(&stack_a, &stack_b, &flag, ft_compute_disorder(&stack_a));
+	if (ac - start == 1)
+		ft_freearr(args, ft_countword(av[start], ' '));
+	ft_free_stacks(&stack_a, &stack_b);
 	return (0);
 }

@@ -5,6 +5,8 @@ t_flags	ft_get_flags(char **args, int *start)
 	t_flags	flag;
 	int		found;
 
+	flag.bench = 0;
+	flag.algo = 4;
 	while (args[*start] && args[*start][0] == '-')
 	{
 		found = 1;

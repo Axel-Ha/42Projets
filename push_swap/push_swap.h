@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/14 11:25:07 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/14 14:17:40 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,24 @@ typedef struct flags
 	int				algo;
 	int				bench;
 }					t_flags;
+
+typedef struct stats
+{
+	int				bench;
+	int				ttl_ops;
+	int				ttl_sa;
+	int				ttl_sb;
+	int				ttl_ss;
+	int				ttl_pa;
+	int				ttl_pb;
+	int				ttl_ra;
+	int				ttl_rb;
+	int				ttl_rr;
+	int				ttl_rra;
+	int				ttl_rrb;
+	int				ttl_rrr;
+
+}					t_stats;
 
 void				ft_pa(t_stack **stack_a, t_stack **stack_b);
 void				ft_pb(t_stack **stack_a, t_stack **stack_b);
@@ -61,10 +79,12 @@ void				ft_bubble_sort(t_stack **stack_a, int size);
 void				ft_select_sort(t_stack **stack_a, t_stack **stack_b,
 						int size);
 int					ft_issign(char c);
-// int					ft_isdigit(char c);
 int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
 int					ft_check_ranges(char *nbr);
 float				ft_compute_disorder(t_stack **stack_a);
+void				ft_free_stacks(t_stack **stack_a, t_stack **stack_b);
+void				*ft_freearr(char **arr, int count);
+int					ft_countword(char const *s, char c);
 
 #endif
