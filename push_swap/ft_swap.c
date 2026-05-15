@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:44:46 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/12 13:49:05 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/15 16:11:14 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,27 @@ void	ft_swap(t_stack *stack)
 	// stack->next->pos = tmp;
 }
 
-void	ft_sa(t_stack **stack_a)
+void	ft_sa(t_stack **stack_a, t_stats *stats)
 {
 	ft_swap(*stack_a);
+	stats->sa += 1;
+	stats->total_ops += 1;
 	ft_printf("sa\n");
 }
 
-void	ft_sb(t_stack **stack_b)
+void	ft_sb(t_stack **stack_b, t_stats *stats)
 {
 	ft_swap(*stack_b);
+	stats->sb += 1;
+	stats->total_ops += 1;
 	ft_printf("sb\n");
 }
 
-void	ft_ss(t_stack **stack_a, t_stack **stack_b)
+void	ft_ss(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 {
 	ft_swap(*stack_a);
 	ft_swap(*stack_b);
+	stats->rr += 1;
+	stats->total_ops += 1;
+	ft_printf("rrr\n");
 }

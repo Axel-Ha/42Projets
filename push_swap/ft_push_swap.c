@@ -63,7 +63,7 @@ int	main(int ac, char **av)
 	t_stack	*stack_a;
 	// t_stack	*stack_b;
 	t_flags	flags;
-	t_stats stats;
+	t_stats *stats;
 
 	stack_a = NULL;
 	// stack_b = NULL;
@@ -81,21 +81,23 @@ int	main(int ac, char **av)
 	if (!ft_check_args(args))
 		return (0);
 	stack_a = ft_init_stack(args);
-	stats.disorder_metric = ft_compute_disorder(&stack_a);	
-	//faire un init stats ???
-	//j'imagine que oui
-	//faire un init sinon, pleins de leaks
-	stats.total_ops = 0;
-	// if (!ft_compute_disorder(&stack_a))
-	if (!stats.disorder_metric)
+	stats = ft_init_stats();
+	if(!stats)
 		return (0);
+	
+	stats->disorder_metric = ft_compute_disorder(&stack_a);	
+	if (!stats->disorder_metric)
+	{
+		free(stats);
+		return (0);
+	}
 	// ft_print_bench(&flags);
 	// ft_select_algo(&stack_a, &stack_b, &flags, ft_compute_disorder(&stack_a));
-	ft_select_algo(&stack_a, &flags, &stats); // si je supp stack b
+	ft_select_algo(&stack_a, &flags, stats); // si je supp stack b
 	if (ac - start == 1)
 		ft_freearr(args, ft_countword(av[start], ' '));
 	// ft_free_stacks(&stack_a, &stack_b);
-	ft_print_bench(&flags,&stats);
-	ft_free_stacks(&stack_a, NULL); // faire des verifs dans le free du coup
+	ft_print_bench(&flags,stats);
+	ft_free_stacks(&stack_a, NULL,stats); // faire des verifs dans le free du coup
 	return (0);
 }

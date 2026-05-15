@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 13:34:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/15 15:16:25 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/15 16:08:34 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,6 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 	ft_rotate_reverse(stack_a);
 	ft_rotate_reverse(stack_b);
 	stats->rrr += 1;
+	stats->total_ops += 1;
+	ft_printf("rrr\n");
 }

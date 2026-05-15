@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:04:01 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/15 14:58:10 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/15 16:12:40 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_ra(t_stack **stack_a, t_stats *stats)
 	ft_rotate(stack_a);
 	write(1, "ra\n", 3);
 	stats->ra += 1;
+	stats->total_ops += 1;
 }
 
 // void	ft_rb(t_stack **stack_b)
@@ -40,6 +41,7 @@ void	ft_rb(t_stack **stack_b, t_stats *stats)
 	ft_rotate(stack_b);
 	write(1, "rb\n", 3);
 	stats->rb += 1;
+	stats->total_ops += 1;
 }
 
 // void	ft_rr(t_stack **stack_a, t_stack **stack_b)
@@ -48,4 +50,6 @@ void	ft_rr(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 	ft_rotate(stack_a);
 	ft_rotate(stack_b);
 	stats->rr += 1;
+	stats->total_ops += 1;
+	ft_printf("rr\n");
 }
