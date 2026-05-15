@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/14 14:17:40 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/15 15:08:24 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,40 +34,49 @@ typedef struct flags
 
 typedef struct stats
 {
+	double			disorder_metric;
 	int				bench;
-	int				ttl_ops;
-	int				ttl_sa;
-	int				ttl_sb;
-	int				ttl_ss;
-	int				ttl_pa;
-	int				ttl_pb;
-	int				ttl_ra;
-	int				ttl_rb;
-	int				ttl_rr;
-	int				ttl_rra;
-	int				ttl_rrb;
-	int				ttl_rrr;
-
+	int				total_ops;
+	int				sa;
+	int				sb;
+	int				ss;
+	int				pa;
+	int				pb;
+	int				ra;
+	int				rb;
+	int				rr;
+	int				rra;
+	int				rrb;
+	int				rrr;
 }					t_stats;
 
-void				ft_pa(t_stack **stack_a, t_stack **stack_b);
-void				ft_pb(t_stack **stack_a, t_stack **stack_b);
+// void				ft_pa(t_stack **stack_a, t_stack **stack_b);
+void				ft_pa(t_stack **stack_a, t_stack **stack_b, t_stats *stats);
+// void				ft_pb(t_stack **stack_a, t_stack **stack_b);
+void				ft_pb(t_stack **stack_a, t_stack **stack_b, t_stats *stats);
+
 void				ft_swap(t_stack *stack);
 void				ft_sa(t_stack **stack_a);
 void				ft_sb(t_stack **stack_b);
 void				ft_ss(t_stack **stack_a, t_stack **stack_b);
-void				ft_rr(t_stack **stack_a, t_stack **stack_b);
-void				ft_rb(t_stack **stack_b);
-void				ft_ra(t_stack **stack_a);
+// void				ft_ra(t_stack **stack_a);
+void				ft_ra(t_stack **stack_a, t_stats *stats);
+// void				ft_rb(t_stack **stack_b);
+void				ft_rb(t_stack **stack_b, t_stats *stats);
+// void				ft_rr(t_stack **stack_a, t_stack **stack_b);
+void				ft_rr(t_stack **stack_a, t_stack **stack_b, t_stats *stats);
 void				ft_rotate(t_stack **stack);
 t_stack				*ft_listlast(t_stack *lst);
 t_stack				*ft_listnew(int content);
 int					ft_list_size(t_stack *stack);
 void				ft_add_back(t_stack **lst, t_stack *new);
 void				ft_rotate_reverse(t_stack **stack);
-void				ft_rra(t_stack **stack_a);
-void				ft_rrb(t_stack **stack_b);
+// void				ft_rra(t_stack **stack_a);
+void				ft_rra(t_stack **stack_a, t_stats *stats);
+// void				ft_rrb(t_stack **stack_b);
+void				ft_rrb(t_stack **stack_b, t_stats *stats);
 void				ft_ss(t_stack **stack_a, t_stack **stack_b);
+// void				ft_ss(t_stack **stack_a, t_stack **stack_b, t_stats *stats);
 void				ft_stack_clear(t_stack **stack);
 t_stack				*ft_init_stack(char **args);
 int					ft_strncmp(const char *first, const char *second, size_t n);
@@ -76,8 +85,8 @@ int					ft_atoi(const char *str);
 int					ft_check_args(char **args);
 char				**ft_split(char const *s, char c);
 void				ft_bubble_sort(t_stack **stack_a, int size);
-void				ft_select_sort(t_stack **stack_a, t_stack **stack_b,
-						int size);
+// void				ft_select_sort(t_stack **stack_a, t_stack **stack_b, int size);
+void				ft_select_sort(t_stack **stack_a, t_stack **stack_b, int size, t_stats *stats);
 int					ft_issign(char c);
 int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
