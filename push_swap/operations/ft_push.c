@@ -6,13 +6,12 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:12:40 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/18 11:35:30 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/18 11:56:23 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-// void	ft_pa(t_stack **stack_a, t_stack **stack_b)
 void	ft_pa(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 {
 	t_stack	*tmp;
@@ -28,7 +27,6 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 	write(1, "pa\n", 3);
 }
 
-// void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 void	ft_pb(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 {
 	t_stack	*tmp;

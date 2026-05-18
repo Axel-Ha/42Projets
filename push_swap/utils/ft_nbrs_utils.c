@@ -5,11 +5,6 @@ int	ft_issign(char c)
 	return (c == '+' || c == '-');
 }
 
-// int	ft_isdigit(char c)
-// {
-// 	return (c >= '0' && c <= '9');
-// }
-
 int	ft_check_duplicate(char **args)
 {
 	int	i;
@@ -21,7 +16,7 @@ int	ft_check_duplicate(char **args)
 		j = i + 1;
 		while (args[j])
 		{
-			if(ft_atoi(args[i]) == ft_atoi(args[j]))
+			if (ft_atoi(args[i]) == ft_atoi(args[j]))
 				return (0);
 			j++;
 		}
@@ -50,7 +45,7 @@ int	ft_check_nbr(char *nbr)
 
 int	ft_check_ranges(char *nbr)
 {
-	long	n;
+	long n;
 
 	n = ft_atoi(nbr);
 	if (n > 2147483647 || n < -2147483648)

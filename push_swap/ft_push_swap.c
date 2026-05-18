@@ -1,33 +1,28 @@
 #include "push_swap.h"
 
-// void	ft_select_algo(t_stack **stack_a, t_stack **stack_b, t_flags *flags, float disorder_metric)
 void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 {
 	// t_stats stats;
-	// stats->disorder_metric = disorder_metric;
 	t_stack *stack_b;
 	stack_b = NULL;
-	// int isbench;
-	// isbench = flags->bench;
 	if (!flags)
 		return ;
 	if (flags->algo == 1)
 		ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
-		// ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), isbench);
 	// else if (flags.algo == 2)
 	// ft_chunk_sort();
 	// ft_printf("test");
 	// else if (flags.algo == 3)
 	// ft_radix_sort();
-	// else
-	// {
-	// 	if (disorder_metric < 0.2)
-	// 		ft_select_sort(stack_a, stack_b, ft_list_size(*stack_a));
+	else
+	{
+		if (stats->disorder_metric < 0.2)
+			ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
 	// 	// else if(disorder_metric >= 0.2 && disorder_metric < 0.5)
 	// 	// 	// ft_chunk_sort();
 	// 	// else
 	// 	// 	ft_radix_sort();
-	// }
+	}
 }
 
 
@@ -61,12 +56,10 @@ int	main(int ac, char **av)
 	int		start;
 	char	**args;
 	t_stack	*stack_a;
-	// t_stack	*stack_b;
 	t_flags	flags;
 	t_stats *stats;
 
 	stack_a = NULL;
-	// stack_b = NULL;
 	if (ac < 2)
 	{
 		write(2, "Error\n", 6);
@@ -81,23 +74,20 @@ int	main(int ac, char **av)
 	if (!ft_check_args(args))
 		return (0);
 	stack_a = ft_init_stack(args);
-	stats = ft_init_stats();
+	stats = ft_init_stats(&flags);
 	if(!stats)
 		return (0);
-	
 	stats->disorder_metric = ft_compute_disorder(&stack_a);	
 	if (!stats->disorder_metric)
 	{
 		free(stats);
 		return (0);
 	}
-	// ft_print_bench(&flags);
-	// ft_select_algo(&stack_a, &stack_b, &flags, ft_compute_disorder(&stack_a));
-	ft_select_algo(&stack_a, &flags, stats); // si je supp stack b
+	ft_select_algo(&stack_a, &flags, stats);
 	if (ac - start == 1)
 		ft_freearr(args, ft_countword(av[start], ' '));
-	// ft_free_stacks(&stack_a, &stack_b);
-	// ft_print_bench(&flags,stats);
+	if(flags.bench)
+		ft_print_bench(&flags,stats);
 	ft_free_stacks(&stack_a, NULL,stats); // faire des verifs dans le free du coup
 	return (0);
 }

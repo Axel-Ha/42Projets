@@ -22,13 +22,14 @@ t_stack	*ft_init_stack(char **args)
 	return (head);
 }
 
-t_stats	*ft_init_stats(void)
+t_stats	*ft_init_stats(t_flags *flag)
 {
 	t_stats *stats;
 	stats = malloc(sizeof(t_stats));
 	if(!stats)
 		return (NULL);
 	stats->total_ops = 0;
+	stats->bench = flag->bench;
 	stats->disorder_metric = 0;
 	stats->pa = 0;
 	stats->pb = 0;
