@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/15 16:11:35 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/18 11:37:07 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int					ft_strncmp(const char *first, const char *second, size_t n);
 t_flags				ft_get_flags(char **av, int *start);
 int					ft_atoi(const char *str);
 int					ft_check_args(char **args);
-char				**ft_split(char const *s, char c);
+// char				**ft_split(char const *s, char c);
 void				ft_bubble_sort(t_stack **stack_a, int size);
 // void				ft_select_sort(t_stack **stack_a, t_stack **stack_b, int size);
 void				ft_select_sort(t_stack **stack_a, t_stack **stack_b, int size, t_stats *stats);

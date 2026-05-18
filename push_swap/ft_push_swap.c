@@ -97,7 +97,7 @@ int	main(int ac, char **av)
 	if (ac - start == 1)
 		ft_freearr(args, ft_countword(av[start], ' '));
 	// ft_free_stacks(&stack_a, &stack_b);
-	ft_print_bench(&flags,stats);
+	// ft_print_bench(&flags,stats);
 	ft_free_stacks(&stack_a, NULL,stats); // faire des verifs dans le free du coup
 	return (0);
 }

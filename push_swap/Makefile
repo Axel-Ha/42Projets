@@ -3,9 +3,10 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT = libft/libft.a
 
-SOURCES = ft_free_stack.c ft_nbrs_utils.c ft_get_args.c ft_list_utils.c ft_push_swap.c ft_split.c \
-          ft_init.c ft_utils.c ft_swap.c ft_rotate.c ft_rotate_reverse.c \
-          ft_push.c ft_compute_disorder.c ft_select_sort.c \
+SOURCES = 	utils/ft_list_utils.c utils/ft_utils.c utils/ft_nbrs_utils.c \
+		  	operations/ft_swap.c operations/ft_rotate_reverse.c operations/ft_rotate.c operations/ft_push.c \
+		  	ft_free_stack.c ft_get_args.c  ft_push_swap.c  \
+          	ft_init.c ft_compute_disorder.c ft_select_sort.c 
 
 OBJECTS = $(SOURCES:.c=.o)
 
