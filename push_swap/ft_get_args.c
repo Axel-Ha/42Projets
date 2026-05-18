@@ -43,7 +43,7 @@ int	ft_check_args(char **args)
 		}
 		i++;
 	}
-	if (ft_check_duplicate(args) == 0)
+	if (!ft_check_duplicate(args))
 	{
 		write(2, "Error\n", 6);
 		return (0);
