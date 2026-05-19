@@ -6,11 +6,11 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 09:59:58 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/19 15:09:37 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/19 15:06:05 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	ft_putchar(char c)
 {
@@ -43,11 +43,11 @@ int	ft_putfloat(double n)
 	dec = 0;
 	count = 0;
 	nb = (int)n;
-	count += ft_putnbr(nb);
+	count += ft_putnbr_printf(nb);
 	count += ft_putchar('.');
 	// printf("%f\n", (((n - (float)nb) *1)));
-	dec = (((n - (double)nb)*100) + 1);
-	count += ft_putnbr(dec);
+	dec = (((n - (double)nb) * 100) + 1);
+	count += ft_putnbr_printf(dec);
 	return (count);
 }
 
@@ -60,7 +60,7 @@ int	ft_format(char c, va_list *args)
 	else if (c == 'p')
 		return (ft_putvoid(va_arg(*args, uintptr_t)));
 	else if (c == 'd' || c == 'i')
-		return (ft_putnbr(va_arg(*args, int)));
+		return (ft_putnbr_printf(va_arg(*args, int)));
 	else if (c == 'u')
 		return (ft_unsdeci(va_arg(*args, unsigned int)));
 	else if (c == 'x')
@@ -103,15 +103,16 @@ int	ft_printf(const char *str, ...)
 	return (current);
 }
 
-int	main(void)
-{
-	double n = 0.12;
-	
-	ft_printf("%f\n", n);
-	// printf("%p\n", &a);
-	// ft_printf("%p", NULL);
-	// ft_printf("%s",NULL);
-	// ft_printf("blabla %s\n test %d ", "Je suis un test", 20);
-	// printf("%p\n", &a);
-	return (0);
-}
+// int	main(void)
+// {
+// 	double	n;
+
+// 	n = 0.12;
+// 	ft_printf("%f\n", n);
+// 	// printf("%p\n", &a);
+// 	// ft_printf("%p", NULL);
+// 	// ft_printf("%s",NULL);
+// 	// ft_printf("blabla %s\n test %d ", "Je suis un test", 20);
+// 	// printf("%p\n", &a);
+// 	return (0);
+// }

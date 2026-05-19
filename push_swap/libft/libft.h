@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 12:03:25 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/14 10:38:40 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/19 14:23:53 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 # define LIBFT_H
 
-# include <stdarg.h>
-# include <stdint.h>
-# include <stdio.h>
 # include <stdlib.h>
+# include <stdarg.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <stdint.h>
 
 typedef struct s_list
 {
@@ -34,7 +34,7 @@ int					ft_puthexa(unsigned int n, char format);
 int					ft_putchar(char c);
 int					ft_putvoid(uintptr_t p);
 int					ft_putstr(char *str);
-int					ft_putnbr(int n);
+int					ft_putnbr_printf(int n);
 int					ft_unsdeci(unsigned int n);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
