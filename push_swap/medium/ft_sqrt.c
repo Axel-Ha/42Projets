@@ -7,12 +7,5 @@ int	ft_sqrt(int n)
 	x = n;
 	while (x * x > n)
 		x = (x + (n / x)) / 2;
-	printf("%d", x);
 	return (x);
-}
-
-int	main(void)
-{
-	ft_sqrt(25);
-	return (0);
 }
