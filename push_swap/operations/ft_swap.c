@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:44:46 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/18 11:35:17 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/20 14:55:31 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	ft_swap(t_stack *stack)
 	tmp = stack->nbr;
 	stack->nbr = stack->next->nbr;
 	stack->next->nbr = tmp;
-	// tmp = stack->pos;
-	// stack->pos = stack->next->pos;
-	// stack->next->pos = tmp;
+	tmp = stack->index;
+	stack->index = stack->next->index;
+	stack->next->index = tmp;
 }
 
 void	ft_sa(t_stack **stack_a, t_stats *stats)
