@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/20 10:59:22 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/20 14:46:33 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,11 @@ void				*ft_freearr(char **arr, int count);
 int					ft_countword(char const *s, char c);
 t_stats				*ft_init_stats(t_flags *flag);
 void				ft_init_index(t_stack *stack, int stack_size);
+void				ft_chunk_sort(t_stack **stack_a, t_stack **stack_b,
+						int list_size, t_stats *stats);
+int					ft_sqrt(int n);
+void				ft_move_min_top(t_stack **stack_a, int size,
+						t_stats *stats);
+int					find_min_nbr(t_stack *stack_a);
 
 #endif

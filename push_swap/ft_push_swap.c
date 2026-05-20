@@ -3,23 +3,23 @@
 
 void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 {
-	t_stack	*stack_b;
+	t_stack	**stack_b;
 
 	// t_stats stats;
 	stack_b = NULL;
 	if (!flags)
 		return ;
 	if (flags->algo == 1)
-		ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
-	// else if (flags.algo == 2)
-	// ft_chunk_sort();
+		ft_select_sort(stack_a, stack_b, ft_list_size(*stack_a), stats);
+	else if (flags->algo == 2)
+		ft_chunk_sort(stack_a, stack_b, ft_list_size(*stack_a), stats);
 	// ft_printf("test");
 	// else if (flags.algo == 3)
 	// ft_radix_sort();
 	else
 	{
 		if (stats->disorder_metric < 0.2)
-			ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
+			ft_select_sort(stack_a, stack_b, ft_list_size(*stack_a), stats);
 		// 	// else if(disorder_metric >= 0.2 && disorder_metric < 0.5)
 		// 	// 	// ft_chunk_sort();
 		// 	// else
@@ -79,9 +79,9 @@ int	main(int ac, char **av)
 	stats = ft_init_stats(&flags);
 	ft_init_index(stack_a, ft_list_size(stack_a));
 
-	/*
+
 	if(!stats)
-	return (0);
+		return (0);
 	stats->disorder_metric = ft_compute_disorder(&stack_a);
 	if (!stats->disorder_metric)
 	{
@@ -95,6 +95,6 @@ int	main(int ac, char **av)
 	ft_print_bench(&flags,stats);
 	ft_free_stacks(&stack_a, NULL,stats);
 		// faire des verifs dans le free du coup
-	*/
+	
 	return (0);
 }

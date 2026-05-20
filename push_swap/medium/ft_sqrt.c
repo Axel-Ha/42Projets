@@ -10,9 +10,3 @@ int	ft_sqrt(int n)
 	printf("%d", x);
 	return (x);
 }
-
-int	main(void)
-{
-	ft_sqrt(25);
-	return (0);
-}
