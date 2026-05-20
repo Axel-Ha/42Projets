@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:13:06 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/18 11:32:18 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/20 10:44:20 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_stack	*ft_listnew(int content)
 	if (!node)
 		return (NULL);
 	node->nbr = content;
+	node->index = 0;
 	node->next = NULL;
 	return (node);
 }

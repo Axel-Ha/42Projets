@@ -1,10 +1,11 @@
-#include "push_swap.h"
 #include "../printf/ft_printf.h"
+#include "push_swap.h"
 
 void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 {
+	t_stack	*stack_b;
+
 	// t_stats stats;
-	t_stack *stack_b;
 	stack_b = NULL;
 	if (!flags)
 		return ;
@@ -19,13 +20,12 @@ void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 	{
 		if (stats->disorder_metric < 0.2)
 			ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
-	// 	// else if(disorder_metric >= 0.2 && disorder_metric < 0.5)
-	// 	// 	// ft_chunk_sort();
-	// 	// else
-	// 	// 	ft_radix_sort();
+		// 	// else if(disorder_metric >= 0.2 && disorder_metric < 0.5)
+		// 	// 	// ft_chunk_sort();
+		// 	// else
+		// 	// 	ft_radix_sort();
 	}
 }
-
 
 void	ft_print_bench(t_flags *flags, t_stats *stats)
 {
@@ -41,17 +41,17 @@ void	ft_print_bench(t_flags *flags, t_stats *stats)
 	{
 		if (stats->disorder_metric < 0.2)
 			ft_printf("[bench] strategy: Adaptive / O(n2)\n");
-		else if(stats->disorder_metric >= 0.2 && stats->disorder_metric < 0.5)
+		else if (stats->disorder_metric >= 0.2 && stats->disorder_metric < 0.5)
 			ft_printf("[bench] strategy: Adaptive / O(n√n)\n");
 		else
 			ft_printf("[bench] strategy: Adaptive / O(n log n)\n");
 	}
 	printf("[bench] total_ops: %d\n", stats->total_ops);
-	printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", stats->sa, stats->sb, stats->ss, stats->pa, stats->pb);
-	printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n", stats->ra, stats->rb, stats->rr, stats->rra, stats->rrb, stats->rrr);
-	
+	printf("[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", stats->sa, stats->sb,
+		stats->ss, stats->pa, stats->pb);
+	printf("[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n", stats->ra,
+		stats->rb, stats->rr, stats->rra, stats->rrb, stats->rrr);
 }
-
 
 int	main(int ac, char **av)
 {
@@ -59,7 +59,7 @@ int	main(int ac, char **av)
 	char	**args;
 	t_stack	*stack_a;
 	t_flags	flags;
-	t_stats *stats;
+	t_stats	*stats;
 
 	stack_a = NULL;
 	if (ac < 2)
@@ -77,9 +77,12 @@ int	main(int ac, char **av)
 		return (0);
 	stack_a = ft_init_stack(args);
 	stats = ft_init_stats(&flags);
+	ft_init_index(stack_a, ft_list_size(stack_a));
+
+	/*
 	if(!stats)
-		return (0);
-	stats->disorder_metric = ft_compute_disorder(&stack_a);	
+	return (0);
+	stats->disorder_metric = ft_compute_disorder(&stack_a);
 	if (!stats->disorder_metric)
 	{
 		free(stats);
@@ -87,9 +90,11 @@ int	main(int ac, char **av)
 	}
 	ft_select_algo(&stack_a, &flags, stats);
 	if (ac - start == 1)
-		ft_freearr(args, ft_countword(av[start], ' '));
+	ft_freearr(args, ft_countword(av[start], ' '));
 	if(flags.bench)
-		ft_print_bench(&flags,stats);
-	ft_free_stacks(&stack_a, NULL,stats); // faire des verifs dans le free du coup
+	ft_print_bench(&flags,stats);
+	ft_free_stacks(&stack_a, NULL,stats);
+		// faire des verifs dans le free du coup
+	*/
 	return (0);
 }

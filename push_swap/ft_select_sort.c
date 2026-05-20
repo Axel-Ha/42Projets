@@ -21,6 +21,7 @@ int	find_min_nbr(t_stack *stack_a)
 	}
 	return (min_id);
 }
+
 void	ft_move_min_top(t_stack **stack_a, int size, t_stats *stats)
 {
 	int	id_min;
