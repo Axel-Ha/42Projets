@@ -79,7 +79,6 @@ int	main(int ac, char **av)
 	stats = ft_init_stats(&flags);
 	ft_init_index(stack_a, ft_list_size(stack_a));
 
-	/*
 	if(!stats)
 	return (0);
 	stats->disorder_metric = ft_compute_disorder(&stack_a);
@@ -95,6 +94,6 @@ int	main(int ac, char **av)
 	ft_print_bench(&flags,stats);
 	ft_free_stacks(&stack_a, NULL,stats);
 		// faire des verifs dans le free du coup
-	*/
+	
 	return (0);
 }
