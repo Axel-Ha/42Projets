@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/18 15:40:34 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/20 10:59:22 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 typedef struct stack
 {
 	int				nbr;
-	// int				pos;
+	int				index;
 	struct stack	*next;
 }					t_stack;
 
@@ -71,15 +71,18 @@ t_flags				ft_get_flags(char **av, int *start);
 int					ft_atoi(const char *str);
 int					ft_check_args(char **args);
 void				ft_bubble_sort(t_stack **stack_a, int size);
-void				ft_select_sort(t_stack **stack_a, t_stack **stack_b, int size, t_stats *stats);
+void				ft_select_sort(t_stack **stack_a, t_stack **stack_b,
+						int size, t_stats *stats);
 int					ft_issign(char c);
 int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
 int					ft_check_ranges(char *nbr);
 float				ft_compute_disorder(t_stack **stack_a);
-void				ft_free_stacks(t_stack **stack_a, t_stack **stack_b, t_stats *stats);
+void				ft_free_stacks(t_stack **stack_a, t_stack **stack_b,
+						t_stats *stats);
 void				*ft_freearr(char **arr, int count);
 int					ft_countword(char const *s, char c);
 t_stats				*ft_init_stats(t_flags *flag);
+void				ft_init_index(t_stack *stack, int stack_size);
 
 #endif
