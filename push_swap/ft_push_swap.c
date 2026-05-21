@@ -14,16 +14,16 @@ void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 	else if (flags->algo == 2)
 		ft_chunk_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
 	// ft_printf("test");
-	// else if (flags.algo == 3)
-	// ft_radix_sort();
+	else if (flags->algo == 3)
+		ft_radix_sort(stack_a, &stack_b, stats, ft_list_size(*stack_a));
 	else
 	{
 		if (stats->disorder_metric < 0.2)
 			ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
-		// 	// else if(disorder_metric >= 0.2 && disorder_metric < 0.5)
-		// 	// 	// ft_chunk_sort();
-		// 	// else
-		// 	// 	ft_radix_sort();
+		else if (stats->disorder_metric >= 0.2 && stats->disorder_metric < 0.5)
+			ft_chunk_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
+		else
+			ft_radix_sort(stack_a, &stack_b, stats, ft_list_size(*stack_a));
 	}
 }
 
@@ -78,8 +78,7 @@ int	main(int ac, char **av)
 	stack_a = ft_init_stack(args);
 	stats = ft_init_stats(&flags);
 	ft_init_index(stack_a, ft_list_size(stack_a));
-
-	if(!stats)
+	if (!stats)
 		return (0);
 	stats->disorder_metric = ft_compute_disorder(&stack_a);
 	if (!stats->disorder_metric)
@@ -89,11 +88,10 @@ int	main(int ac, char **av)
 	}
 	ft_select_algo(&stack_a, &flags, stats);
 	if (ac - start == 1)
-	ft_freearr(args, ft_countword(av[start], ' '));
-	if(flags.bench)
-	ft_print_bench(&flags,stats);
-	ft_free_stacks(&stack_a, NULL,stats);
-		// faire des verifs dans le free du coup
-	
+		ft_freearr(args, ft_countword(av[start], ' '));
+	if (flags.bench)
+		ft_print_bench(&flags, stats);
+	ft_free_stacks(&stack_a, NULL, stats);
+	// faire des verifs dans le free du coup
 	return (0);
 }

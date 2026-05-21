@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 09:59:58 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/21 13:38:13 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/21 16:38:43 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ int	ft_printf(const char *str, ...)
 	return (current);
 }
 
-int	main(void)
-{
-	double	n;
+// int	main(void)
+// {
+// 	double	n;
 
-	n = 61.121;
-	ft_printf("%f\n", n);
-	return (0);
-}
+// 	n = 61.121;
+// 	ft_printf("%f\n", n);
+// 	return (0);
+// }

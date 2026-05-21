@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/20 16:37:19 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/21 16:26:18 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,7 @@ int					find_max_digits(t_stack *stack_a);
 void				ft_chunk_sort(t_stack **stack_a, t_stack **stack_b,
 						int list_size, t_stats *stats);
 int					ft_sqrt(int n);
+void				ft_radix_sort(t_stack **stack_a, t_stack **stack_b,
+						t_stats *stats, int size);
 
 #endif
