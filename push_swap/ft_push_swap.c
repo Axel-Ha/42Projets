@@ -29,7 +29,7 @@ void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 
 void	ft_print_bench(t_flags *flags, t_stats *stats)
 {
-	printf("[bench] disorder: %.2f%%\n", stats->disorder_metric * 100);
+	// printf("[bench] disorder: %.2f%%\n", stats->disorder_metric * 100);
 	ft_printf("[bench] disorder: %f%%\n", stats->disorder_metric * 100);
 	if (flags->algo == 1)
 		ft_printf("[bench] strategy: Simple / O(n2)\n");
