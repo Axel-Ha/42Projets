@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 09:59:58 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/21 11:43:27 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/21 13:38:13 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_putfloat(double n)
 	i = 0;
 	count += ft_putnbr_printf((int)n);
 	count += ft_putchar('.');
-	n += 0.005;
+	// n += 0.005;
 	if(n < 0)
 	{
 		count += ft_putchar('-');
@@ -51,7 +51,7 @@ int	ft_putfloat(double n)
 	}
 	while (i < 2)
 	{
-		n = (((n - (double)(int)n) * 10));
+		n = ((((n + 0.005) - (double)(int)n) * 10));
 		count += ft_putnbr_printf((int)n);
 		i++;
 	}
@@ -110,11 +110,11 @@ int	ft_printf(const char *str, ...)
 	return (current);
 }
 
-// int	main(void)
-// {
-// 	double	n;
+int	main(void)
+{
+	double	n;
 
-// 	n = 66.6667;
-// 	ft_printf("%f\n", n);
-// 	return (0);
-// }
+	n = 61.121;
+	ft_printf("%f\n", n);
+	return (0);
+}
