@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 09:59:58 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/19 15:09:37 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/21 11:46:25 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,28 @@ int	ft_putstr(char *str)
 	return (count);
 }
 
+
 int	ft_putfloat(double n)
 {
 	int	count;
-	int	dec;
-	int	nb;
+	int	i;
 
-	dec = 0;
 	count = 0;
-	nb = (int)n;
-	count += ft_putnbr(nb);
+	i = 0;
+	count += ft_putnbr_printf((int)n);
 	count += ft_putchar('.');
-	// printf("%f\n", (((n - (float)nb) *1)));
-	dec = (((n - (double)nb)*100) + 1);
-	count += ft_putnbr(dec);
+	n += 0.005;
+	if(n < 0)
+	{
+		count += ft_putchar('-');
+		n = -n;
+	}
+	while (i < 2)
+	{
+		n = (((n - (double)(int)n) * 10));
+		count += ft_putnbr_printf((int)n);
+		i++;
+	}
 	return (count);
 }
 

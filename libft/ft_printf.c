@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 09:59:58 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/19 16:11:05 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/21 11:43:27 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,24 @@ int	ft_putstr(char *str)
 int	ft_putfloat(double n)
 {
 	int	count;
-	int	dec;
-	int	nb;
+	int	i;
 
-	dec = 0;
 	count = 0;
-	nb = (int)n;
-	count += ft_putnbr_printf(nb);
+	i = 0;
+	count += ft_putnbr_printf((int)n);
 	count += ft_putchar('.');
-	// printf("%f\n", (((n - (float)nb) *1)));
-	dec = (((n - (double)nb) * 100));
-	count += ft_putnbr_printf(dec);
+	n += 0.005;
+	if(n < 0)
+	{
+		count += ft_putchar('-');
+		n = -n;
+	}
+	while (i < 2)
+	{
+		n = (((n - (double)(int)n) * 10));
+		count += ft_putnbr_printf((int)n);
+		i++;
+	}
 	return (count);
 }
 
@@ -107,12 +114,7 @@ int	ft_printf(const char *str, ...)
 // {
 // 	double	n;
 
-// 	n = 0.12;
+// 	n = 66.6667;
 // 	ft_printf("%f\n", n);
-// 	// printf("%p\n", &a);
-// 	// ft_printf("%p", NULL);
-// 	// ft_printf("%s",NULL);
-// 	// ft_printf("blabla %s\n test %d ", "Je suis un test", 20);
-// 	// printf("%p\n", &a);
 // 	return (0);
 // }
