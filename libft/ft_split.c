@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/24 10:03:07 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/04/27 12:34:25 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/21 19:31:21 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ char	*ft_word(char const *s, char c)
 		i++;
 	newstring = malloc(sizeof(char) * (i + 1));
 	if (!newstring)
+	{
+		free(newstring);
 		return (NULL);
+	}
 	i = 0;
 	while (s[i] && s[i] != c)
 	{
@@ -73,7 +76,10 @@ char	**ft_split(char const *s, char c)
 
 	newarr = malloc(sizeof(char *) * (ft_countword(s, c) + 1));
 	if (!newarr)
+	{
+		free(newarr);
 		return (NULL);
+	}
 	i = 0;
 	while (*s)
 	{

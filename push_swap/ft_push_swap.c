@@ -5,7 +5,6 @@ void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 {
 	t_stack	*stack_b;
 
-	// t_stats stats;
 	stack_b = NULL;
 	if (!flags)
 		return ;
@@ -13,7 +12,6 @@ void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 		ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
 	else if (flags->algo == 2)
 		ft_chunk_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
-	// ft_printf("test");
 	else if (flags->algo == 3)
 		ft_radix_sort(stack_a, &stack_b, stats, ft_list_size(*stack_a));
 	else
@@ -53,6 +51,8 @@ void	ft_print_bench(t_flags *flags, t_stats *stats)
 		stats->rb, stats->rr, stats->rra, stats->rrb, stats->rrr);
 }
 
+
+
 int	main(int ac, char **av)
 {
 	int		start;
@@ -66,21 +66,15 @@ int	main(int ac, char **av)
 	start = 1;
 	flags = ft_init_flags();
 	if(!ft_get_flags(av, &start, flags))
-	{
-		free(flags);
-		return (0);
-	}
+		return (ft_free_stacks(NULL, NULL, NULL, flags));
 	if ((ac - start == 1))
 		args = ft_split(av[start], ' ');
 	else if(ac - start == 0)
-		return (0);
+		return (ft_free_stacks(NULL, NULL, NULL, flags));
 	else
 		args = av + start;
 	if (!ft_check_args(args))
-	{
-		free(args);
-		return (0);
-	}
+		return (ft_free_stacks(NULL, args, NULL, flags));
 	stack_a = ft_init_stack(args);
 	stats = ft_init_stats(flags);
 	ft_init_index(stack_a, ft_list_size(stack_a));

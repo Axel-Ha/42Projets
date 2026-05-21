@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/21 19:15:39 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/21 19:24:16 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
 int					ft_check_ranges(char *nbr);
 float				ft_compute_disorder(t_stack **stack_a);
-int					ft_free_stacks(t_stack **stack_a, t_stack **stack_b,
+int					ft_free_stacks(t_stack **stack_a, char **args,
 						t_stats *stats, t_flags *flags);
 void				*ft_freearr(char **arr, int count);
 int					ft_countword(char const *s, char c);
