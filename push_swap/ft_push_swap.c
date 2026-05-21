@@ -58,40 +58,43 @@ int	main(int ac, char **av)
 	int		start;
 	char	**args;
 	t_stack	*stack_a;
-	t_flags	flags;
+	t_flags	*flags;
 	t_stats	*stats;
 
-	stack_a = NULL;
 	if (ac < 2)
+		return (0);
+	start = 1;
+	flags = ft_init_flags();
+	if(!ft_get_flags(av, &start, flags))
 	{
-		write(2, "Error\n", 6);
+		free(flags);
 		return (0);
 	}
-	start = 1;
-	flags = ft_get_flags(av, &start);
-	if (ac - start == 1)
+	if ((ac - start == 1))
 		args = ft_split(av[start], ' ');
+	else if(ac - start == 0)
+		return (0);
 	else
 		args = av + start;
 	if (!ft_check_args(args))
+	{
+		free(args);
 		return (0);
+	}
 	stack_a = ft_init_stack(args);
-	stats = ft_init_stats(&flags);
+	stats = ft_init_stats(flags);
 	ft_init_index(stack_a, ft_list_size(stack_a));
 	if (!stats)
 		return (0);
 	stats->disorder_metric = ft_compute_disorder(&stack_a);
 	if (!stats->disorder_metric)
-	{
-		free(stats);
-		return (0);
-	}
-	ft_select_algo(&stack_a, &flags, stats);
+		return (ft_free_stacks(&stack_a, NULL, stats, flags));
+	ft_select_algo(&stack_a, flags, stats);
 	if (ac - start == 1)
 		ft_freearr(args, ft_countword(av[start], ' '));
-	if (flags.bench)
-		ft_print_bench(&flags, stats);
-	ft_free_stacks(&stack_a, NULL, stats);
-	// faire des verifs dans le free du coup
-	return (0);
+	if (flags->bench)
+		ft_print_bench(flags, stats);
+	
+	return (ft_free_stacks(&stack_a, NULL, stats, flags));
+	
 }

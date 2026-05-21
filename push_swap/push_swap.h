@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/21 16:26:18 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/21 19:15:39 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ void				ft_rra(t_stack **stack_a, t_stats *stats);
 void				ft_rrb(t_stack **stack_b, t_stats *stats);
 void				ft_stack_clear(t_stack **stack);
 t_stack				*ft_init_stack(char **args);
+t_flags				*ft_init_flags(void);
 int					ft_strncmp(const char *first, const char *second, size_t n);
-t_flags				ft_get_flags(char **av, int *start);
+t_flags				*ft_get_flags(char **args, int *start, t_flags *flag);
 int					ft_atoi(const char *str);
 int					ft_check_args(char **args);
 void				ft_bubble_sort(t_stack **stack_a, int size);
@@ -78,8 +79,8 @@ int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
 int					ft_check_ranges(char *nbr);
 float				ft_compute_disorder(t_stack **stack_a);
-void				ft_free_stacks(t_stack **stack_a, t_stack **stack_b,
-						t_stats *stats);
+int					ft_free_stacks(t_stack **stack_a, t_stack **stack_b,
+						t_stats *stats, t_flags *flags);
 void				*ft_freearr(char **arr, int count);
 int					ft_countword(char const *s, char c);
 t_stats				*ft_init_stats(t_flags *flag);

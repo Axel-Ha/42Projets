@@ -44,7 +44,8 @@ t_stack	*ft_init_stack(char **args)
 
 t_stats	*ft_init_stats(t_flags *flag)
 {
-	t_stats *stats;
+	t_stats	*stats;
+
 	stats = malloc(sizeof(t_stats));
 	if (!stats)
 		return (NULL);
@@ -63,4 +64,16 @@ t_stats	*ft_init_stats(t_flags *flag)
 	stats->rrb = 0;
 	stats->rrr = 0;
 	return (stats);
+}
+
+t_flags	*ft_init_flags(void)
+{
+	t_flags *flags;
+
+	flags = malloc(sizeof(t_stats));
+	if (!flags)
+		return (NULL);
+	flags->bench = 0;
+	flags->algo = 4;
+	return (flags);
 }
