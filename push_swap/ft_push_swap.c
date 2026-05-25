@@ -43,60 +43,9 @@ void	ft_print_bench(t_flags *flags, t_stats *stats)
 			ft_printf(1, "[bench] strategy: Adaptive / O(n log n)\n");
 	}
 	ft_printf(1, "[bench] total_ops: %d\n", stats->total_ops);
-	ft_printf(1, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", stats->sa, stats->sb,
-		stats->ss, stats->pa, stats->pb);
-	ft_printf(1, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n", stats->ra,
-		stats->rb, stats->rr, stats->rra, stats->rrb, stats->rrr);
+	ft_printf(1, "[bench] sa: %d sb: %d ss: %d pa: %d pb: %d\n", stats->sa,
+		stats->sb, stats->ss, stats->pa, stats->pb);
+	ft_printf(1, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
+		stats->ra, stats->rb, stats->rr, stats->rra, stats->rrb, stats->rrr);
 }
 
-int	main(int ac, char **av)
-{
-	int		start;
-	char	**args;
-	t_stack	*stack_a;
-	t_flags	*flags;
-	t_stats	*stats;
-
-	if (ac < 2)
-		return (0);
-	start = 1;
-	flags = ft_init_flags();
-	if (!ft_get_flags(av, &start, flags))
-		return (ft_free_stacks(NULL, NULL, NULL, flags));
-	// faire une fonction ici ?
-	if ((ac - start == 1))
-		args = ft_split(av[start], ' ');
-	else if (ac - start == 0)
-		return (ft_free_stacks(NULL, NULL, NULL, flags));
-	else
-		args = av + start;
-	//
-	// une fonction aussi protection args
-	if (!ft_check_args(args))
-	{
-		if ((ac - start == 1))
-			ft_freearr(args, ft_countword(av[start], ' '));
-		return (ft_free_stacks(NULL, NULL, NULL, flags));
-	}
-	//
-	// fonction init stack + index ?
-	// ou alors englober stats et stack a ?
-	stack_a = ft_init_stack(args);
-	if (ac - start == 1)
-		ft_freearr(args, ft_countword(av[start], ' '));
-	ft_init_index(stack_a, ft_list_size(stack_a));
-	//
-	// faire une fonction protection stats
-	stats = ft_init_stats(flags);
-	if (!stats)
-		return (ft_free_stacks(&stack_a, NULL, stats, flags));
-	stats->disorder_metric = ft_compute_disorder(&stack_a);
-	if (!stats->disorder_metric)
-		return (ft_free_stacks(&stack_a, NULL, stats, flags));
-	// jusqu'ici
-	// faire une fonction init algo ?
-	ft_select_algo(&stack_a, flags, stats);
-	if (flags->bench)
-		ft_print_bench(flags, stats);
-	return (ft_free_stacks(&stack_a, NULL, stats, flags));
-}
