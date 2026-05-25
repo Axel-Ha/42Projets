@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/28 12:03:25 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/19 14:23:53 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/25 10:47:56 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,13 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int					ft_format(char c, va_list *args);
-int					ft_putstr(char *str);
-int					ft_putchar(char c);
-int					ft_printf(const char *type, ...);
+int					ft_format(char c, va_list *args, int fd);
+int					ft_putstr(char *str, int fd);
+int					ft_putchar(char c, int fd);
+int					ft_printf(int fd, const char *type, ...);
 int					ft_puthexa(unsigned int n, char format);
-int					ft_putchar(char c);
 int					ft_putvoid(uintptr_t p);
-int					ft_putstr(char *str);
-int					ft_putnbr_printf(int n);
+int					ft_putnbr_printf(int n, int fd);
 int					ft_unsdeci(unsigned int n);
 int					ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);

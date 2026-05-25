@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:12:40 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/18 11:56:23 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/25 10:54:10 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_pa(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 	*stack_a = tmp;
 	stats->pa += 1;
 	stats->total_ops += 1;
-	write(1, "pa\n", 3);
+	if (!stats->bench)
+		ft_printf(1, "pa\n");
 }
 
 void	ft_pb(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
@@ -39,5 +40,6 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 	*stack_b = tmp;
 	stats->pb += 1;
 	stats->total_ops += 1;
-	write(1, "pb\n", 3);
+	if (!stats->bench)
+		ft_printf(1, "pb\n");
 }
