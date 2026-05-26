@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_list_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:13:06 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/20 10:44:20 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/05/26 13:58:44 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	ft_list_size(t_stack *stack)
 	}
 	return (count);
 }
+
 void	ft_add_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*tmp;

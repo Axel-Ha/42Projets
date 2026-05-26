@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_push_swap.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/26 13:50:45 by ctu               #+#    #+#             */
+/*   Updated: 2026/05/26 13:51:34 by ctu              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
@@ -48,4 +60,3 @@ void	ft_print_bench(t_flags *flags, t_stats *stats)
 	ft_printf(1, "[bench] ra: %d rb: %d rr: %d rra: %d rrb: %d rrr: %d\n",
 		stats->ra, stats->rb, stats->rr, stats->rra, stats->rrb, stats->rrr);
 }
-

@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 13:34:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/25 10:54:52 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/26 13:57:12 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_rrb(t_stack **stack_b, t_stats *stats)
 	if (!stats->bench)
 		ft_printf(1, "rrb\n");
 }
+
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 {
 	ft_rotate_reverse(stack_a);

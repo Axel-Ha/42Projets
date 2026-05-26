@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_select_sort.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/05/26 13:54:23 by ctu               #+#    #+#             */
+/*   Updated: 2026/05/26 13:55:18 by ctu              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	find_min_nbr(t_stack *stack_a)
@@ -44,8 +56,8 @@ void	ft_move_min_top(t_stack **stack_a, int size, t_stats *stats)
 void	ft_select_sort(t_stack **stack_a, t_stack **stack_b, int size,
 		t_stats *stats)
 {
-	int i;
-	int left;
+	int	i;
+	int	left;
 
 	i = 0;
 	left = size;

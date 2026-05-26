@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:04:01 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/25 10:55:46 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/26 13:56:43 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_rotate(t_stack **stack)
 void	ft_ra(t_stack **stack_a, t_stats *stats)
 {
 	ft_rotate(stack_a);
-	if (!stats->bench)
+	if (!stats->bench || !stats->total_ops)
 		ft_printf(1, "ra\n");
 	stats->ra += 1;
 	stats->total_ops += 1;
@@ -38,7 +38,7 @@ void	ft_ra(t_stack **stack_a, t_stats *stats)
 void	ft_rb(t_stack **stack_b, t_stats *stats)
 {
 	ft_rotate(stack_b);
-	if (!stats->bench)
+	if (!stats->bench || !stats->total_ops)
 		ft_printf(1, "rb\n");
 	stats->rb += 1;
 	stats->total_ops += 1;
@@ -50,6 +50,6 @@ void	ft_rr(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 	ft_rotate(stack_b);
 	stats->rr += 1;
 	stats->total_ops += 1;
-	if (!stats->bench)
+	if (!stats->bench || !stats->total_ops)
 		ft_printf(1, "rr\n");
 }
