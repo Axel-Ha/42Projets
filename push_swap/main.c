@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 14:14:17 by ctu               #+#    #+#             */
-/*   Updated: 2026/05/26 13:54:07 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/26 18:14:34 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ int	ft_launch_algo(t_stack **stack_a, t_stats *stats, t_flags *flags)
 	ft_select_algo(stack_a, flags, stats);
 	if (flags->bench)
 		ft_print_bench(flags, stats);
-	else if (flags->total_count)
-		ft_printf(1, "%d", stats->total_ops);
 	return (ft_free_stacks(stack_a, NULL, stats, flags));
 }
 

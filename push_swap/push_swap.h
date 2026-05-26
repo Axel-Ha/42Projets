@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/25 14:20:52 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/26 18:14:24 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct flags
 {
 	int				algo;
 	int				bench;
-	int				total_count;
 }					t_flags;
 
 typedef struct stats

@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:50:31 by ctu               #+#    #+#             */
-/*   Updated: 2026/05/26 13:50:32 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/26 18:14:55 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ t_flags	*ft_get_flags(char **args, int *start, t_flags *flag)
 			flag->algo = 4;
 		else if (!ft_strncmp("--bench", args[*start], 8) && !bench_set++)
 			flag->bench = 1;
-		else if (!ft_strncmp("--total_count", args[*start], 8) && !bench_set++)
-			flag->total_count = 1;
 		else
 			return (NULL);
 		(*start)++;

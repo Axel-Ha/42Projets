@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:55:38 by ctu               #+#    #+#             */
-/*   Updated: 2026/05/26 13:55:56 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/26 18:15:01 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ t_stats	*ft_init_stats(t_flags *flag)
 		return (NULL);
 	stats->total_ops = 0;
 	stats->bench = flag->bench;
-	stats->bench = flag->total_count;
 	stats->disorder_metric = 0;
 	stats->pa = 0;
 	stats->pb = 0;
@@ -87,7 +86,6 @@ t_flags	*ft_init_flags(void)
 	if (!flags)
 		return (NULL);
 	flags->bench = 0;
-	flags->total_count = 0;
 	flags->algo = 4;
 	return (flags);
 }
