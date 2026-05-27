@@ -1,4 +1,4 @@
-*This activity has been created as part of the 42 curriculum by ctu, ahalifa*
+*This activity has been created as part of the 42 curriculum by ctu, ahalifa.*
 
 # Description  
 **Push_swap** is an algorithmic project. The goal is to sort a list of integers stored in a stack called `a`, using a second auxiliary stack `b` and a restricted set of operations, while minimizing the total number of operations generated.
@@ -18,7 +18,7 @@ This compiles all source files and generates the `push_swap` executable.
 
 | Flag | Strategy | Complexity |
 |---|---|---|
-| `--simple` | Selection/insertion sort | O(n²) |
+| `--simple` | Selection sort | O(n²) |
 | `--medium` | Chunk-based sort | O(n√n) |
 | `--complex` | Radix sort | O(n log n) |
 | `--adaptive` | Auto-select based on disorder | O(n) / O(n√n) / O(n log n) |
@@ -42,8 +42,8 @@ Output example:
 
 The program prints `Error` to `stderr` and exits in the following cases:
 - A non-integer argument is passed
-- An integer is out of the valid `int` range
 - Duplicate values are present
+- Duplicate flags are present
 
 # Resources  
 
@@ -53,9 +53,22 @@ The program prints `Error` to `stderr` and exits in the following cases:
 - [Radix Sort — Wikipedia](https://en.wikipedia.org/wiki/Radix_sort)
 - [Radix Sort — GeeksforGeeks](https://www.geeksforgeeks.org/dsa/radix-sort/)
 - [Push_swap visualizer](https://push-swap42-visualizer.vercel.app/)  
-AI used to make the README
+AI was used to make the README
 
-## Algorithm
+## Algorithms
+All the types of algorithms given in the subject were researched upon before we settled on the ones we thought we could aprehend based on our current skills. 
+
+### Simple algorithm — O(n²)
+
+**Approach:** Selection sort adapted to the push_swap model.
+
+The algorithm repeatedly finds the minimum element in stack `a`, rotates it to the top using `ra` or `rra` (whichever is shorter), then pushes it to `b`. Once all elements are in `b` in descending order, it pushes them back to `a` with `pa`.
+
+### Medium algorithm — O(n√n)
+
+**Approach:** Chunk-based sorting.
+
+The sorted rank of each element is precomputed (coordinate compression). The n elements are divided into √n chunks of size √n. Elements are pushed to `b` chunk by chunk, always rotating `a` to find the next element belonging to the current chunk. Inside `b`, elements are maintained in a roughly sorted order. Finally, elements are pushed back from `b` to `a` by repeatedly extracting the maximum.
 
 ### Complex algorithm — O(n log n)
 
@@ -67,8 +80,6 @@ Elements are first coordinate-compressed to indices `[0, n-1]`. The algorithm th
 - Then all elements are pushed back from `b` to `a` (`pa`).
 
 After processing all `log₂(n)` bits, stack `a` is sorted.
-
-**Why O(n log n):** Each of the log₂(n) passes over the entire stack of n elements costs O(n) operations → O(n log n) total.
 
 
 # Contribution  

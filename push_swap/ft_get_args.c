@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:50:31 by ctu               #+#    #+#             */
-/*   Updated: 2026/05/26 18:14:55 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/27 17:43:14 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 t_flags	*ft_get_flags(char **args, int *start, t_flags *flag)
 {
-	int		algo_set;
-	int		bench_set;
+	int	algo_set;
+	int	bench_set;
 
 	algo_set = 0;
 	bench_set = 0;
@@ -43,6 +43,11 @@ int	ft_check_args(char **args)
 	int	i;
 
 	i = 0;
+	if (!args[i])
+	{
+		write(2, "Error\n", 6);
+		return (0);
+	}
 	while (args[i])
 	{
 		if (!ft_check_nbr(args[i]) || !ft_check_ranges(args[i]))
