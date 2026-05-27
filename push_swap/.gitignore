@@ -1,2 +1,4 @@
-pushswap
+push_swap
 checker
+*.o
+pushswap-tester
