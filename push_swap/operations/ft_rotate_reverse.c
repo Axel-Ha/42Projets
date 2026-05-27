@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate_reverse.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/09 13:34:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/26 13:57:12 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/27 13:34:11 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void	ft_rra(t_stack **stack_a, t_stats *stats)
 	ft_rotate_reverse(stack_a);
 	stats->rra += 1;
 	stats->total_ops += 1;
-	if (!stats->bench)
-		ft_printf(1, "rra\n");
+	ft_printf(1, "rra\n");
 }
 
 void	ft_rrb(t_stack **stack_b, t_stats *stats)
@@ -42,8 +41,7 @@ void	ft_rrb(t_stack **stack_b, t_stats *stats)
 	ft_rotate_reverse(stack_b);
 	stats->rrb += 1;
 	stats->total_ops += 1;
-	if (!stats->bench)
-		ft_printf(1, "rrb\n");
+	ft_printf(1, "rrb\n");
 }
 
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
@@ -52,6 +50,5 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 	ft_rotate_reverse(stack_b);
 	stats->rrr += 1;
 	stats->total_ops += 1;
-	if (!stats->bench)
-		ft_printf(1, "rrr\n");
+	ft_printf(1, "rrr\n");
 }

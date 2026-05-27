@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/26 18:14:24 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/27 11:08:54 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
 int					ft_check_ranges(char *nbr);
 float				ft_compute_disorder(t_stack **stack_a);
-int					ft_free_stacks(t_stack **stack_a, char **args,
-						t_stats *stats, t_flags *flags);
+int					ft_free_stacks(t_stack **stack_a, t_stats *stats,
+						t_flags *flags);
 void				*ft_freearr(char **arr, int count);
 int					ft_countword(char const *s, char c);
 t_stats				*ft_init_stats(t_flags *flag);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 11:44:46 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/26 18:13:45 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/27 13:34:33 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	ft_sa(t_stack **stack_a, t_stats *stats)
 	ft_swap(*stack_a);
 	stats->sa += 1;
 	stats->total_ops += 1;
-	if (!stats->bench   )
-		ft_printf(1, "sa\n");
+	ft_printf(1, "sa\n");
 }
 
 void	ft_sb(t_stack **stack_b, t_stats *stats)
@@ -40,8 +39,7 @@ void	ft_sb(t_stack **stack_b, t_stats *stats)
 	ft_swap(*stack_b);
 	stats->sb += 1;
 	stats->total_ops += 1;
-	if (!stats->bench   )
-		ft_printf(1, "sb\n");
+	ft_printf(1, "sb\n");
 }
 
 void	ft_ss(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
@@ -50,6 +48,5 @@ void	ft_ss(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 	ft_swap(*stack_b);
 	stats->rr += 1;
 	stats->total_ops += 1;
-	if (!stats->bench   )
-		ft_printf(1, "ss\n");
+	ft_printf(1, "ss\n");
 }

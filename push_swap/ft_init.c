@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:55:38 by ctu               #+#    #+#             */
-/*   Updated: 2026/05/26 18:15:01 by ctu              ###   ########.fr       */
+/*   Updated: 2026/05/27 11:30:41 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_flags	*ft_init_flags(void)
 {
 	t_flags	*flags;
 
-	flags = malloc(sizeof(t_stats));
+	flags = malloc(sizeof(t_flags));
 	if (!flags)
 		return (NULL);
 	flags->bench = 0;
