@@ -55,6 +55,32 @@ int	ft_check_nbr(char *nbr)
 	return (1);
 }
 
+long    ft_atol(const char *str)
+{
+	int		sign;
+	int		i;
+	long	result;
+
+	sign = 1;
+	result = 0;
+	i = 0;
+	while (str[i] == ' ' || str[i] == '\f' || str[i] == '\n' || str[i] == '\r'
+		|| str[i] == '\t' || str[i] == '\v')
+		i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (str[i] - '0') + result * 10;
+		i++;
+	}
+	return (result * sign);
+}
+
 int	ft_check_ranges(char *nbr)
 {
 	long	n;
