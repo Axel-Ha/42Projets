@@ -55,7 +55,7 @@ int	ft_check_nbr(char *nbr)
 	return (1);
 }
 
-long    ft_atol(const char *str)
+long    ft_atolong(const char *str)
 {
 	int		sign;
 	int		i;
@@ -85,7 +85,7 @@ int	ft_check_ranges(char *nbr)
 {
 	long	n;
 
-	n = ft_atol(nbr);
+	n = ft_atolong(nbr);
 	if (n > 2147483647 || n < -2147483648)
 		return (0);
 	return (1);
