@@ -45,7 +45,7 @@ t_stats	*ft_stats_protection(t_flags *flags, t_stack **stack_a)
 		return (0);
 	}
 	stats->disorder_metric = ft_compute_disorder(stack_a);
-	if (!stats->disorder_metric)
+	if (!stats)
 	{
 		ft_free_stacks(stack_a, stats, flags);
 		return (0);

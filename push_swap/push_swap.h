@@ -71,7 +71,6 @@ int					ft_strncmp(const char *first, const char *second, size_t n);
 t_flags				*ft_get_flags(char **args, int *start, t_flags *flag);
 int					ft_atoi(const char *str);
 int					ft_check_args(char **args);
-void				ft_bubble_sort(t_stack **stack_a, int size);
 void				ft_select_sort(t_stack **stack_a, t_stack **stack_b,
 						int size, t_stats *stats);
 int					ft_issign(char c);

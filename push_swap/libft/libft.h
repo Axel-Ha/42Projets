@@ -35,6 +35,7 @@ int					ft_putvoid(uintptr_t p);
 int					ft_putnbr_printf(int n, int fd);
 int					ft_unsdeci(unsigned int n);
 int					ft_atoi(const char *str);
+long				ft_atol(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t elementCount, size_t elementSize);
 int					ft_isalnum(int c);

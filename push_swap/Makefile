@@ -14,7 +14,10 @@ OBJECTS = $(SOURCES:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
+$(LIBFT):
+	$(MAKE) -C libft
+
+$(NAME): $(LIBFT) $(OBJECTS)
 	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 	
 %.o: %.c
@@ -24,6 +27,7 @@ clean:
 	rm -f $(OBJECTS)
 
 fclean: clean
+	$(MAKE) -C libft fclean
 	rm -f $(NAME)
 
 re: fclean all
