@@ -1,16 +1,11 @@
 class Plant :
-    def __init__(self, name: str, height: int, year: int):
-        if height < 0 or year < 0 :
-            self.name = name
-            self._height = 0
-            self._age = 0
-        else:
-            self.name = name
-            self._height = height
-            self._age = year
+    def __init__(self, name: str, height: int, age: int):
+        self.name = name
+        self._height = height
+        self._age = age
 
     def show(self, text: str):
-        print(f"{text}: {self.name}: {round(self.get_height(), 2)}cm, {self.get_age()} days old")
+        print(f"{text}: {self.name}: {self.get_height():.2f}cm, {self.get_age()} days old")
     
     def set_height(self, height: int):
         if(height < 0):
@@ -41,7 +36,7 @@ class Plant :
         
 if __name__ == "__main__":
     print("=== Garden Security System ===")
-    rose = Plant('Rose', 15.0, 10)
+    rose = Plant('Rose', 15, 10)
     rose.show("Plant created")
     
     rose.set_height(25)
