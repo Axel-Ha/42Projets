@@ -1,20 +1,20 @@
-class Plant :
+class Plant:
     def __init__(self, name: str, growth: float, days: int):
         self.name = name
         self.growth = growth
         self.days = days
 
     def show(self):
-        print(f"Created: {self.name}: {self.growth:.2f}cm, {self.days} days old")
-    
+        print(f"Created: {self.name}: {self.growth:.2f}cm, "
+              f"{self.days} days old")
+
     def grow(self, growth: float):
         self.growth += growth
-        
+
     def age(self, days: int):
         self.days += days
-        
-    
-        
+
+
 if __name__ == "__main__":
     print("=== Garden Plant Growth ===")
     garden = [

@@ -2,7 +2,7 @@ def ft_print_harvest(days, max_days):
     if days != max_days:
         print("Days", days)
         ft_print_harvest(days + 1, max_days)
-    else :
+    else:
         print("Days", days)
         print("Harvest time!")
 
