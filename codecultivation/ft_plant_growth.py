@@ -20,7 +20,7 @@ if __name__ == "__main__":
     
     rose = Plant("Rose", 25, 30)
     rose.show()
-    growth = 0    
+    growth = 0.0
     for i in range(1,8):
         rose.grow(0.8)
         rose.age(1)

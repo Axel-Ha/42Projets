@@ -26,22 +26,22 @@ class Plant :
         def show_stats(self):
             print(f"Stats: {self.get_grow_count()} grow, {self.get_age_count()} age, {self.get_show_count()} show")
    
-    def __init__(self, name: str, height: float, age: int):
+    def __init__(self, name: str, growth: float, age: int):
         self.name = name
-        self._height = height
+        self._growth = growth
         self._age = age
         self._stats = self.Stats()
 
     def show(self):
         self._stats.set_show_count()
-        print(f"{self.name.capitalize()}: {self.get_height():.1f}cm, {self.get_age()} days old")
+        print(f"{self.name.capitalize()}: {self.get_growth():.1f}cm, {self.get_age()} days old")
     
-    def set_height(self, height: float):
+    def set_growth(self, growth: float):
         self._stats.set_grow_count()
-        self._height = height
+        self._growth = growth
 
-    def get_height(self):
-        return self._height
+    def get_growth(self):
+        return self._growth
         
     def set_age(self, age: int):
         self._stats.set_age_count()
@@ -59,8 +59,8 @@ class Plant :
         return cls("Unknown plant", 0, 0)
    
 class Flower(Plant) :
-    def __init__(self, name: str, height: float, age: int, color: str) :
-        super().__init__(name, height, age)
+    def __init__(self, name: str, growth: float, age: int, color: str) :
+        super().__init__(name, growth, age)
         self._color = color
         self._is_bloomed = False
     
@@ -86,8 +86,8 @@ class Flower(Plant) :
         
     
 class Seed(Flower):
-    def __init__(self, name: str, height : float, age : int, color : str) :
-        super().__init__(name,height,age,color)
+    def __init__(self, name: str, growth : float, age : int, color : str) :
+        super().__init__(name,growth,age,color)
         self._seed = 0
     
     def set_seed(self, seed: int):
@@ -97,7 +97,7 @@ class Seed(Flower):
         return self._seed 
     
     def grow_and_bloom(self) :
-        self.set_height(30)
+        self.set_growth(30)
         self.set_age(20)
         self.set_seed(42)
 
@@ -121,8 +121,8 @@ class Tree(Plant) :
             super().show_stats()
             print(f"{self.get_shade_count()} shade")
 
-    def __init__(self, name: str, height: float, age: int, diameter: float):
-        super().__init__(name,height,age)
+    def __init__(self, name: str, growth: float, age: int, diameter: float):
+        super().__init__(name,growth,age)
         self._diameter = diameter
         self._stats = self.Stats()
 
@@ -138,11 +138,11 @@ class Tree(Plant) :
     
     def produce_shade(self):
         self._stats.set_shade_count()
-        print(f"Tree {self.name.capitalize()} now produces a shade of {self.get_height():.1f}cm long and {self.get_diameter():.1f}cm wide. ")
+        print(f"Tree {self.name.capitalize()} now produces a shade of {self.get_growth():.1f}cm long and {self.get_diameter():.1f}cm wide. ")
 
 class Vegetable(Plant) :
-    def __init__(self, name: str, height: float, age: int, harvest_season: str):
-        super().__init__(name,height,age)
+    def __init__(self, name: str, growth: float, age: int, harvest_season: str):
+        super().__init__(name,growth,age)
         self._harvest_season = harvest_season
         self._nutri_value = 0
 
@@ -159,14 +159,14 @@ class Vegetable(Plant) :
         self._stats.set_age_count()
         return super().set_age(age)
     
-    def set_height(self, height : float):
-        return super().set_height(height)
+    def set_growth(self, growth : float):
+        return super().set_growth(growth)
     
     def grow(self, days):
         print(f"[make {self.name} grow and age for {days} days]")
         self._stats.set_grow_count()
         for i in range(1,days + 1) :
-            self._height += 2.1
+            self._growth += 2.1
             self._age += 1
             self.set_nutri_value(self.get_nutri_value() + 1)
 
@@ -191,7 +191,7 @@ if __name__ == "__main__":
     # display_stats(rose) 
 
     # print(f"[asking the {rose.name} to grow and bloom]")
-    # rose.set_height(8)
+    # rose.set_growth(8)
     # rose.bloom()
     # rose.show()
     # display_stats(rose) 

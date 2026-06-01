@@ -47,7 +47,7 @@ class Flower(Plant) :
             print(f"{self.name.capitalize()} is blooming beautifully!")
 
 class Tree(Plant) :
-    def __init__(self, name: str, height: float, age: int, diameter: int):
+    def __init__(self, name: str, height: float, age: int, diameter: float):
         super().__init__(name,height,age)
         self._diameter = diameter
     
