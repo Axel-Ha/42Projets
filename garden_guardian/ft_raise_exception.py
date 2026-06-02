@@ -36,7 +36,7 @@ def test_temperature() -> None:
 
     print("Input data is '100'")
     try:
-        res_invalid: int = input_temperature("100")
+        res_invalid = input_temperature("100")
         print(f"Temperature is now {res_invalid}°C")
     except ValueError as e:
         print(f"Caught input_temperature error: {e}")
@@ -48,7 +48,7 @@ def test_temperature() -> None:
 
     print("Input data is '-50'")
     try:
-        res_invalid: int = input_temperature("-50")
+        res_invalid = input_temperature("-50")
         print(f"Temperature is now {res_invalid}°C")
     except ValueError as e:
         print(f"Caught input_temperature error: {e}")
