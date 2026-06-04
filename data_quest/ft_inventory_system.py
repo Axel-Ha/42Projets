@@ -11,14 +11,14 @@ if __name__ == "__main__":
             continue
         item, qty = arg.split(":")
         try:
-            qty = int(qty)
+            quantity = int(qty)
         except ValueError as e:
             print(f"Quantity error for '{item}': {e}")
             continue
         if item in inventory:
             print(f"Redundant item '{item}' - discarding")
             continue
-        inventory[item] = qty
+        inventory[item] = quantity
 
     print(f"Got inventory: {inventory}")
     print(f"Item list: {list(inventory.keys())}")
