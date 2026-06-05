@@ -15,7 +15,7 @@ class PlantError(GardenError):
 
 
 class WaterError(GardenError):
-    def __init__(self, message: 
+    def __init__(self, message:
                  str = "Unknown water error") -> None:
         super().__init__(message)
 
