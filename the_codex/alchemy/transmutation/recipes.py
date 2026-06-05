@@ -3,7 +3,7 @@ from .. import create_air
 from elements import create_fire
 
 
-def lead_to_gold():
+def lead_to_gold() -> str:
     return ("Recipe transmuting Lead to Gold: brew "
             f"'{create_air()}' and '{strength_potion()}'"
             f" mixed with '{create_fire()}'")

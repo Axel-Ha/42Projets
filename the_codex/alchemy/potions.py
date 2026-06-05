@@ -2,11 +2,11 @@ from .elements import create_earth, create_air
 from elements import create_fire, create_water
 
 
-def healing_potion():
+def healing_potion() -> str:
     return ("Healing potion brewind with "
             f"'{create_earth()}' and '{create_air()}'")
 
 
-def strength_potion():
+def strength_potion() -> str:
     return ("Strength potion brewind with "
             f"'{create_fire()}' and '{create_water()}'")
