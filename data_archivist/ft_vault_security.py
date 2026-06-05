@@ -1,5 +1,5 @@
 def secure_archive(file_name: str, action: str,
-                   string="") -> tuple[True | False, str]:
+                   string: str = "") -> tuple[bool, str]:
 
     if action == "read":
         try:
@@ -16,6 +16,8 @@ def secure_archive(file_name: str, action: str,
                 return True, string
         except (FileNotFoundError, PermissionError) as e:
             return False, str(e)
+    return False, ""
+
 
 if __name__ == "__main__":
     print("=== Cyber Archives Security ===")
