@@ -3,8 +3,8 @@ from typing import Any
 
 
 class DataProcessor(ABC):
-    def __init__(self):
-        self.array_data = []
+    def __init__(self) -> None:
+        self.array_data: list[tuple[int, str]] = []
         self.count = 0
 
     @abstractmethod
@@ -90,8 +90,8 @@ class LogProcessor(DataProcessor):
 
 
 class DataStream():
-    def __init__(self):
-        self.processors = []
+    def __init__(self) -> None:
+        self.processors: list[DataProcessor] = []
 
     def register_processor(self, proc: DataProcessor) -> None:
         self.processors.append(proc)

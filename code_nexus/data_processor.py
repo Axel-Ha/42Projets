@@ -3,8 +3,8 @@ from typing import Any
 
 
 class DataProcessor(ABC):
-    def __init__(self):
-        self.array_data = []
+    def __init__(self) -> None:
+        self.array_data: list[tuple[int, str]] = []
         self.count = 0
 
     @abstractmethod
