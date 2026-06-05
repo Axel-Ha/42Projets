@@ -2,7 +2,7 @@ import sys
 
 if __name__ == "__main__":
     if len(sys.argv) == 2:
-        print("=== Cyber Archives Recovery ===")
+        print("=== Cyber Archives Recovery & Preservation ===")
         print(f"Accessing file '{sys.argv[1]}'")
         try:
             file = open(sys.argv[1], "r")
@@ -34,9 +34,7 @@ if __name__ == "__main__":
             else:
                 print("Not saving data.")
 
-        except FileNotFoundError as e:
-            print(f"Error opening file '{sys.argv[1]}': {e}")
-        except PermissionError as e:
+        except (FileNotFoundError,PermissionError) as e:
             print(f"Error opening file '{sys.argv[1]}': {e}")
 
     else:
