@@ -1,26 +1,27 @@
 class Plant:
-    def __init__(self, name: str, growth: int, age: int):
+    def __init__(self, name: str, height: float, age: int
+                 ) -> None:
         self.name = name
-        self._growth = growth
+        self._height = height
         self._age = age
 
-    def show(self, text: str):
-        print(f"{text}: {self.name}: {self.get_growth():.2f}cm, "
+    def show(self, text: str) -> None:
+        print(f"{text}: {self.name}: {round(self.get_height())}cm, "
               f"{self.get_age()} days old")
 
-    def set_growth(self, growth: int):
-        if growth < 0:
-            print(f"{self.name}: Error, growth can't be negative")
-            print("growth update rejected")
+    def set_height(self, height: int) -> None:
+        if height < 0:
+            print(f"{self.name}: Error, height can't be negative")
+            print("height update rejected")
 
         else:
-            self._growth = growth
-            print(f"growth updated: {growth}cm")
+            self._height = height
+            print(f"height updated: {height}cm")
 
-    def get_growth(self):
-        return self._growth
+    def get_height(self) -> float:
+        return self._height
 
-    def set_age(self, age: int):
+    def set_age(self, age: int) -> None:
         if age < 0:
             print(f"{self.name}: Error, age can't be negative")
             print("Age update rejected")
@@ -29,7 +30,7 @@ class Plant:
             self._age = age
             print(f"Age updated: {age}")
 
-    def get_age(self):
+    def get_age(self) -> int:
         return self._age
 
 
@@ -38,9 +39,9 @@ if __name__ == "__main__":
     rose = Plant('Rose', 15, 10)
     rose.show("Plant created")
 
-    rose.set_growth(25)
+    rose.set_height(25)
     rose.set_age(30)
 
-    rose.set_growth(-10)
+    rose.set_height(-10)
     rose.set_age(-30)
     rose.show("Current state")

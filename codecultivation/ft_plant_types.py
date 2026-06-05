@@ -1,46 +1,48 @@
 class Plant:
-    def __init__(self, name: str, height: float, age: int):
+    def __init__(self, name: str, height: float, age: int
+                 ) -> None:
         self.name = name
         self._height = height
         self._age = age
 
-    def show(self):
+    def show(self) -> None:
         print(f"{self.name.capitalize()}: {self.get_height():.1f}cm, "
               f"{self.get_age()} days old")
 
-    def set_height(self, height: float):
+    def set_height(self, height: float) -> None:
         self._height = height
 
-    def get_height(self):
+    def get_height(self) -> float:
         return self._height
 
-    def set_age(self, age: int):
+    def set_age(self, age: int) -> None:
         self._age = age
 
-    def get_age(self):
+    def get_age(self) -> int:
         return self._age
 
 
 class Flower(Plant):
-    def __init__(self, name: str, height: float, age: int, color: str):
+    def __init__(self, name: str, height: float, age: int, color: str
+                 ) -> None:
         super().__init__(name, height, age)
         self._color = color
         self._is_bloomed = False
 
-    def get_color(self):
+    def get_color(self) -> str:
         return self._color
 
-    def get_isbloomed(self):
+    def get_isbloomed(self) -> bool:
         return self._is_bloomed
 
-    def set_isbloomed(self):
+    def set_isbloomed(self) -> None:
         self._is_bloomed = True
 
-    def bloom(self):
+    def bloom(self) -> None:
         print(f"[asking the {self.name} to bloom]")
         self.set_isbloomed()
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         print(f"Color: {self.get_color()}")
         if self.get_isbloomed() is False:
@@ -50,21 +52,22 @@ class Flower(Plant):
 
 
 class Tree(Plant):
-    def __init__(self, name: str, height: float, age: int, diameter: float):
+    def __init__(self, name: str, height: float, age: int, diameter: float
+                 ) -> None:
         super().__init__(name, height, age)
         self._diameter = diameter
 
-    def set_diameter(self, diameter: float):
+    def set_diameter(self, diameter: float) -> None:
         self._diameter = diameter
 
-    def get_diameter(self):
+    def get_diameter(self) -> float:
         return self._diameter
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         print(f"Trunk diameter: {self.get_diameter():.1f}cm")
 
-    def produce_shade(self):
+    def produce_shade(self) -> None:
         print(f"[asking the {self.name} to produce shade]")
         print(f"Tree {self.name.capitalize()} now produces a "
               f"shade of {self.get_height():.1f}cm long and "
@@ -73,34 +76,34 @@ class Tree(Plant):
 
 class Vegetable(Plant):
     def __init__(self, name: str, height: float, age: int,
-                 harvest_season: str):
+                 harvest_season: str) -> None:
         super().__init__(name, height, age)
         self._harvest_season = harvest_season
         self._nutri_value = 0
 
-    def get_harvest_season(self):
+    def get_harvest_season(self) -> str:
         return self._harvest_season
 
-    def set_nutri_value(self, nutri_value: int):
+    def set_nutri_value(self, nutri_value: int) -> None:
         self._nutri_value = nutri_value
 
-    def get_nutri_value(self):
+    def get_nutri_value(self) -> int:
         return self._nutri_value
 
-    def set_age(self, age: int):
-        return super().set_age(age)
+    def set_age(self, age: int) -> None:
+        super().set_age(age)
 
-    def set_height(self, height: float):
-        return super().set_height(height)
+    def set_height(self, height: float) -> None:
+        super().set_height(height)
 
-    def grow(self, days):
+    def grow(self, days: int) -> None:
         print(f"[make {self.name} grow and age for {days} days]")
         for i in range(1, days + 1):
             self.set_height(self.get_height() + 2.1)
             self.set_age(self.get_age() + 1)
             self.set_nutri_value(self.get_nutri_value() + 1)
 
-    def show(self):
+    def show(self) -> None:
         super().show()
         print(f"Harvest season: {self.get_harvest_season().capitalize()}")
         print(f"Nutritional value: {self.get_nutri_value()}")
