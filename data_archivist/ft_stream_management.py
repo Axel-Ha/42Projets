@@ -24,20 +24,30 @@ if __name__ == "__main__":
             print(new_content)
             print("\n---")
 
-            new_file = input("Enter new file name (or empty):")
+            sys.stdout.write("Enter new file name (or empty):")
+            sys.stdout.flush()
+            new_file = sys.stdin.readline()
+            new_file = new_file.rstrip("\n")
             if new_file:
                 print(f"Saving data to '{new_file}'.")
-                file_to_transform = open(new_file, "w")
-                file_to_transform.write(new_content)
-                file_to_transform.close()
-                print(f"Data saved in file '{new_file}'.")
+                try:
+                    file_to_transform = open(new_file, "w")
+                    file_to_transform.write(new_content)
+                    file_to_transform.close()
+                    print(f"Data saved in file '{new_file}'.")
+                except PermissionError as e:
+                    sys.stderr.write(f"[STDERR] Error "
+                                     f"opening file '{sys.argv[1]}': {e}\n")
+                    print("Data not saved")
             else:
                 print("Not saving data.")
 
         except FileNotFoundError as e:
-            print(f"Error opening file '{sys.argv[1]}': {e}")
+            sys.stderr.write(f"[STDERR] Error "
+                             f"opening file '{sys.argv[1]}': {e}\n")
         except PermissionError as e:
-            print(f"Error opening file '{sys.argv[1]}': {e}")
+            sys.stderr.write(f"[STDERR] Error "
+                             f"opening file '{sys.argv[1]}': {e}\n")
 
     else:
         print(f"Usage {sys.argv[0]} <file>")
