@@ -7,11 +7,9 @@ if __name__ == "__main__":
         try:
             file = open(sys.argv[1], "r")
             content = file.read()
-            print("---")
-            print()
+            print("---\n")
             print(content)
-            print()
-            print("---")
+            print("\n---")
             file.close()
             print(f"File '{sys.argv[1]}' closed.")
         except FileNotFoundError as e:
