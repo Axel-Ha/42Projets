@@ -1,27 +1,27 @@
-class Plant :
-    def __init__(self, name: str, height: float, days: int):
+class Plant:
+    def __init__(self, name: str, height: float, days: int
+                 ) -> None:
         self.name = name
         self.height = height
         self.days = days
 
-    def show(self):
+    def show(self) -> None:
         print(f"{self.name}: {self.height:.2f}cm, {self.days} days old")
-    
-    def grow(self, growth: float):
+
+    def grow(self, growth: float) -> None:
         self.height += growth
-        
-    def age(self, days: int):
+
+    def age(self, days: int) -> None:
         self.days += days
-        
-    
-        
+
+
 if __name__ == "__main__":
     print("=== Garden Plant Growth ===")
-    
+
     rose = Plant("Rose", 25, 30)
     rose.show()
-    growth = 0    
-    for i in range(1,8):
+    growth = 0.0
+    for i in range(1, 8):
         rose.grow(0.8)
         rose.age(1)
         growth += 0.8
