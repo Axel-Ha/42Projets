@@ -45,7 +45,7 @@ t_stats	*ft_stats_protection(t_flags *flags, t_stack **stack_a)
 		return (0);
 	}
 	stats->disorder_metric = ft_compute_disorder(stack_a);
-	if (!stats)
+	if (stats->disorder_metric == 0.0)
 	{
 		ft_free_stacks(stack_a, stats, flags);
 		return (0);
@@ -53,8 +53,10 @@ t_stats	*ft_stats_protection(t_flags *flags, t_stack **stack_a)
 	return (stats);
 }
 
-int	ft_launch_algo(t_stack **stack_a, t_stats *stats, t_flags *flags)
+int	ft_launch_algo(t_stack **stack_a, t_flags *flags)
 {
+	t_stats	*stats;
+	
 	ft_init_index((*stack_a), ft_list_size(*stack_a));
 	stats = ft_stats_protection(flags, stack_a);
 	if (!stats)
@@ -71,14 +73,12 @@ int	main(int ac, char **av)
 	char	**args;
 	t_stack	*stack_a;
 	t_flags	*flags;
-	t_stats	*stats;
 
 	if (ac < 2)
 		return (0);
 	start = 1;
 	flags = ft_init_flags();
 	args = NULL;
-	stats = NULL;
 	if (!ft_get_flags(av, &start, flags))
 		return (ft_free_stacks(NULL, NULL, flags));
 	args = ft_start_args(av, ac, start);
@@ -87,5 +87,5 @@ int	main(int ac, char **av)
 	stack_a = ft_init_stack(args);
 	if (ac - start == 1)
 		ft_freearr(args, ft_countword(av[start], ' '));
-	return (ft_launch_algo(&stack_a, stats, flags));
+	return (ft_launch_algo(&stack_a, flags));
 }
