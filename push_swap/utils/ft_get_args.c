@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_flags	*ft_get_flags(char **args, int *start, t_flags *flag)
 {
