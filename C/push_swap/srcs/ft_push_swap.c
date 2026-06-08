@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 {
