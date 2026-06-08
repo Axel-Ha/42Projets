@@ -50,6 +50,11 @@ typedef struct stats
 	int				rrr;
 }					t_stats;
 
+t_stack				*ft_listlast(t_stack *lst);
+t_stack				*ft_listnew(int content);
+void				ft_stack_clear(t_stack **stack);
+int					ft_list_size(t_stack *stack);
+void				ft_add_back(t_stack **lst, t_stack *new);
 void				ft_pa(t_stack **stack_a, t_stack **stack_b, t_stats *stats);
 void				ft_pb(t_stack **stack_a, t_stack **stack_b, t_stats *stats);
 void				ft_sa(t_stack **stack_a, t_stats *stats);
@@ -58,13 +63,8 @@ void				ft_ss(t_stack **stack_a, t_stack **stack_b, t_stats *stats);
 void				ft_ra(t_stack **stack_a, t_stats *stats);
 void				ft_rb(t_stack **stack_b, t_stats *stats);
 void				ft_rr(t_stack **stack_a, t_stack **stack_b, t_stats *stats);
-t_stack				*ft_listlast(t_stack *lst);
-t_stack				*ft_listnew(int content);
-int					ft_list_size(t_stack *stack);
-void				ft_add_back(t_stack **lst, t_stack *new);
 void				ft_rra(t_stack **stack_a, t_stats *stats);
 void				ft_rrb(t_stack **stack_b, t_stats *stats);
-void				ft_stack_clear(t_stack **stack);
 t_stack				*ft_init_stack(char **args);
 t_flags				*ft_init_flags(void);
 int					ft_strncmp(const char *first, const char *second, size_t n);
@@ -78,7 +78,7 @@ int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
 int					ft_check_ranges(char *nbr);
 float				ft_compute_disorder(t_stack **stack_a);
-int					ft_free_stacks(t_stack **stack_a, t_stats *stats,
+int					ft_free(t_stack **stack_a, t_stats *stats,
 						t_flags *flags);
 void				*ft_freearr(char **arr, int count);
 int					ft_countword(char const *s, char c);
