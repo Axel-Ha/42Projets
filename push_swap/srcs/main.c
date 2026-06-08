@@ -6,11 +6,11 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 14:14:17 by ctu               #+#    #+#             */
-/*   Updated: 2026/05/27 11:12:42 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/06/08 10:06:02 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 char	**ft_start_args(char **av, int ac, int start)
 {
