@@ -20,36 +20,3 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		lst = lst->next;
 	}
 }
-
-
-void ft_toupper2(void *content)
-{
-	int     i = 0;
-    char    *str = content;
-
-    while(*str)
-    {
-        if (*str >= 'a' && *str <= 'z') 
-			*str -= 32;
-        i++;
-		str++;
-    }
-}
-
-
-int main(void)
-{
-	t_list *list = ft_lstnew(ft_strdup("test"));
-    t_list *test2 = ft_lstnew(ft_strdup("je suis premier"));
-    t_list *test3 = ft_lstnew(ft_strdup("3eme"));
-	
-	ft_lstadd_front(&list, test3);
-	ft_lstadd_front(&list, test2);
-	ft_lstiter(list,&ft_toupper2);
-    while(list)
-    {
-        printf("%s\n", (char *)list->content);
-        list = list->next;
-    }
-    return (0);
-}
