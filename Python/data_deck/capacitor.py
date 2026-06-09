@@ -1,0 +1,15 @@
+from ex1 import HealingCreatureFactory, TransformCreatureFactory
+
+if __name__ == "__main__":
+    print("Testing Creature with healing capability")
+    print("base:")
+    healing_creature = HealingCreatureFactory()
+    sproutling = healing_creature.create_base()
+    print(sproutling.describe())
+    print(sproutling.attack())
+    print(sproutling.heal())
+    print("evolved:")
+    bloomelle = healing_creature.create_evolved()
+    print(bloomelle.describe())
+    print(bloomelle.attack())
+    print(bloomelle.heal())
