@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 10:44:16 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/27 11:08:54 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/06/09 16:07:21 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,7 @@ int					ft_check_duplicate(char **args);
 int					ft_check_nbr(char *nbr);
 int					ft_check_ranges(char *nbr);
 float				ft_compute_disorder(t_stack **stack_a);
-int					ft_free(t_stack **stack_a, t_stats *stats,
-						t_flags *flags);
+int					ft_free(t_stack **stack_a, t_stats *stats, t_flags *flags);
 void				*ft_freearr(char **arr, int count);
 int					ft_countword(char const *s, char c);
 t_stats				*ft_init_stats(t_flags *flag);
@@ -93,5 +92,7 @@ void				ft_radix_sort(t_stack **stack_a, t_stack **stack_b,
 void				ft_print_bench(t_flags *flags, t_stats *stats);
 void				ft_select_algo(t_stack **stack_a, t_flags *flags,
 						t_stats *stats);
+void				ft_simple_sort(t_stack **stack_a, t_stats *stats);
+void				ft_simple_two(t_stack **stack_a, t_stats *stats);
 
 #endif

@@ -6,11 +6,21 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:50:45 by ctu               #+#    #+#             */
-/*   Updated: 2026/05/26 18:32:08 by ctu              ###   ########.fr       */
+/*   Updated: 2026/06/09 16:20:51 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_select_disorder(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
+{
+	if (stats->disorder_metric < 0.2)
+		ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
+	else if (stats->disorder_metric >= 0.2 && stats->disorder_metric < 0.5)
+		ft_chunk_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
+	else
+		ft_radix_sort(stack_a, &stack_b, stats, ft_list_size(*stack_a));
+}
 
 void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 {
@@ -19,20 +29,20 @@ void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)
 	stack_b = NULL;
 	if (!flags)
 		return ;
-	if (flags->algo == 1)
-		ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
-	else if (flags->algo == 2)
-		ft_chunk_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
-	else if (flags->algo == 3)
-		ft_radix_sort(stack_a, &stack_b, stats, ft_list_size(*stack_a));
+	if (ft_list_size(*stack_a) == 2)
+		ft_simple_two(stack_a, stats);
+	else if (ft_list_size(*stack_a) == 3)
+		ft_simple_sort(stack_a, stats);
 	else
 	{
-		if (stats->disorder_metric < 0.2)
+		if (flags->algo == 1)
 			ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
-		else if (stats->disorder_metric >= 0.2 && stats->disorder_metric < 0.5)
+		else if (flags->algo == 2)
 			ft_chunk_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
-		else
+		else if (flags->algo == 3)
 			ft_radix_sort(stack_a, &stack_b, stats, ft_list_size(*stack_a));
+		else
+			ft_select_disorder(stack_a, &stack_b, stats);
 	}
 }
 

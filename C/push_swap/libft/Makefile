@@ -1,6 +1,7 @@
 NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+INCLUDE_PATH = -I ../includes
 
 SOURCES = 	ft_printf.c ft_utils.c ft_isalnum.c ft_isdigit.c ft_isalpha.c ft_strlen.c ft_toupper.c \
 		  	ft_tolower.c ft_isascii.c ft_strlcpy.c ft_bzero.c ft_memcpy.c \
@@ -20,7 +21,7 @@ $(NAME): $(OBJECTS)
 	ar rcs $(NAME) $(OBJECTS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDE_PATH)
 	
 clean:
 	rm -f $(OBJECTS)
