@@ -31,11 +31,11 @@ class Shiftling(Creature, TransformCapability):
 
     def transform(self) -> str:
         self._is_transformed = True
-        return f"{self.name} shifts into a sharper form!"
+        return f"{self._name} shifts into a sharper form!"
 
     def revert(self) -> str:
         self._is_transformed = False
-        return f"{self.name} returns to normal"
+        return f"{self._name} returns to normal"
 
     def attack(self) -> str:
         if self._is_transformed is True:
@@ -51,11 +51,11 @@ class Morphagon(Creature, TransformCapability):
 
     def transform(self) -> str:
         self._is_transformed = True
-        return f"{self.name} morphs into a dragonic battle form!"
+        return f"{self._name} morphs into a dragonic battle form!"
     
     def revert(self) -> str:
         self._is_transformed = False
-        return f"{self.name} returns to normal"
+        return f"{self._name} returns to normal"
 
     def attack(self) -> str:
         if self._is_transformed is True:
