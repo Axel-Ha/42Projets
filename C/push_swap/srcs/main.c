@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 14:14:17 by ctu               #+#    #+#             */
-/*   Updated: 2026/06/08 10:06:02 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/06/09 15:13:26 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_stats	*ft_stats_protection(t_flags *flags, t_stack **stack_a)
 int	ft_launch_algo(t_stack **stack_a, t_flags *flags)
 {
 	t_stats	*stats;
-	
+
 	ft_init_index((*stack_a), ft_list_size(*stack_a));
 	stats = ft_stats_protection(flags, stack_a);
 	if (!stats)

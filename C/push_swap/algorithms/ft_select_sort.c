@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_select_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:54:23 by ctu               #+#    #+#             */
-/*   Updated: 2026/05/27 13:40:30 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/06/09 15:14:08 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	find_min_nbr(t_stack *stack_a)
 {

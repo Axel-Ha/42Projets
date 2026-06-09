@@ -6,7 +6,7 @@
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 09:59:58 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/25 10:48:39 by ctu              ###   ########.fr       */
+/*   Updated: 2026/06/09 15:09:58 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ int	ft_putfloat(double n, int fd)
 	i = 0;
 	count += ft_putnbr_printf((int) n, fd);
 	count += ft_putchar('.', fd);
-	// n += 0.005;
-	if(n < 0)
+	if (n < 0)
 	{
 		count += ft_putchar('-', fd);
 		n = -n;

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
+/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/08 14:12:40 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/05/27 13:34:04 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/06/09 15:12:30 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	ft_pa(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 {
