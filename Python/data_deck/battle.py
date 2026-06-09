@@ -1,4 +1,4 @@
-from ex0 import Creature, CreatureFactory, FlameFactory, AquaFactory
+from ex0 import CreatureFactory, FlameFactory, AquaFactory
 
 
 def check_factory(factory: CreatureFactory) -> None:
