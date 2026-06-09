@@ -5,11 +5,11 @@ LIBFT = libft/libft.a
 INCLUDE_PATH = -I includes
 
 SOURCES = 	algorithms/ft_chunk_sort.c algorithms/ft_radix_sort.c algorithms/ft_select_sort.c algorithms/ft_sqrt.c\
-          	parsing/ft_get_args.c parsing/validation.c \
+          	parsing/ft_get_args.c parsing/ft_validation.c \
 		  	operations/ft_swap.c operations/ft_rotate_reverse.c operations/ft_rotate.c operations/ft_push.c \
 			srcs/ft_push_swap.c srcs/main.c srcs/ft_compute_disorder.c \
-			memory/ft_free_stack.c memory/ft_init_index.c \
-			stack/ft_stack.c stack/ft_init_structs.c
+			memory/ft_free.c memory/ft_init_structs.c \
+			stack/ft_stack.c stack/ft_init_index.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
