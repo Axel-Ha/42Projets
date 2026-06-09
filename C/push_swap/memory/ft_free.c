@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-int	ft_free_stacks(t_stack **stack_a, t_stats *stats, t_flags *flags)
+int	ft_free(t_stack **stack_a, t_stats *stats, t_flags *flags)
 {
 	ft_stack_clear(stack_a);
 	free(stats);

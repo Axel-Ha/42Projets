@@ -1,30 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   ft_validation.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 13:58:26 by ctu               #+#    #+#             */
-/*   Updated: 2026/05/26 13:58:27 by ctu              ###   ########.fr       */
+/*   Created: 2026/05/26 13:58:06 by ctu               #+#    #+#             */
+/*   Updated: 2026/06/09 15:14:42 by ctu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
-int	ft_strncmp(const char *first, const char *second, size_t n)
+int	ft_issign(char c)
 {
-	size_t	i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (first[i] && (first[i] == second[i]) && i < n - 1)
-		i++;
-	return ((unsigned char)first[i] - (unsigned char)second[i]);
+	return (c == '+' || c == '-');
 }
 
-int	ft_atoi(const char *str)
+int	ft_check_duplicate(char **args)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (args[i])
+	{
+		j = i + 1;
+		while (args[j])
+		{
+			if (ft_atoi(args[i]) == ft_atoi(args[j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	ft_check_nbr(char *nbr)
+{
+	int	i;
+
+	i = 0;
+	if (ft_issign(nbr[i]) && nbr[i + 1] != '\0')
+		i++;
+	if (!ft_isdigit(nbr[i]))
+		return (0);
+	while (nbr[i])
+	{
+		if (!ft_isdigit(nbr[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+long	ft_atolong(const char *str)
 {
 	int		sign;
 	int		i;
@@ -48,4 +79,14 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (result * sign);
+}
+
+int	ft_check_ranges(char *nbr)
+{
+	long	n;
+
+	n = ft_atolong(nbr);
+	if (n > 2147483647 || n < -2147483648)
+		return (0);
+	return (1);
 }
