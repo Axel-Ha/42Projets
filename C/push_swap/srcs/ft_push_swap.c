@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 13:50:45 by ctu               #+#    #+#             */
-/*   Updated: 2026/06/09 16:20:51 by ctu              ###   ########.fr       */
+/*   Updated: 2026/06/10 13:19:02 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	ft_select_disorder(t_stack **stack_a, t_stack **stack_b, t_stats *stats)
 {
 	if (stats->disorder_metric < 0.2)
-		ft_select_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
+		ft_select_sort(stack_a, stack_b, ft_list_size(*stack_a), stats);
 	else if (stats->disorder_metric >= 0.2 && stats->disorder_metric < 0.5)
-		ft_chunk_sort(stack_a, &stack_b, ft_list_size(*stack_a), stats);
+		ft_chunk_sort(stack_a, stack_b, ft_list_size(*stack_a), stats);
 	else
-		ft_radix_sort(stack_a, &stack_b, stats, ft_list_size(*stack_a));
+		ft_radix_sort(stack_a, stack_b, stats, ft_list_size(*stack_a));
 }
 
 void	ft_select_algo(t_stack **stack_a, t_flags *flags, t_stats *stats)

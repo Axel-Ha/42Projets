@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_simple_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 15:35:38 by ctu               #+#    #+#             */
-/*   Updated: 2026/06/09 16:22:40 by ctu              ###   ########.fr       */
+/*   Updated: 2026/06/10 13:22:48 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_simple_sort(t_stack **stack_a, t_stats *stats)
 		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr)
 	{
 		ft_ra(stack_a, stats);
-		ft_ra(stack_a, stats);
+		ft_sa(stack_a, stats);
 	}
 	else if ((*stack_a)->nbr < (*stack_a)->next->nbr
 		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr
