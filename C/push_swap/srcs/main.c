@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ctu <ctu@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 14:14:17 by ctu               #+#    #+#             */
-/*   Updated: 2026/06/09 15:13:26 by ctu              ###   ########.fr       */
+/*   Updated: 2026/06/10 13:02:25 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ t_stats	*ft_stats_protection(t_flags *flags, t_stack **stack_a)
 		return (0);
 	}
 	stats->disorder_metric = ft_compute_disorder(stack_a);
-	// if (stats->disorder_metric == 0.0)
-	// {
-	// 	ft_free(stack_a, stats, flags);
-	// 	return (0);
-	// }
+	if (stats->disorder_metric == 0.0)
+	{
+		ft_free(stack_a, stats, flags);
+		return (0);
+	}
 	return (stats);
 }
 
@@ -79,8 +79,8 @@ int	main(int ac, char **av)
 	start = 1;
 	flags = ft_init_flags();
 	args = NULL;
-	// if (!ft_get_flags(av, &start, flags))
-	// 	return (ft_free(NULL, NULL, flags));
+	if (!ft_get_flags(av, &start, flags))
+		return (ft_free(NULL, NULL, flags));
 	ft_get_flags(av, &start, flags);
 	args = ft_start_args(av, ac, start);
 	if (!ft_args_protection(av, ac, start, args))
