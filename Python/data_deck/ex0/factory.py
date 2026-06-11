@@ -5,6 +5,10 @@ from .creature import Creature, Flameling, Pyrodon, Aquabub, Torragon
 
 class CreatureFactory(ABC):
     @abstractmethod
+    def family_name(self) -> str:
+        pass
+
+    @abstractmethod
     def create_base(self) -> Creature:
         pass
 
@@ -14,6 +18,9 @@ class CreatureFactory(ABC):
 
 
 class FlameFactory(CreatureFactory):
+    def family_name(self) -> str:
+        return "Flameling"
+
     def create_base(self) -> Creature:
         return Flameling("Flameling", "Fire")
 
@@ -22,6 +29,9 @@ class FlameFactory(CreatureFactory):
 
 
 class AquaFactory(CreatureFactory):
+    def family_name(self) -> str:
+        return "Aquabub"
+
     def create_base(self) -> Creature:
         return Aquabub("Aquabub", "Water")
 

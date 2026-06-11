@@ -1,5 +1,5 @@
 from ex0.creature import Creature
-from . import HealCapability, TransformCapability
+from .capability import HealCapability, TransformCapability
 
 
 class Sproutling(Creature, HealCapability):
