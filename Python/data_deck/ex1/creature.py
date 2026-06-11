@@ -2,7 +2,15 @@ from ex0.creature import Creature
 from .capability import HealCapability, TransformCapability
 
 
-class Sproutling(Creature, HealCapability):
+class HealingCreature(Creature, HealCapability):
+    pass
+
+
+class TransformingCreature(Creature, TransformCapability):
+    pass
+
+
+class Sproutling(HealingCreature):
     def attack(self) -> str:
         return f"{self._name} uses Vine Whip"
 
@@ -13,7 +21,7 @@ class Sproutling(Creature, HealCapability):
             return f"{self._name} heals itself for a small amount"
 
 
-class Bloomelle(Creature, HealCapability):
+class Bloomelle(HealingCreature):
     def attack(self) -> str:
         return f"{self._name} uses Vine Whip"
 
@@ -24,7 +32,7 @@ class Bloomelle(Creature, HealCapability):
             return f"{self._name} heals itself for and the others for a large amount"
 
 
-class Shiftling(Creature, TransformCapability):
+class Shiftling(TransformingCreature):
     def __init__(self, name: str, type: str) -> None:
         super().__init__(name, type)
         self._is_transformed = False
@@ -44,7 +52,7 @@ class Shiftling(Creature, TransformCapability):
             return f"{self._name} attacks normally."
 
 
-class Morphagon(Creature, TransformCapability):
+class Morphagon(TransformingCreature):
     def __init__(self, name: str, type: str) -> None:
         super().__init__(name, type)
         self._is_transformed = False
@@ -52,7 +60,7 @@ class Morphagon(Creature, TransformCapability):
     def transform(self) -> str:
         self._is_transformed = True
         return f"{self._name} morphs into a dragonic battle form!"
-    
+
     def revert(self) -> str:
         self._is_transformed = False
         return f"{self._name} returns to normal"
