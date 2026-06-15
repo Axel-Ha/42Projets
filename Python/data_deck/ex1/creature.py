@@ -47,7 +47,7 @@ class Shiftling(TransformingCreature):
 
     def attack(self) -> str:
         if self._is_transformed is True:
-            return f"{self._name} performs a boosted strike1"
+            return f"{self._name} performs a boosted strike!"
         else:
             return f"{self._name} attacks normally."
 

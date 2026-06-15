@@ -8,9 +8,6 @@ class BattleError(Exception):
         self.message = message
         super().__init__(message)
 
-    def __str__(self) -> str:
-        return f"{self.message}"
-
 
 class BattleStrategy(ABC):
     @abstractmethod

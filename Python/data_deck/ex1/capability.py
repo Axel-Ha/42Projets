@@ -9,8 +9,6 @@ class HealCapability(ABC):
 
 
 class TransformCapability(ABC):
-    _is_transformed: bool
-
     @abstractmethod
     def transform(self) -> str:
         pass
