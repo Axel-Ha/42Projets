@@ -29,6 +29,7 @@ def comparaison_package_versions() -> None:
         print(f"version insatalled : {name} ({version(name)})\n"
               f"version required : {name} ({required})\n")
 
+
 def show_package_managers() -> None:
     print("[PIP]    Requirements file: requirements.txt")
     print("[PIP]    Requirements file: requirements.txt")
@@ -38,6 +39,7 @@ def show_package_managers() -> None:
     print("[POETRY]    Install command: poetry install")
     print("[POETRY]    Lockfile: poetry.lock — versions guaranteed")
 
+
 if __name__ == "__main__":
     print("LOADIN STATUS: Loading programs...")
     print()
@@ -46,14 +48,21 @@ if __name__ == "__main__":
     import numpy as np
     import pandas as pd
     import matplotlib.pyplot as plt
+
+    print("Analyzing Matrix data...")
     a = np.random.randint(0, 10, 10)
     b = np.random.randint(0, 10, 10)
+    print("Processing 1000 data points...")
     data = pd.DataFrame({"X": a, "Y": b})
     fig, ax = plt.subplots()
     data.plot(ax=ax, x='X', y='Y', kind="scatter")
     ax.set_title("title")
     ax.set_xlabel("X")
     ax.set_ylabel("Y")
+    print("Generating visualization...")
+    print()
+    print("Analysis complete!")
+    print("Results saved to: matrix_analysis.png")
     fig.savefig("matrix_analysis.png")
 
     print()
