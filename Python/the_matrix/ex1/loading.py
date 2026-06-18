@@ -2,9 +2,11 @@ from importlib.metadata import version, PackageNotFoundError
 import sys
 
 
-def checkdependencies() -> bool:
-    dependencies = {'pandas': 'Data manipulation', 'numpy': 'Numerical computation',
-                    'requests': 'Network access', 'matplotlib': 'Visualization'}
+def check_dependencies() -> bool:
+    dependencies = {'pandas': 'Data manipulation',
+                    'numpy': 'Numerical computation',
+                    'requests': 'Network access',
+                    'matplotlib': 'Visualization'}
     flag = True
     for key, value in dependencies.items():
         try:
@@ -17,19 +19,44 @@ def checkdependencies() -> bool:
             flag = False
     return flag
 
+
+def comparaison_package_versions() -> None:
+    requiredversion = {'pandas': '3.0.3',
+                       'numpy': '2.4.6',
+                       'requests': '2.34.2',
+                       'matplotlib': '3.11.0'}
+    for name, required in requiredversion.items():
+        print(f"version insatalled : {name} ({version(name)})\n"
+              f"version required : {name} ({required})\n")
+
+def show_package_managers() -> None:
+    print("[PIP]    Requirements file: requirements.txt")
+    print("[PIP]    Requirements file: requirements.txt")
+    print("[PIP]    No lockfile — versions not guaranteed")
+    print()
+    print("[POETRY]    Config file: pyproject.toml")
+    print("[POETRY]    Install command: poetry install")
+    print("[POETRY]    Lockfile: poetry.lock — versions guaranteed")
+
 if __name__ == "__main__":
     print("LOADIN STATUS: Loading programs...")
-    if not checkdependencies():
+    print()
+    if not check_dependencies():
         sys.exit(1)
     import numpy as np
     import pandas as pd
     import matplotlib.pyplot as plt
-    a = np.random.randint(0, 100, 50)
-    b = np.random.randint(0, 100, 50)
-    data = pd.DataFrame({"X": a, "Y": b}).plot(x='X', y='Y')
+    a = np.random.randint(0, 10, 10)
+    b = np.random.randint(0, 10, 10)
+    data = pd.DataFrame({"X": a, "Y": b})
     fig, ax = plt.subplots()
-    ax.scatter(data["X"], data["Y"])
+    data.plot(ax=ax, x='X', y='Y', kind="scatter")
     ax.set_title("title")
-    ax.set_xlabel("X Axis")
-    ax.set_ylabel("Y Axis")
+    ax.set_xlabel("X")
+    ax.set_ylabel("Y")
     fig.savefig("matrix_analysis.png")
+
+    print()
+    comparaison_package_versions()
+    print()
+    show_package_managers()
