@@ -26,7 +26,7 @@ def comparaison_package_versions() -> None:
                        'requests': '2.34.2',
                        'matplotlib': '3.11.0'}
     for name, required in requiredversion.items():
-        print(f"version insatalled : {name} ({version(name)})\n"
+        print(f"version installed : {name} ({version(name)})\n"
               f"version required : {name} ({required})\n")
 
 
