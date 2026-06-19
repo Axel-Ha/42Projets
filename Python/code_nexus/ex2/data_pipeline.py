@@ -126,8 +126,8 @@ class DataStream():
             for i in range(nb):
                 try:
                     values.append(proc.output())
-                except IndexError as e:
-                    print(f"Exception caught: {e}")
+                except IndexError:
+                    break
             plugin.process_output(values)
 
 
