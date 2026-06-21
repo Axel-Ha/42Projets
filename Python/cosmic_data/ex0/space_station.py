@@ -1,23 +1,22 @@
 from pydantic import BaseModel, Field, ValidationError
 from datetime import datetime
-from typing import Optional
 from space_stations import SPACE_STATIONS
 import random
 
 
 class SpaceStation(BaseModel):
-    station_id: str = Field(min_length=2, max_length=10)
+    station_id: str = Field(min_length=3, max_length=10)
     name: str = Field(min_length=1, max_length=50)
     crew_size: int = Field(ge=1, le=20)
     power_level: float = Field(ge=0.0, le=100.0)
     oxygen_level: float = Field(ge=0.0, le=100.0)
-    last_maintenance: datetime | None
-    is_operational: bool = Field(strict=True)
-    notes: Optional[str] = Field(max_length=200)
+    last_maintenance: datetime
+    is_operational: bool = Field(default=True)
+    notes: str | None = Field(default=None, max_length=200)
 
 
 def main():
-    rand_int = random.randint(0, len(SPACE_STATIONS))
+    rand_int = random.randint(0, len(SPACE_STATIONS) - 1)
     print("Space Station Data Validation")
     print("========================================")
     print("Valid station created:")
