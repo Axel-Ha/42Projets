@@ -61,7 +61,7 @@ def main() -> None:
     print("Space Station Data Validation")
     print("========================================")
     print("Valid contact report:")
-    alien_contact = AlienContact(**ALIEN_CONTACTS[rand_int])
+    alien_contact = AlienContact.model_validate(ALIEN_CONTACTS[rand_int])
     print(f"ID: {alien_contact.contact_id}")
     print(f"Type: {alien_contact.contact_type}")
     print(f"Location: {alien_contact.location}")
@@ -85,9 +85,10 @@ def main() -> None:
     }
 
     try:
-        alien_contact = AlienContact(**ERROR_ALIEN_CONTACTS)
+        alien_contact = AlienContact.model_validate(ERROR_ALIEN_CONTACTS)
     except ValidationError as e:
         print(f"{e.errors()[0]['msg']}")
+
 
 if __name__ == "__main__":
     main()

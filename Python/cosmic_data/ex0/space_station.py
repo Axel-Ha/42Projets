@@ -15,12 +15,12 @@ class SpaceStation(BaseModel):
     notes: str | None = Field(default=None, max_length=200)
 
 
-def main():
+def main() -> None:
     rand_int = random.randint(0, len(SPACE_STATIONS) - 1)
     print("Space Station Data Validation")
     print("========================================")
     print("Valid station created:")
-    space_station = SpaceStation(**SPACE_STATIONS[rand_int])
+    space_station = SpaceStation.model_validate(SPACE_STATIONS[rand_int])
     print(f"ID: {space_station.station_id}")
     print(f"Name: {space_station.name}")
     print(f"Crew: {space_station.crew_size} people")
@@ -43,9 +43,9 @@ def main():
         'is_operational': True,
         'notes': None
     }
-
     try:
-        space_station = SpaceStation(**ERROR_SPACE_STATIONS)
+
+        space_station = SpaceStation.model_validate(ERROR_SPACE_STATIONS)
     except ValidationError as e:
         print(f"{e.errors()[0]['msg']}")
 
