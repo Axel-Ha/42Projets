@@ -36,7 +36,9 @@ def power_amplifier(base_spell: Callable[[str, int], str],
     return amplifier
 
 
-def conditional_caster(condition: Callable, spell: Callable) -> Callable:
+def conditional_caster(condition: Callable[[str | None, int], bool], spell:
+                       Callable[[str, int], str]
+                       ) -> Callable[[str, int], str]:
     def cast(target: str, power: int) -> str:
         if condition(target, power):
             return spell(target, power)
@@ -45,11 +47,15 @@ def conditional_caster(condition: Callable, spell: Callable) -> Callable:
     return cast
 
 
-def spell_sequence(spells: list[Callable]) -> Callable:
-    def cast(target: str, power: int) -> str:
-        for spell in range(len(spells) - 1):
-            return spell(target, power)
+def spell_sequence(spells: list[Callable[[str, int], str]]
+                   ) -> Callable[[str, int], list[str]]:
+    def cast(target: str, power: int) -> list[str]:
+        list_spell = []
+        for spell in spells:
+            list_spell.append(spell(target, power))
+        return list_spell
     return cast
+
 
 def main() -> None:
     print("Testing spell combiner...")
@@ -59,7 +65,7 @@ def main() -> None:
     print()
     print("Testing spell amplified...")
     spell_amplified = power_amplifier(spell_power, 3)
-    print(f"before: Ice canon 3")
+    print("before: Ice canon 3")
     print(f"after: {spell_amplified('Ice canon', 3)}")
 
     print()
@@ -67,11 +73,11 @@ def main() -> None:
     conditional_spell = conditional_caster(condition_spell, attack)
     print(conditional_spell('Dragon', 30))
     print(conditional_spell('Dragon', 29))
-    
+
     print()
     print("Testing spell sequence...")
-    spells = 
-
+    spells = spell_sequence([attack, heal, heal, attack])
+    print(spells('Dragon', 30))
 
 
 if __name__ == "__main__":
