@@ -64,15 +64,27 @@ def _3(multi_cast: list) -> str:
 def main() -> None:
     spell_powers = [44, 11, 20, 15, 32, 37]
     operations = ['add', 'multiply', 'max', 'min']
+    print("Testing spell reducer...")
     print(spell_reducer(spell_powers, operations[2]))
+    print()
+
+    print("Testing partial enchanter...")
     partial_test = partial_enchanter(enchantment)
     print(partial_test['Fire']("Wizard"), partial_test['Ice']("Wizard"))
-    fibo = memoized_fibonacci(18)
+    print()
+
+    print("Testing memoized fibonacci...")
+    fibo = memoized_fibonacci(10)
     print(fibo)
     print(memoized_fibonacci.cache_info())
+    print()
 
+    print("Testing spell dispatcher...")
     dispatch = spell_dispatcher()
-    print(dispatch({"Fire": "yeah"}))
+    print(f"{dispatch(42)}")
+    print(f"{dispatch('Fireball')}")
+    print(f"{dispatch(["Fire","Ice","Earth"])}")
+    print(f"{dispatch({"Fire": "yeah"})}")
 
 
 if __name__ == "__main__":
