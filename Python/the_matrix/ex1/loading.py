@@ -12,10 +12,10 @@ def check_dependencies() -> bool:
         try:
             print(f"[OK] {key} ({version(key)}) - {value}")
         except PackageNotFoundError as e:
-            print(f"Caught PackageNotFoundError: {e} "
-                  f"to install the dependence use the command\n"
+            print(f"Caught PackageNotFoundError: {e}.\n"
+                  f"To install the dependence use the command\n"
                   f"pip install -r requirements.txt\n"
-                  f"or poetry install")
+                  f"or poetry install\n")
             flag = False
     return flag
 
@@ -31,13 +31,13 @@ def comparaison_package_versions() -> None:
 
 
 def show_package_managers() -> None:
-    print("[PIP]    Requirements file: requirements.txt")
-    print("[PIP]    Requirements file: requirements.txt")
-    print("[PIP]    No lockfile — versions not guaranteed")
+    print("[PIP]  Requirements file: requirements.txt")
+    print("[PIP]  Install command: pip install -r requirements.txt")
+    print("[PIP]  No lockfile — versions not guaranteed")
     print()
-    print("[POETRY]    Config file: pyproject.toml")
-    print("[POETRY]    Install command: poetry install")
-    print("[POETRY]    Lockfile: poetry.lock — versions guaranteed")
+    print("[POETRY]  Config file: pyproject.toml")
+    print("[POETRY]  Install command: poetry install")
+    print("[POETRY]  Lockfile: poetry.lock — versions guaranteed")
 
 
 if __name__ == "__main__":
