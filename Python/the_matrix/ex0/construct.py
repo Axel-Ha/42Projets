@@ -21,7 +21,6 @@ def in_virtualenv() -> bool:
         print("matrix_env\\Scripts\\activate # On Windows")
         print()
         print("Then run this progam again")
-        return False
     else:
         print("MATRIX STATUS: Welcome to the construct")
         print()
@@ -34,7 +33,6 @@ def in_virtualenv() -> bool:
               " the global system.")
         print()
         print(f"Package installation path: {site.getsitepackages()[-1]}")
-        return True
 
 
 if __name__ == "__main__":
