@@ -3,7 +3,7 @@ import os
 import site
 
 
-def in_virtualenv() -> bool:
+def in_virtualenv() -> None:
     if sys.prefix == sys.base_prefix:
         print("MATRIX STATUS: You're still plugged in")
         print()
