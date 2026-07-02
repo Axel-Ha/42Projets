@@ -2,8 +2,10 @@ import os
 from dotenv import load_dotenv
 import sys
 
-def checking_override(required: list[str]) -> bool :
+
+def checking_override(required: list[str]) -> bool:
     return any(key in os.environ for key in required)
+
 
 def get_env_var() -> None:
     MATRIX_MODE = os.getenv('MATRIX_MODE')
@@ -25,6 +27,7 @@ def get_env_var() -> None:
 
     print(f"Log Level: {LOG_LEVEL}")
     print(f"Zion Network: {ZION_ENDPOINT}")
+
 
 def security_check(override: bool) -> None:
     print("Environment security check:")
@@ -49,7 +52,7 @@ if __name__ == "__main__":
         "LOG_LEVEL",
         "ZION_ENDPOINT"
     ]
-    override_detected = checking_override(required) 
+    override_detected = checking_override(required)
 
     if not load_dotenv():
         print("No .env file was found")
@@ -65,4 +68,3 @@ if __name__ == "__main__":
     get_env_var()
     print()
     security_check(override_detected)
-    

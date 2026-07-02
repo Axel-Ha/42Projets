@@ -13,12 +13,13 @@ class MageGuild:
             if not (char.isalpha() or char == ' '):
                 return False
         return True
-    
+
     def cast_spell(self, spell_name: str, power: int) -> str:
         @power_validator(10)
         def func(power: int, spell_name: str):
             return f"Successfully cast {spell_name} with {power} power"
         return func(power, spell_name)
+
 
 def fireball(spell: str) -> str:
     return spell
@@ -61,7 +62,8 @@ def retry_spell(max_attempts: int) -> Callable:
                 rand = random.randint(1, 2)
                 if rand == 2:
                     print(
-                        f"Spell failed, retrying... (attempt {i}/{max_attempts})")
+                        f"Spell failed, retrying... "
+                        f"(attempt {i}/{max_attempts})")
                 else:
                     return func(*args, **kwargs)
             return f"Spell casting failed after {max_attempts} attempts"

@@ -41,7 +41,8 @@ class AggressiveStrategy(BattleStrategy):
     def act(self, creature: Any) -> None:
         if not self.is_valid(creature):
             raise BattleError(f"Invalid Creature "
-                              f"'{creature._name}' for this aggressive strategy")
+                              f"'{creature._name}' "
+                              f"for this aggressive strategy")
         print(creature.transform())
         print(creature.attack())
         print(creature.revert())
@@ -59,8 +60,10 @@ class DefensiveStrategy(BattleStrategy):
 
     def act(self, creature: Any) -> None:
         if not self.is_valid(creature):
-            raise BattleError(f"Battle error, aborting tournament: Invalid Creature "
-                              f"'{creature._name}' for this defensive strategy")
+            raise BattleError(f"Battle error, aborting tournament: "
+                              f"Invalid Creature "
+                              f"'{creature._name}' "
+                              f"for this defensive strategy")
         print(creature.attack())
         print(creature.heal())
 

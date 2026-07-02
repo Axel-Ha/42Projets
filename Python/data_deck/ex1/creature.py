@@ -2,15 +2,7 @@ from ex0.creature import Creature
 from .capability import HealCapability, TransformCapability
 
 
-class HealingCreature(Creature, HealCapability):
-    pass
-
-
-class TransformingCreature(Creature, TransformCapability):
-    pass
-
-
-class Sproutling(HealingCreature):
+class Sproutling(Creature, HealCapability):
     def attack(self) -> str:
         return f"{self._name} uses Vine Whip"
 
@@ -21,7 +13,7 @@ class Sproutling(HealingCreature):
             return f"{self._name} heals itself for a small amount"
 
 
-class Bloomelle(HealingCreature):
+class Bloomelle(Creature, HealCapability):
     def attack(self) -> str:
         return f"{self._name} uses Vine Whip"
 
@@ -29,10 +21,11 @@ class Bloomelle(HealingCreature):
         if target:
             return f"{target._name} is healed by {self._name}"
         else:
-            return f"{self._name} heals itself for and the others for a large amount"
+            return (f"{self._name} heals itself "
+                    f"for and the others for a large amount")
 
 
-class Shiftling(TransformingCreature):
+class Shiftling(Creature, TransformCapability):
     def __init__(self, name: str, type: str) -> None:
         super().__init__(name, type)
         self._is_transformed = False
@@ -52,7 +45,7 @@ class Shiftling(TransformingCreature):
             return f"{self._name} attacks normally."
 
 
-class Morphagon(TransformingCreature):
+class Morphagon(Creature, TransformCapability):
     def __init__(self, name: str, type: str) -> None:
         super().__init__(name, type)
         self._is_transformed = False

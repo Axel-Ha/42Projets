@@ -83,7 +83,7 @@ def main() -> None:
     dispatch = spell_dispatcher()
     print(f"{dispatch(42)}")
     print(f"{dispatch('Fireball')}")
-    print(f"{dispatch(["Fire","Ice","Earth"])}")
+    print(f"{dispatch(["Fire", "Ice", "Earth"])}")
     print(f"{dispatch({"Fire": "yeah"})}")
 
 

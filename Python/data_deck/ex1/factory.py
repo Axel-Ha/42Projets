@@ -1,16 +1,15 @@
 from ex0 import CreatureFactory
-from ex0.creature import Creature
-from .creature import HealingCreature, TransformingCreature, Sproutling, Bloomelle, Shiftling, Morphagon
-from .capability import HealCapability, TransformCapability
+from .creature import Sproutling, Bloomelle, Shiftling, Morphagon
+
 
 class HealingCreatureFactory(CreatureFactory):
     def family_name(self) -> str:
         return "Healing"
 
-    def create_base(self) -> HealingCreature:
+    def create_base(self) -> Sproutling:
         return Sproutling("Sproutling", "Grass")
 
-    def create_evolved(self) -> HealingCreature:
+    def create_evolved(self) -> Bloomelle:
         return Bloomelle("Bloomelle", "Grass/Fairy")
 
 
@@ -18,8 +17,8 @@ class TransformCreatureFactory(CreatureFactory):
     def family_name(self) -> str:
         return "Transform"
 
-    def create_base(self) -> TransformingCreature:
+    def create_base(self) -> Shiftling:
         return Shiftling("Shiftling", "Normal")
 
-    def create_evolved(self) -> TransformingCreature:
+    def create_evolved(self) -> Morphagon:
         return Morphagon("Morphagon", "Normal/Dragon")

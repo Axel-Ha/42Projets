@@ -21,10 +21,10 @@ class FlameFactory(CreatureFactory):
     def family_name(self) -> str:
         return "Flameling"
 
-    def create_base(self) -> Creature:
+    def create_base(self) -> Flameling:
         return Flameling("Flameling", "Fire")
 
-    def create_evolved(self) -> Creature:
+    def create_evolved(self) -> Pyrodon:
         return Pyrodon("Pyrodon", "Fire/Flying")
 
 
@@ -32,8 +32,8 @@ class AquaFactory(CreatureFactory):
     def family_name(self) -> str:
         return "Aquabub"
 
-    def create_base(self) -> Creature:
+    def create_base(self) -> Aquabub:
         return Aquabub("Aquabub", "Water")
 
-    def create_evolved(self) -> Creature:
+    def create_evolved(self) -> Torragon:
         return Torragon("Torragon", "Water")
