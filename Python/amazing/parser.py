@@ -22,9 +22,25 @@ class ConfigModel(BaseModel):
                 raise ValueError("The coordinates must be x,y")
             else:
                 x_str, y_str = [val.strip() for val in values]
-            if x_str.isdigit() or y_str.isdigit():
-                return int(x_str),int(y_str),
+            if x_str.isdigit() and y_str.isdigit():
+                return int(x_str), int(y_str),
         raise ValueError("The coordinates must be x,y")
+
+    @model_validator(mode='after')
+    def validate_coord(self):
+        def in_maze(coord: tuple[int, int]) -> bool:
+            x, y = coord
+            return 0 <= x < self.width and 0 <= y < self.height
+
+        if self.entry == self.exit:
+            raise ValueError("Entry coordinates can't be the same as Exit")
+        
+        if not in_maze(self.entry):
+            raise ValueError("The coordinates of entry must be in maze")
+
+        if not in_maze(self.exit):
+            raise ValueError("The coordinates of exit must be in maze")
+        return self
 
 
 def parse(file: str) -> dict[str, Any]:
