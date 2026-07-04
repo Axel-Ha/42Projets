@@ -22,9 +22,20 @@ class ConfigModel(BaseModel):
                 raise ValueError("The coordinates must be x,y")
             else:
                 x_str, y_str = [val.strip() for val in values]
-            if x_str.isdigit() and y_str.isdigit():
-                return int(x_str), int(y_str),
-        raise ValueError("The coordinates must be x,y")
+            if x_str.isdigit() and int(x_str) >= 0 and y_str.isdigit() and int(y_str) >= 0:
+                return int(x_str), int(y_str)
+        raise ValueError("The coordinates must be x,y and must be greater than 0")
+
+    @field_validator('perfect', mode='before')
+    def verify_perfect(cls, perfect: bool) -> bool:
+        if isinstance(perfect, str):
+            if perfect.lower() == 'true':
+                return True
+            elif perfect.lower() == 'false':
+                return False
+            else:
+                raise ValueError("The perfect must be True or False")
+        return perfect
 
     @model_validator(mode='after')
     def validate_coord(self):
@@ -44,9 +55,15 @@ class ConfigModel(BaseModel):
 
 
 def parse(file: str) -> dict[str, Any]:
-    path = Path.open(file).readlines()
+
+    path = Path(file)
+    if not path.is_file():
+        raise FileNotFoundError(f"File {file} not found")
+    if not path.suffix == ".txt":
+        raise ValueError("File must be a .txt file")
     data = {}
-    for line in path:
+    lines = path.read_text().splitlines()
+    for line in lines:
         line = line.strip()
         if not line or line.startswith("#"):
             continue
