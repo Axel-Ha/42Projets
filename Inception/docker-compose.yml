@@ -1,0 +1,17 @@
+version: '3.3'
+services:
+  Nginx:
+    container_name: nginx
+    ports:
+    volumes:
+  Wordpress:
+    container_name: wordpress
+    volumes:
+  MariaDB:
+    container_name: mariadb
+    ports:
+    volumes:
+  networks:
+    default:
+      external:
+        name: my-network
