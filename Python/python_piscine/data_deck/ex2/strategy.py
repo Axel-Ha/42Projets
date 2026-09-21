@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
-from ex1.capability import HealCapability, TransformCapability
 from typing import Any
+
+from ex1.capability import HealCapability, TransformCapability
+from ex1.creature import Creature
 
 
 class BattleError(Exception):
@@ -27,7 +29,7 @@ class NormalStrategy(BattleStrategy):
     def name(self) -> str:
         return "Normal"
 
-    def act(self, creature: Any) -> None:
+    def act(self, creature: Creature) -> None:
         print(creature.attack())
 
     def is_valid(self, creature: Any) -> bool:
@@ -38,7 +40,7 @@ class AggressiveStrategy(BattleStrategy):
     def name(self) -> str:
         return "Aggressive"
 
-    def act(self, creature: Any) -> None:
+    def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
             raise BattleError(f"Invalid Creature "
                               f"'{creature._name}' "
@@ -58,7 +60,7 @@ class DefensiveStrategy(BattleStrategy):
     def name(self) -> str:
         return "Defensive"
 
-    def act(self, creature: Any) -> None:
+    def act(self, creature: Creature) -> None:
         if not self.is_valid(creature):
             raise BattleError(f"Battle error, aborting tournament: "
                               f"Invalid Creature "
@@ -67,7 +69,7 @@ class DefensiveStrategy(BattleStrategy):
         print(creature.attack())
         print(creature.heal())
 
-    def is_valid(self, creature: Any) -> bool:
+    def is_valid(self, creature: Creature) -> bool:
         if isinstance(creature, HealCapability):
             return True
         else:
