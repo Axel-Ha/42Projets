@@ -1,0 +1,9 @@
+FROM alpine:latest
+
+RUN apt-get update && apt-get install -y php
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+CMD ["/usr/sbin/nginx"]
