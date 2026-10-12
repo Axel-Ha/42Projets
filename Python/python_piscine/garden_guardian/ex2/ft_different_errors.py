@@ -6,9 +6,8 @@ def garden_operations(operation_number: int) -> None:
     elif operation_number == 2:
         x = open("/non/existent/file")
     elif operation_number == 3:
-        a = "abc"
-        x = 2
-        a = a + x
+        x = "abc" + 2
+        print("BDBDFDFDFJGDFJGLSFSDKFL")
     else:
         print("Operation completed successfully")
 
