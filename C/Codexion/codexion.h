@@ -13,16 +13,16 @@
 //	int			number_of_compiles_required;
 //	int			dongle_cooldown;
 //	char		*scheduler;
-//}				s_parsing;
+//}				t_parsing;
 
 
 typedef struct parsing
 {
 	int			arguments[7];
 	char		*scheduler;
-}				s_parsing;
+}				t_parsing;
 
 int				ft_check_atoi(const char *str);
 //int				parser(char *av[]);
-int	parser(char *av[], s_parsing *config);
-s_parsing	*valid_arguments(char *av[]);
+int	parser(char *av[], t_parsing *config);
+t_parsing	*valid_arguments(char *av[]);

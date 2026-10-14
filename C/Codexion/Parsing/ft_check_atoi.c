@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:31:40 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/10/14 12:32:02 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/10/14 18:46:36 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_check_atoi(const char *str)
 	}
 	if (*str != '\0')
 		return (-1);
-	else if (result == 0)
+	if (result == 0)
 		return (-1);
 	return (result);
 }

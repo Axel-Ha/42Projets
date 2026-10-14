@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/10/14 18:34:01 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/10/14 18:50:05 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int main(int ac, char *av[])
 {
-	s_parsing	*config;
+	t_parsing	*config;
 
 	if (ac == 9)
 	{
-		config = malloc(sizeof(s_parsing));
+		config = malloc(sizeof(t_parsing));
 		if (!config)
 			return (1);
 		if (parser(av, config) == 1)
