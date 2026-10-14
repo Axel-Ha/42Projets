@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/10/14 12:37:14 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/10/14 18:34:01 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,25 @@
 
 int main(int ac, char *av[])
 {
-	printf("%d\n", atoi(""));
+	s_parsing	*config;
+
 	if (ac == 9)
 	{
-		parser()
+		config = malloc(sizeof(s_parsing));
+		if (!config)
+			return (1);
+		if (parser(av, config) == 1)
+		{
+			free(config);
+			fprintf(stderr, "Something wrong with the arguments\n");
+			return (1);
+		}
 	}
 	else
-		fprintf(stderr, "Some arguments are missing");
+	{
+		fprintf(stderr, "Some arguments are missing\n");
+		return (1);
+	}
+	free(config);
 	return (0);
 }
