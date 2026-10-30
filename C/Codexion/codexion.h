@@ -77,8 +77,7 @@ t_coder						*init_struct_coder(t_simulation *simulation,
 t_dongle					*init_struct_dongle(int id);
 t_queue						*init_struct_queue_priority(int id_coder,
 								long long key);
-int							ft_free(t_parsing *config, t_coder **coders,
-								t_dongle **dongles, t_simulation *monitor,
-                            int num);
+void						ft_free(t_parsing *config, t_simulation *monitor,
+								int num);
 
 #endif
