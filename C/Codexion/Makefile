@@ -3,7 +3,8 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 SOURCES = Parsing/ft_check_atoi.c Parsing/parsing.c \
-		  init_struct.c main.c
+		  memory/ft_init_struct.c memory/ft_free.c \
+		  main.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -16,7 +17,7 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 run:
-	./$(NAME) 2 100 30 40 50 3 20 fifo
+	./$(NAME) 5 100 30 40 50 3 20 fifo
 
 
 clean:
