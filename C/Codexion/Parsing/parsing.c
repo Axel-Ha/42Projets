@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:44:59 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/10/27 16:01:49 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/10/30 12:03:40 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	parser(char *av[], t_parsing *config)
 
 void	valid_arguments(char *av[], t_parsing *config)
 {
-	int result;
-
 	config->number_of_coders = ft_check_atoi(av[1]);
 	config->time_to_burnout = ft_check_atoi(av[2]);
 	config->time_to_compile = ft_check_atoi(av[3]);

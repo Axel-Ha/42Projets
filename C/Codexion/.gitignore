@@ -1,3 +1,4 @@
-*.out
+*/*.o
+*.o
 codexion
 pour_claude.txt

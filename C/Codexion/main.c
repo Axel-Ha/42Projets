@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/10/27 16:05:28 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/10/30 12:05:39 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ int main(int ac, char *av[])
 			return (1);
 		}
 		valid_arguments(av, config);
+		printf("Number of coder %d\n",config->number_of_coders);
+		printf("time to burnout %d\n",config->time_to_burnout);
+		printf("time to compile %d\n",config->time_to_compile);
+		printf("time to debug %d\n",config->time_to_debug);
+		printf("time to refactor %d\n",config->time_to_refactor);
+		printf("number of compiles requiered %d\n",config->number_of_compiles_required);
+		printf("dongle cooldown %d\n",config->dongle_cooldown);
+		printf("scheduler %s\n",config->scheduler);
 	}
 	else
 	{
