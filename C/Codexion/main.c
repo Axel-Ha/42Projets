@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/10/30 15:45:55 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/10/30 15:55:16 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int ac, char *av[])
 			return (1);
 		}
 
+		//MALLOC DE CODERS ET DONGLES  
 		coders = malloc(sizeof(t_coder *) * num_coders);
 		dongles = malloc(sizeof(t_dongle *) * num_coders);
 		if (!coders || !dongles)
@@ -52,7 +53,10 @@ int	main(int ac, char *av[])
 			coders[i] = NULL;
 			i++;
 		}
+		
+
 		i = 0;
+		//INIT DONGLES INIT DONGLES INIT DONGLES 
 		while (i < num_coders)
 		{
 			dongles[i] = init_struct_dongle(i);
@@ -61,7 +65,7 @@ int	main(int ac, char *av[])
 
 			i++;
 		}
-		
+		//INIT CODER INIT CODER INIT CODER 
 		coders[0] = init_struct_coder(monitor, dongles[num_coders - 1],
 				dongles[0], 0);
 		if (!coders[0])
@@ -75,15 +79,8 @@ int	main(int ac, char *av[])
 				return (ft_free(config, coders, dongles, monitor, num_coders));
 			i++;
 		}
-		i = 0;
-		while (i < num_coders)
-		{
-			printf("id coder %d \n", coders[i]->id_coder);
-			printf("dongle haut %d \n", coders[i]->dongle_up->id_dongle);
-			printf("dongle bas %d \n ", coders[i]->dongle_down->id_dongle);
-			printf("\n");
-			i++;
-		}
+		monitor->array_coders = coders;
+		monitor->array_dongles = dongles;
 	}
 	else
 	{
