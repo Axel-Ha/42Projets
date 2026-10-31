@@ -6,11 +6,26 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 14:29:53 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/10/30 20:47:31 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/10/31 11:26:35 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../codexion.h"
+
+void	ft_free_queue_priority(t_queue **queue_priority)
+{
+	t_queue	*current;
+	t_queue	*next;
+
+	current = *queue_priority;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	queue_priority = NULL;
+}
 
 void	ft_free_coders(t_coder **coders, int num)
 {
@@ -64,19 +79,4 @@ void	ft_free(t_parsing *config, t_simulation *monitor, int num)
 		pthread_mutex_destroy(&monitor->mutex_status);
 		free(monitor);
 	}
-}
-
-void	ft_free_queue_priority(t_queue **queue_priority)
-{
-	t_queue	*current;
-	t_queue	*next;
-
-	current = *queue_priority;
-	while (current)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	queue_priority = NULL;
 }
