@@ -20,7 +20,7 @@ run:
 	./$(NAME) 5 100 30 40 50 3 20 fifo
 
 valgrind:
-	valgrind --leak-check=yes ./$(NAME) 5 100 30 40 50 3 20 fifo
+	valgrind --leak-check=yes ./$(NAME) 5 100 30 40 50 3 20 fifow
 
 clean:
 	rm -f $(OBJECTS)

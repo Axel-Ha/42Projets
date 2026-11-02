@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 14:38:35 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/02 16:24:00 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ typedef enum e_coder_state
 {
 	WAITING = 0,
 	COMPILING,
+	DEBUGGING,
+	REFACTOR,
 	DEAD
 }							t_coder_state;
 
@@ -94,7 +96,6 @@ struct						s_simulation
 
 int							ft_check_atoi(const char *str);
 int							parser(char *av[], t_parsing *config);
-void						valid_arguments(char *av[], t_parsing *config);
 t_simulation				*init_struct_simulation(t_parsing *config);
 t_coder						*init_struct_coder(t_simulation *simulation,
 								t_dongle *dongle_up, t_dongle *dongle_down,
@@ -102,6 +103,6 @@ t_coder						*init_struct_coder(t_simulation *simulation,
 t_dongle					*init_struct_dongle(int id);
 t_queue						*init_struct_queue_priority(int id_coder,
 								long long key);
-void						ft_free(t_parsing *config, t_simulation *monitor);
+void						ft_free_simulation(t_simulation *monitor);
 
 #endif
