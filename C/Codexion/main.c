@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 16:28:01 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/02 17:13:47 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	ft_allocate_monitor_arrays(t_simulation *monitor, t_parsing *config)
 	if (!monitor->array_dongles)
 		return (1);
 	memset(monitor->array_dongles, 0, sizeof(t_dongle *) * num);
+	return (1);
 	return (0);
 }
 
@@ -69,6 +70,7 @@ t_simulation	*ft_create_monitor(t_parsing *config)
 	}
 	if (ft_allocate_monitor_arrays(monitor, config) == 1)
 	{
+		ft_free_simulation(monitor);
 		return (NULL);
 	}
 	return (monitor);
