@@ -19,6 +19,8 @@ $(NAME): $(OBJECTS)
 run:
 	./$(NAME) 5 100 30 40 50 3 20 fifo
 
+valgrind:
+	valgrind --leak-check=yes ./$(NAME) 5 100 30 40 50 3 20 fifo
 
 clean:
 	rm -f $(OBJECTS)
@@ -28,4 +30,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all run clean fclean re
+.PHONY: all run clean fclean re valgrind

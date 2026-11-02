@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 14:29:53 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/10/31 11:26:35 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/02 11:05:09 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_free_queue_priority(t_queue **queue_priority)
 		free(current);
 		current = next;
 	}
-	queue_priority = NULL;
 }
 
 void	ft_free_coders(t_coder **coders, int num)
@@ -69,13 +68,16 @@ void	ft_free_dongles(t_dongle **dongles, int num)
 	}
 }
 
-void	ft_free(t_parsing *config, t_simulation *monitor, int num)
+void	ft_free(t_parsing *config, t_simulation *monitor)
 {
-	ft_free_dongles(monitor->array_dongles, num);
-	ft_free_coders(monitor->array_coders, num);
+	int num;
+
+	num = config->number_of_coders;
 	free(config);
 	if (monitor)
 	{
+		ft_free_dongles(monitor->array_dongles, num);
+		ft_free_coders(monitor->array_coders, num);
 		pthread_mutex_destroy(&monitor->mutex_status);
 		free(monitor);
 	}

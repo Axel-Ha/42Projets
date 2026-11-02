@@ -14,6 +14,19 @@ typedef struct s_dongle		t_dongle;
 typedef struct s_simulation	t_simulation;
 typedef struct s_queue		t_queue;
 
+typedef enum e_coder_state
+{
+	WAITING = 0,
+	COMPILING,
+	DEAD
+}							t_coder_state;
+
+typedef enum e_dongle_state
+{
+	FREE = 0,
+	TAKEN,
+}							t_dongle_state;
+
 struct						s_parsing
 {
 	int						number_of_coders;
@@ -36,7 +49,7 @@ struct						s_queue
 struct						s_dongle
 {
 	int						id_dongle;
-	char					*etat;
+	int						etat;
 	struct timespec			time_before_ready;
 	t_queue					*queue_priority;
 	pthread_cond_t			cond_dongle;
@@ -47,7 +60,7 @@ struct						s_coder
 {
 	int						id_coder;
 	pthread_t				id_thread_coder;
-	char					*etat;
+	int						etat;
 	int						count_compilation;
 	struct timespec			time_last_compile;
 	t_dongle				*dongle_up;
@@ -59,7 +72,7 @@ struct						s_coder
 struct						s_simulation
 {
 	struct timespec			start_time_simulation;
-	char					*status_simulation;
+	int						simulation_ended;
 	pthread_mutex_t			mutex_status;
 	t_parsing				*config;
 	pthread_t				thread_monitor;
@@ -77,7 +90,6 @@ t_coder						*init_struct_coder(t_simulation *simulation,
 t_dongle					*init_struct_dongle(int id);
 t_queue						*init_struct_queue_priority(int id_coder,
 								long long key);
-void						ft_free(t_parsing *config, t_simulation *monitor,
-								int num);
+void						ft_free(t_parsing *config, t_simulation *monitor);
 
 #endif

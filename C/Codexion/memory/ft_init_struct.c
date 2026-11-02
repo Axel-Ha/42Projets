@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 18:05:25 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/10/30 15:05:02 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/02 11:46:06 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ t_simulation	*init_struct_simulation(t_parsing *config)
 	simulation = malloc(sizeof(t_simulation));
 	if (!simulation)
 		return (NULL);
-	simulation->start_time_simulation.tv_sec = 0;
-	simulation->status_simulation = "False";
+	simulation->simulation_ended = 0;
 	simulation->config = config;
 	simulation->array_coders = NULL;
 	simulation->array_dongles = NULL;
+	memset(&simulation->start_time_simulation, 0, sizeof(struct timespec));
 	if (pthread_mutex_init(&simulation->mutex_status, NULL))
 	{
 		free(simulation);
@@ -41,9 +41,8 @@ t_coder	*init_struct_coder(t_simulation *simulation, t_dongle *dongle_up,
 	if (!coder)
 		return (NULL);
 	coder->id_coder = id;
-	coder->etat = "Waiting";
+	coder->etat = WAITING;
 	coder->count_compilation = 0;
-	coder->time_last_compile.tv_sec = 0;
 	coder->dongle_up = dongle_up;
 	coder->dongle_down = dongle_down;
 	coder->struct_simulation = simulation;
@@ -64,7 +63,7 @@ t_dongle	*init_struct_dongle(int id)
 	if (!dongle)
 		return (NULL);
 	dongle->id_dongle = id;
-	dongle->etat = "Not taken";
+	dongle->etat = FREE;
 	dongle->queue_priority = NULL;
 	memset(&dongle->time_before_ready, 0, sizeof(struct timespec));
 	if (pthread_mutex_init(&dongle->mutex_dongle, NULL))
