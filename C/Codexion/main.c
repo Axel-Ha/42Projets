@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 12:10:39 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/02 14:39:18 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	ft_create_coders_and_dongles(t_parsing *config, t_simulation *monitor,
 	}
 	return (0);
 }
+
 t_simulation	*ft_create_monitor(t_parsing *config)
 {
 	t_dongle		**dongles;
@@ -101,7 +102,6 @@ t_simulation	*ft_parse_and_init(char *av[])
 	}
 	valid_arguments(av, config);
 	monitor = ft_check_errors_init(config);
-	
 	if (!monitor)
 	{
 		ft_free(config, monitor);

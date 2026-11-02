@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 18:05:25 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 11:46:06 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/02 14:39:50 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_dongle	*init_struct_dongle(int id)
 
 t_queue	*init_struct_queue_priority(int id_coder, long long key)
 {
-	t_queue *queue_prio;
+	t_queue		*queue_prio;
 
 	queue_prio = malloc(sizeof(t_queue));
 	if (!queue_prio)

@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 14:29:53 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 11:05:09 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/02 14:40:01 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_free_dongles(t_dongle **dongles, int num)
 
 void	ft_free(t_parsing *config, t_simulation *monitor)
 {
-	int num;
+	int	num;
 
 	num = config->number_of_coders;
 	free(config);
