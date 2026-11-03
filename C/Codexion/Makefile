@@ -4,6 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 SOURCES = Parsing/ft_check_atoi.c Parsing/parsing.c \
 		  memory/ft_init_struct.c memory/ft_free.c \
+		  time/management_time.c \
 		  main.c
 
 OBJECTS = $(SOURCES:.c=.o)

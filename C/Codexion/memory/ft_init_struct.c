@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 18:05:25 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 14:39:50 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/03 10:43:00 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_simulation	*init_struct_simulation(t_parsing *config)
 	simulation->config = config;
 	simulation->array_coders = NULL;
 	simulation->array_dongles = NULL;
-	memset(&simulation->start_time_simulation, 0, sizeof(struct timespec));
+	simulation->start_time_simulation = ft_get_time_in_ms();
 	if (pthread_mutex_init(&simulation->mutex_status, NULL))
 	{
 		free(simulation);
@@ -46,7 +46,7 @@ t_coder	*init_struct_coder(t_simulation *simulation, t_dongle *dongle_up,
 	coder->dongle_up = dongle_up;
 	coder->dongle_down = dongle_down;
 	coder->struct_simulation = simulation;
-	memset(&coder->time_last_compile, 0, sizeof(struct timespec));
+	coder->time_last_compile = 0;
 	if (pthread_mutex_init(&coder->mutex_coder, NULL))
 	{
 		free(coder);
@@ -65,7 +65,7 @@ t_dongle	*init_struct_dongle(int id)
 	dongle->id_dongle = id;
 	dongle->etat = FREE;
 	dongle->queue_priority = NULL;
-	memset(&dongle->time_before_ready, 0, sizeof(struct timespec));
+	dongle->time_before_ready = 0;
 	if (pthread_mutex_init(&dongle->mutex_dongle, NULL))
 	{
 		free(dongle);

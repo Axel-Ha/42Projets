@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 16:24:00 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/03 10:38:42 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ struct						s_dongle
 {
 	int						id_dongle;
 	int						etat;
-	struct timespec			time_before_ready;
+	long long				time_before_ready;
 	t_queue					*queue_priority;
 	pthread_cond_t			cond_dongle;
 	pthread_mutex_t			mutex_dongle;
@@ -76,7 +76,7 @@ struct						s_coder
 	pthread_t				id_thread_coder;
 	int						etat;
 	int						count_compilation;
-	struct timespec			time_last_compile;
+	long long				time_last_compile;
 	t_dongle				*dongle_up;
 	t_dongle				*dongle_down;
 	pthread_mutex_t			mutex_coder;
@@ -85,7 +85,7 @@ struct						s_coder
 
 struct						s_simulation
 {
-	struct timespec			start_time_simulation;
+	long long				start_time_simulation;
 	int						simulation_ended;
 	pthread_mutex_t			mutex_status;
 	t_parsing				*config;
