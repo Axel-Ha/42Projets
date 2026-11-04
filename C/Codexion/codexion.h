@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/04 16:41:06 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/04 18:50:54 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,15 @@ typedef enum e_dongle_state
 	FREE = 0,
 	TAKEN,
 }							t_dongle_state;
+
+typedef enum e_log_coder
+{
+	LOG_TAKING = 0,
+	LOG_COMPILING,
+	LOG_DEBUGGING,
+	LOG_REFACTOR,
+	LOG_DEAD
+}							t_log_coder;
 
 struct						s_parsing
 {
@@ -109,5 +118,7 @@ long long					ft_elapsed_time(t_simulation *monitor);
 long long					ft_get_time_in_ms(void);
 void						ft_ms_to_timespec(long long time_ms,
 								struct timespec *ts);
+void						ft_print_logs(t_simulation *monitor, int id_coder,
+								t_log_coder log_coder);
 
 #endif
