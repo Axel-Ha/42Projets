@@ -1,6 +1,7 @@
 NAME = codexion
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 SOURCES = Parsing/ft_check_atoi.c Parsing/parsing.c \
 		  memory/ft_init_struct.c memory/ft_free.c \

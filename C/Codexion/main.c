@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 17:13:47 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/04 17:22:01 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	ft_allocate_monitor_arrays(t_simulation *monitor, t_parsing *config)
 	if (!monitor->array_dongles)
 		return (1);
 	memset(monitor->array_dongles, 0, sizeof(t_dongle *) * num);
-	return (1);
 	return (0);
 }
 
@@ -114,6 +113,17 @@ int	main(int ac, char *av[])
 	}
 	else
 		return (1);
+	monitor->start_time_simulation = ft_get_time_in_ms();
+	if (monitor->start_time_simulation == -1)
+	{
+		ft_free_simulation(monitor);
+		return (1);
+	}
+	printf("time elapsed %lld\n", ft_elapsed_time(monitor));
+	usleep(1000000);
+	printf("%lld coder has compiled\n", ft_elapsed_time(monitor));
+	usleep(1500000);
+	printf("%lld coder has compiled\n", ft_elapsed_time(monitor));
 	ft_free_simulation(monitor);
 	return (0);
 }

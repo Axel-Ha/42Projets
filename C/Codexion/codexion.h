@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/03 10:38:42 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/04 16:41:06 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <time.h>
+# include <unistd.h>
 
 typedef struct s_parsing	t_parsing;
 typedef struct s_coder		t_coder;
@@ -104,5 +105,9 @@ t_dongle					*init_struct_dongle(int id);
 t_queue						*init_struct_queue_priority(int id_coder,
 								long long key);
 void						ft_free_simulation(t_simulation *monitor);
+long long					ft_elapsed_time(t_simulation *monitor);
+long long					ft_get_time_in_ms(void);
+void						ft_ms_to_timespec(long long time_ms,
+								struct timespec *ts);
 
 #endif
