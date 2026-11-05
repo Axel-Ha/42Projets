@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:40:56 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/04 17:23:30 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/05 10:35:29 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ long long	ft_elapsed_time(t_simulation *monitor)
 
 void	ft_ms_to_timespec(long long time_ms, struct timespec *ts)
 {
-	long long sec;
-	long long remainder_ms;
-	long long remainder_ns;
+	long long	sec;
+	long long	remainder_ms;
+	long long	remainder_ns;
 
 	sec = time_ms / 1000;
 	remainder_ms = time_ms % 1000;

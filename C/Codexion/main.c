@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/04 18:49:55 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/05 10:35:35 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,30 +101,24 @@ t_simulation	*ft_parse_and_init(char *av[])
 	return (monitor);
 }
 
-//int	main(int ac, char *av[])
-//{
-//	t_simulation	*monitor;
+int	main(int ac, char *av[])
+{
+	t_simulation	*monitor;
 
-//	if (ac == 9)
-//	{
-//		monitor = ft_parse_and_init(av);
-//		if (!monitor)
-//			return (1);
-//	}
-//	else
-//		return (1);
-//	monitor->start_time_simulation = ft_get_time_in_ms();
-//	if (monitor->start_time_simulation == -1)
-//	{
-//		ft_free_simulation(monitor);
-//		return (1);
-//	}
-	
-//	printf("time elapsed %lld\n", ft_elapsed_time(monitor));
-//	usleep(1000000);
-//	printf("%lld coder has compiled\n", ft_elapsed_time(monitor));
-//	usleep(1500000);
-//	printf("%lld coder has compiled\n", ft_elapsed_time(monitor));
-//	ft_free_simulation(monitor);
-//	return (0);
-//}
+	if (ac == 9)
+	{
+		monitor = ft_parse_and_init(av);
+		if (!monitor)
+			return (1);
+	}
+	else
+		return (1);
+	monitor->start_time_simulation = ft_get_time_in_ms();
+	if (monitor->start_time_simulation == -1)
+	{
+		ft_free_simulation(monitor);
+		return (1);
+	}
+	ft_free_simulation(monitor);
+	return (0);
+}
