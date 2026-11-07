@@ -1,9 +1,11 @@
-FROM alpine:latest
+FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y nginx
+RUN apt-get update && apt-get install -y mariadb-server
 
-COPY nginx.conf /etc/nginx/nginx.conf
+EXPOSE 3306
 
-EXPOSE 80
+COPY entrypoint.sh /usr/local/bin
 
-CMD ["/usr/sbin/nginx"]
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

@@ -1,9 +1,20 @@
-FROM alpine:latest
+FROM debian:bookworm-slim
 
-RUN apt-get update && apt-get install -y php
+RUN apt-get update && apt-get install -y php curl sudo netcat-openbsd
+RUN apt-get install -y php-fpm php-mysql 
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY www.conf /etc/php/8.2/fpm/pool.d/
 
-EXPOSE 80
+WORKDIR /var/www/html 
 
-CMD ["/usr/sbin/nginx"]
+RUN curl -o wp-cli.phar https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/wp
+RUN chown -R www-data:www-data /usr/local/bin/wp
+RUN chmod +x /usr/local/bin/wp
+
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+EXPOSE 9000
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
