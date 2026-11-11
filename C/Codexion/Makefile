@@ -7,6 +7,9 @@ SOURCES = Parsing/ft_check_atoi.c Parsing/parsing.c \
 		  memory/ft_init_struct.c memory/ft_free.c \
 		  time/management_time.c \
 		  log/ft_log.c \
+		  coder/ft_coder.c \
+		  dongle/ft_dongle.c \
+		  thread/ft_thread.c
 		  main.c
 
 OBJECTS = $(SOURCES:.c=.o)

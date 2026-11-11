@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/04 18:50:54 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/10 10:41:34 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ struct						s_coder
 struct						s_simulation
 {
 	long long				start_time_simulation;
+	pthread_t				thread_monitor;
 	int						simulation_ended;
 	pthread_mutex_t			mutex_status;
 	t_parsing				*config;
-	pthread_t				thread_monitor;
 	t_coder					**array_coders;
 	t_dongle				**array_dongles;
 };
@@ -120,5 +120,10 @@ void						ft_ms_to_timespec(long long time_ms,
 								struct timespec *ts);
 void						ft_print_logs(t_simulation *monitor, int id_coder,
 								t_log_coder log_coder);
+void						ft_solo_coder(void);
+int							ft_take_dongle(t_coder *coder, t_dongle *dongle);
+void						ft_release_dongle(t_coder *coder, t_dongle *dongle);
+int							ft_get_is_simulation_finished(t_simulation *monitor);
+void						ft_set_simulation_ended(t_simulation *monitor);
 
 #endif
