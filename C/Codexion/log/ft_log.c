@@ -6,21 +6,20 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/04 17:25:12 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/05 11:25:16 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/05 11:53:50 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../codexion.h"
 
-void	ft_all_coder_compiled(t_simulation *monitor)
+void	ft_set_simulation_ended(t_simulation *monitor)
 {
 	pthread_mutex_lock(&monitor->mutex_status);
 	monitor->simulation_ended = 1;
 	pthread_mutex_unlock(&monitor->mutex_status);
-	return ;
 }
 
-int	get_is_simulation_finished(t_simulation *monitor)
+int	ft_get_is_simulation_finished(t_simulation *monitor)
 {
 	int	status;
 
@@ -30,7 +29,7 @@ int	get_is_simulation_finished(t_simulation *monitor)
 	return (status);
 }
 
-static void	ft_put_log(t_simulation *monitor, int id_coder, char *str)
+static void	ft_put_log(t_simulation *monitor, int id_coder, const char *str)
 {
 	long long	now;
 
@@ -40,8 +39,6 @@ static void	ft_put_log(t_simulation *monitor, int id_coder, char *str)
 
 void	ft_print_death_coder(t_simulation *monitor, int id_coder)
 {
-	long long	now;
-
 	pthread_mutex_lock(&monitor->mutex_status);
 	if (monitor->simulation_ended != 1)
 	{
@@ -50,8 +47,6 @@ void	ft_print_death_coder(t_simulation *monitor, int id_coder)
 	}
 	pthread_mutex_unlock(&monitor->mutex_status);
 }
-// ft_print_logs(t_arg->monitor, t_arg->id,
-//	LOG_COMPILING); COMMENT UTILISER LA FONCTION
 
 void	ft_print_logs(t_simulation *monitor, int id_coder,
 		t_log_coder log_coder)
