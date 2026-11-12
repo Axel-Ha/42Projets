@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/05 10:48:11 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/12 14:24:03 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ t_simulation	*ft_parse_and_init(char *av[])
 int	main(int ac, char *av[])
 {
 	t_simulation	*monitor;
+	int				i;
 
 	if (ac == 9)
 	{
@@ -118,6 +119,19 @@ int	main(int ac, char *av[])
 	{
 		ft_free_simulation(monitor);
 		return (1);
+	}
+	if ((ft_thread_create_coder(monitor)
+			|| ft_thread_create_monitor(monitor)) == 1)
+	{
+		ft_free_simulation(monitor);
+		return (1);
+	}
+	pthread_join(monitor->thread_monitor, NULL);
+	i = 0;
+	while (i < monitor->config->number_of_coders)
+	{
+		pthread_join(monitor->array_coders[i]->id_thread_coder, NULL);
+		i++;
 	}
 	ft_free_simulation(monitor);
 	return (0);

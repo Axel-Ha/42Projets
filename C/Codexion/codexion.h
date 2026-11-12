@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/10 10:41:34 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/11 16:39:05 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,10 +120,15 @@ void						ft_ms_to_timespec(long long time_ms,
 								struct timespec *ts);
 void						ft_print_logs(t_simulation *monitor, int id_coder,
 								t_log_coder log_coder);
-void						ft_solo_coder(void);
 int							ft_take_dongle(t_coder *coder, t_dongle *dongle);
 void						ft_release_dongle(t_coder *coder, t_dongle *dongle);
-int							ft_get_is_simulation_finished(t_simulation *monitor);
+int							ft_get_is_simulation_finished(
+								t_simulation *monitor);
 void						ft_set_simulation_ended(t_simulation *monitor);
+int							ft_thread_create_coder(t_simulation *monitor);
+int							ft_thread_create_monitor(t_simulation *monitor);
+int							ft_coder_take_dongles(t_coder *coder);
+int							ft_solo_coder(t_coder *coder, t_dongle *dongle);
+void						ft_wake_up_all(t_simulation *monitor);
 
 #endif

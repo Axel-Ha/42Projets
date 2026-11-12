@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 14:32:24 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/11 11:18:22 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/11 12:40:41 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_take_dongle(t_coder *coder, t_dongle *dongle)
 		if (ft_get_is_simulation_finished(monitor) == 1)
 		{
 			pthread_mutex_unlock(&dongle->mutex_dongle);
-			return (-1);
+			return (1);
 		}
 		ft_ms_to_timespec(dongle->time_before_ready, &ts);
 		if (dongle->etat == TAKEN)

@@ -1,7 +1,6 @@
 NAME = codexion
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-#CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 SOURCES = Parsing/ft_check_atoi.c Parsing/parsing.c \
 		  memory/ft_init_struct.c memory/ft_free.c \
@@ -9,7 +8,8 @@ SOURCES = Parsing/ft_check_atoi.c Parsing/parsing.c \
 		  log/ft_log.c \
 		  coder/ft_coder.c \
 		  dongle/ft_dongle.c \
-		  thread/ft_thread.c
+		  thread/ft_thread.c \
+		  monitor/ft_monitor.c \
 		  main.c
 
 OBJECTS = $(SOURCES:.c=.o)
@@ -23,7 +23,7 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 run:
-	./$(NAME) 5 100 30 40 50 3 20 fifo
+	./$(NAME) 2 800 200 200 200 3 200 fifo
 
 valgrind:
 	valgrind --leak-check=yes ./$(NAME) 5 100 30 40 50 3 20 fifo
