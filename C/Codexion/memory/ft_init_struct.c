@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 18:05:25 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/03 16:25:20 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/12 19:24:22 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_dongle	*init_struct_dongle(int id)
 
 t_queue	*init_struct_queue_priority(int id_coder, long long key)
 {
-	t_queue		*queue_prio;
+	t_queue	*queue_prio;
 
 	queue_prio = malloc(sizeof(t_queue));
 	if (!queue_prio)
@@ -91,4 +91,16 @@ t_queue	*init_struct_queue_priority(int id_coder, long long key)
 	queue_prio->key = key;
 	queue_prio->next = NULL;
 	return (queue_prio);
+}
+
+void	ft_init_last_compile(t_simulation *monitor)
+{
+	int i;
+
+	i = 0;
+	while (i < monitor->config->number_of_coders)
+	{
+		monitor->array_coders[i]->time_last_compile = monitor->start_time_simulation;
+		i++;
+	}
 }
