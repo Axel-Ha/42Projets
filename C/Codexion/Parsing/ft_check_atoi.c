@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/14 12:31:40 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/11 16:21:28 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/12 16:23:50 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	ft_check_atoi(const char *str)
 
 	result = 0;
 	if (*str == ' ' || (*str >= 9 && *str <= 13))
-		return (1);
+		return (-1);
 	if (*str == '+' || *str == '-')
-		return (1);
+		return (-1);
 	while (*str >= '0' && *str <= '9')
 	{
 		if (result > INT_MAX / 10 || (result == INT_MAX / 10 && (*str
@@ -30,6 +30,6 @@ int	ft_check_atoi(const char *str)
 		str++;
 	}
 	if (*str != '\0')
-		return (1);
+		return (-1);
 	return (result);
 }

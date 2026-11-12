@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:44:59 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 17:15:41 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/12 16:24:08 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	parser(char *av[], t_parsing *config)
 	i = 0;
 	while (i < 7)
 	{
-		if (ft_check_atoi(av[i + 1]) == 1)
+		if (ft_check_atoi(av[i + 1]) == -1)
 			return (1);
 		i++;
 	}
