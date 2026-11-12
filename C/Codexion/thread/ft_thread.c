@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 14:42:55 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/11 17:06:01 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/12 16:24:15 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,26 @@ static void	*ft_coder_routine(void *arg)
 {
 	t_simulation	*monitor;
 	t_coder			*coder;
-
 	coder = (t_coder *)arg;
 	monitor = coder->struct_simulation;
 	if (monitor->config->number_of_coders == 1)
 	{
-		ft_solo_coder(coder, coder->dongle_up);
+		ft_solo_coder(coder);
 		return (NULL);
 	}
 	while (ft_get_is_simulation_finished(monitor) != 1)
 	{
 		if (ft_coder_take_dongles(coder) == 1)
 			return (NULL);
-		ft_print_logs(monitor, coder->id_coder, LOG_COMPILING);
 		ft_release_dongle(coder, coder->dongle_up);
 		ft_release_dongle(coder, coder->dongle_down);
 		pthread_mutex_lock(&coder->mutex_coder);
 		coder->count_compilation++;
-		coder->time_last_compile = ft_get_time_in_ms();
 		pthread_mutex_unlock(&coder->mutex_coder);
-		// ft_debug
-		// ft_refactor
+		if(ft_debug(coder) == 1)
+			return (NULL);
+		if(ft_refactor(coder))
+			return (NULL);
 	}
 	return (NULL);
 }

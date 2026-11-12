@@ -6,17 +6,18 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 14:21:39 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/11 16:38:31 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/12 16:25:50 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../codexion.h"
 
-int	ft_solo_coder(t_coder *coder, t_dongle *dongle)
+int	ft_solo_coder(t_coder *coder)
 {
-	(void)coder;
-	(void)dongle;
-	return (0);
+	//ft_take_dongle(coder, coder->dongle_up);
+	//if(ft_take_dongle(coder, coder->dongle_down) == 1)
+	//	printf("TESTESTEST");
+	//return (0);
 }
 
 int	ft_coder_take_dongles(t_coder *coder)
@@ -24,6 +25,29 @@ int	ft_coder_take_dongles(t_coder *coder)
 	if (ft_take_dongle(coder, coder->dongle_up) == 1)
 		return (1);
 	if (ft_take_dongle(coder, coder->dongle_down) == 1)
+		return (1);
+	coder->time_last_compile = ft_get_time_in_ms();
+	ft_print_logs(coder->struct_simulation, coder->id_coder, LOG_COMPILING);
+	if (ft_sleep(coder->struct_simulation,
+			coder->struct_simulation->config->time_to_compile) == 1)
+		return (1);
+	return (0);
+}
+
+int	ft_debug(t_coder *coder)
+{
+	ft_print_logs(coder->struct_simulation, coder->id_coder, LOG_DEBUGGING);
+	if (ft_sleep(coder->struct_simulation,
+			coder->struct_simulation->config->time_to_debug) == 1)
+		return (1);
+	return (0);
+}
+
+int	ft_refactor(t_coder *coder)
+{
+	ft_print_logs(coder->struct_simulation, coder->id_coder, LOG_REFACTOR);
+	if (ft_sleep(coder->struct_simulation,
+			coder->struct_simulation->config->time_to_refactor) == 1)
 		return (1);
 	return (0);
 }
