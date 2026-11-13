@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 14:42:55 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 07:51:01 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/13 10:16:19 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static int	ft_check_coder(t_simulation *monitor, t_coder *coder, int *count)
 		ft_wake_up_all(monitor);
 		return (1);
 	}
-	if (coder->count_compilation >= (
-			monitor->config->number_of_compiles_required))
+	if (coder->count_compilation >= (monitor->config->number_of_compiles_required))
 		(*count)++;
 	pthread_mutex_unlock(&coder->mutex_coder);
 	return (0);
@@ -34,23 +33,22 @@ static int	ft_check_coder(t_simulation *monitor, t_coder *coder, int *count)
 
 static void	*ft_coder_routine(void *arg)
 {
-	t_simulation	*monitor;
-	t_coder			*coder;
+	t_coder	*coder;
 
 	coder = (t_coder *)arg;
-	monitor = coder->struct_simulation;
-	if (monitor->config->number_of_coders == 1)
+	if (coder->struct_simulation->config->number_of_coders == 1)
 	{
 		ft_solo_coder(coder);
 		return (NULL);
 	}
-	while (ft_get_is_simulation_finished(monitor) != 1)
+	while (ft_get_is_simulation_finished(coder->struct_simulation) != 1)
 	{
-		if (ft_coder_take_dongles(coder) == 1)
+		if (ft_take_dongles(coder) == 1)
 			return (NULL);
 		if (ft_compile(coder) == 1)
 			return (NULL);
-		ft_release_dongles(coder);
+		ft_release_dongle(coder, coder->dongle_up);
+		ft_release_dongle(coder, coder->dongle_down);
 		pthread_mutex_lock(&coder->mutex_coder);
 		coder->count_compilation++;
 		pthread_mutex_unlock(&coder->mutex_coder);

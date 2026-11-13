@@ -10,6 +10,7 @@ SOURCES = Parsing/ft_check_atoi.c Parsing/parsing.c \
 		  dongle/ft_dongle.c \
 		  thread/ft_thread.c \
 		  monitor/ft_monitor.c \
+		  heap/ft_heap.c \
 		  main.c
 
 OBJECTS = $(SOURCES:.c=.o)

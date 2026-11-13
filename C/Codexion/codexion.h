@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 07:51:20 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/13 10:18:13 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,11 @@ void						ft_ms_to_timespec(long long time_ms,
 								struct timespec *ts);
 void						ft_print_logs(t_simulation *monitor, int id_coder,
 								t_log_coder log_coder);
-int							ft_take_dongle(t_coder *coder, t_dongle *dongle);
-int							ft_get_is_simulation_finished(
-								t_simulation *monitor);
+int							ft_take_dongles(t_coder *coder);
+int							ft_get_is_simulation_finished(t_simulation *monitor);
 void						ft_set_simulation_ended(t_simulation *monitor);
 int							ft_thread_create_coder(t_simulation *monitor);
 int							ft_thread_create_monitor(t_simulation *monitor);
-int							ft_coder_take_dongles(t_coder *coder);
 int							ft_solo_coder(t_coder *coder);
 void						ft_wake_up_all(t_simulation *monitor);
 int							ft_debug(t_coder *coder);
@@ -137,6 +135,6 @@ int							ft_compile(t_coder *coder);
 void						ft_print_death_coder(t_simulation *monitor,
 								int id_coder);
 void						ft_init_last_compile(t_simulation *monitor);
-void						ft_release_dongles(t_coder *coder);
+void						ft_release_dongle(t_coder *coder, t_dongle *dongle);
 
 #endif
