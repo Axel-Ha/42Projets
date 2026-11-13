@@ -24,7 +24,7 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 run:
-	./$(NAME) 5 800 200 200 200 3 0 fifo
+	./$(NAME) 1 200 200 200 200 3 0 fifo
 	./$(NAME) 5 310 200 100 100 5 0 fifo
 
 valgrind:
