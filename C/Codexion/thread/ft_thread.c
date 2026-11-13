@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 14:42:55 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 10:16:19 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/13 12:39:10 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ static int	ft_check_coder(t_simulation *monitor, t_coder *coder, int *count)
 		ft_wake_up_all(monitor);
 		return (1);
 	}
-	if (coder->count_compilation >= (monitor->config->number_of_compiles_required))
+	if (coder->count_compilation >= (
+			monitor->config->number_of_compiles_required))
 		(*count)++;
 	pthread_mutex_unlock(&coder->mutex_coder);
 	return (0);
