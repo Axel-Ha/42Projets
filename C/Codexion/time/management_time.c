@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/03 10:40:56 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/12 17:38:35 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/13 07:50:10 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	ft_ms_to_timespec(long long time_ms, struct timespec *ts)
 	ts->tv_sec = sec;
 }
 
-int ft_sleep(t_simulation *monitor, long long time)
+int	ft_sleep(t_simulation *monitor, long long time)
 {
-	long long end_time;
-	
+	long long	end_time;
+
 	end_time = ft_get_time_in_ms() + time;
-	while(ft_get_time_in_ms() < end_time)
+	while (ft_get_time_in_ms() < end_time)
 	{
-		if(ft_get_is_simulation_finished(monitor))
+		if (ft_get_is_simulation_finished(monitor))
 			return (1);
 		usleep(1000);
 	}
