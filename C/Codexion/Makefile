@@ -7,7 +7,7 @@ SOURCES = Parsing/ft_check_atoi.c Parsing/parsing.c \
 		  time/management_time.c \
 		  log/ft_log.c \
 		  coder/ft_coder.c \
-		  dongle/ft_dongle.c \
+		  dongle/ft_dongle.c dongle/ft_dongle_2.c \
 		  thread/ft_thread.c \
 		  monitor/ft_monitor.c \
 		  heap/ft_heap.c \
@@ -25,6 +25,7 @@ $(NAME): $(OBJECTS)
 
 run:
 	./$(NAME) 5 800 200 200 200 3 0 fifo
+	./$(NAME) 5 310 200 100 100 5 0 fifo
 
 valgrind:
 	valgrind --leak-check=yes ./$(NAME) 5 100 30 40 50 3 20 fifo

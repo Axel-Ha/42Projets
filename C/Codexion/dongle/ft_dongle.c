@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 14:32:24 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 10:18:05 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/13 12:37:53 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_release_dongle(t_coder *coder, t_dongle *dongle)
 	pthread_cond_broadcast(&dongle->cond_dongle);
 	pthread_mutex_unlock(&dongle->mutex_dongle);
 }
+
 static void	ft_wait_dongle(t_dongle *blocking)
 {
 	struct timespec	ts;
@@ -37,6 +38,7 @@ static void	ft_wait_dongle(t_dongle *blocking)
 			&ts);
 	}
 }
+
 static int	ft_is_available(t_dongle *dongle)
 {
 	if (dongle->etat == TAKEN)
@@ -52,14 +54,9 @@ int	ft_take_dongles(t_coder *coder)
 
 	while (1)
 	{
-		pthread_mutex_lock(&coder->dongle_up->mutex_dongle);
-		pthread_mutex_lock(&coder->dongle_down->mutex_dongle);
+		ft_lock_both_dongle(coder);
 		if (ft_get_is_simulation_finished(coder->struct_simulation) == 1)
-		{
-			pthread_mutex_unlock(&coder->dongle_up->mutex_dongle);
-			pthread_mutex_unlock(&coder->dongle_down->mutex_dongle);
-			return (1);
-		}
+			return (ft_unlock_both_dongle(coder));
 		if (ft_is_available(coder->dongle_up)
 			&& ft_is_available(coder->dongle_down))
 			break ;
@@ -76,11 +73,6 @@ int	ft_take_dongles(t_coder *coder)
 		ft_wait_dongle(blocking);
 		pthread_mutex_unlock(&blocking->mutex_dongle);
 	}
-	coder->dongle_up->etat = TAKEN;
-	coder->dongle_down->etat = TAKEN;
-	ft_print_logs(coder->struct_simulation, coder->id_coder, LOG_TAKING);
-	ft_print_logs(coder->struct_simulation, coder->id_coder, LOG_TAKING);
-	pthread_mutex_unlock(&coder->dongle_up->mutex_dongle);
-	pthread_mutex_unlock(&coder->dongle_down->mutex_dongle);
+	ft_unlock_print_and_state(coder);
 	return (0);
 }

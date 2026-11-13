@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 10:18:13 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/13 11:10:31 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,8 @@ void						ft_print_death_coder(t_simulation *monitor,
 								int id_coder);
 void						ft_init_last_compile(t_simulation *monitor);
 void						ft_release_dongle(t_coder *coder, t_dongle *dongle);
+void						ft_unlock_print_and_state(t_coder *coder);
+void						ft_lock_both_dongle(t_coder *coder);
+int							ft_unlock_both_dongle(t_coder *coder);
 
 #endif
