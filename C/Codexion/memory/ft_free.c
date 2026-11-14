@@ -6,25 +6,11 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 14:29:53 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/02 16:18:47 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/14 14:15:53 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../codexion.h"
-
-void	ft_free_queue_priority(t_queue **queue_priority)
-{
-	t_queue	*current;
-	t_queue	*next;
-
-	current = *queue_priority;
-	while (current)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-}
 
 void	ft_free_coders(t_coder **coders, int num)
 {
@@ -57,7 +43,6 @@ void	ft_free_dongles(t_dongle **dongles, int num)
 		{
 			if (dongles[i])
 			{
-				ft_free_queue_priority(&(dongles[i]->queue_priority));
 				pthread_mutex_destroy(&dongles[i]->mutex_dongle);
 				pthread_cond_destroy(&dongles[i]->cond_dongle);
 				free(dongles[i]);

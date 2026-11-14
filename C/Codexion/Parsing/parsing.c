@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:44:59 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/12 16:24:08 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/14 14:00:03 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_fill_config(char *av[], t_parsing *config)
 	config->time_to_refactor = ft_check_atoi(av[5]);
 	config->number_of_compiles_required = ft_check_atoi(av[6]);
 	config->dongle_cooldown = ft_check_atoi(av[7]);
-	if (strcmp(av[8], "fifo"))
+	if (strcmp(av[8], "fifo") == 0)
 		config->scheduler = "fifo";
 	else
 		config->scheduler = "edf";

@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 11:10:31 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/14 18:47:52 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct s_parsing	t_parsing;
 typedef struct s_coder		t_coder;
 typedef struct s_dongle		t_dongle;
 typedef struct s_simulation	t_simulation;
-typedef struct s_queue		t_queue;
+typedef struct s_queue_node	t_node;
+typedef struct s_queue_heap	t_heap;
 
 typedef enum e_coder_state
 {
@@ -63,11 +64,16 @@ struct						s_parsing
 	char					*scheduler;
 };
 
-struct						s_queue
+struct						s_queue_node
 {
 	int						id_coder;
 	long long				key;
-	t_queue					*next;
+};
+
+struct						s_queue_heap
+{
+	t_node					node_coders[2];
+	int						size;
 };
 
 struct						s_dongle
@@ -75,7 +81,7 @@ struct						s_dongle
 	int						id_dongle;
 	int						etat;
 	long long				time_before_ready;
-	t_queue					*queue_priority;
+	t_heap					queue_priority;
 	pthread_cond_t			cond_dongle;
 	pthread_mutex_t			mutex_dongle;
 };
@@ -111,8 +117,6 @@ t_coder						*init_struct_coder(t_simulation *simulation,
 								t_dongle *dongle_up, t_dongle *dongle_down,
 								int id);
 t_dongle					*init_struct_dongle(int id);
-t_queue						*init_struct_queue_priority(int id_coder,
-								long long key);
 void						ft_free_simulation(t_simulation *monitor);
 long long					ft_elapsed_time(t_simulation *monitor);
 long long					ft_get_time_in_ms(void);
@@ -139,5 +143,9 @@ void						ft_release_dongle(t_coder *coder, t_dongle *dongle);
 void						ft_unlock_print_and_state(t_coder *coder);
 void						ft_lock_both_dongle(t_coder *coder);
 int							ft_unlock_both_dongle(t_coder *coder);
+int							ft_heap_less_timestamp(t_node a, t_node b);
+void						ft_heap_push(t_heap *heap, int id, long long key);
+int							ft_get_head_heap(t_heap *heap);
+void						ft_heap_remove(t_heap *heap, int id_coder);	
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 18:05:25 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 07:49:50 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/14 15:14:38 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ t_dongle	*init_struct_dongle(int id)
 		return (NULL);
 	dongle->id_dongle = id;
 	dongle->etat = FREE;
-	dongle->queue_priority = NULL;
 	dongle->time_before_ready = 0;
+	dongle->queue_priority.size = 0;
 	if (pthread_mutex_init(&dongle->mutex_dongle, NULL))
 	{
 		free(dongle);
@@ -80,18 +80,6 @@ t_dongle	*init_struct_dongle(int id)
 	return (dongle);
 }
 
-t_queue	*init_struct_queue_priority(int id_coder, long long key)
-{
-	t_queue	*queue_prio;
-
-	queue_prio = malloc(sizeof(t_queue));
-	if (!queue_prio)
-		return (NULL);
-	queue_prio->id_coder = id_coder;
-	queue_prio->key = key;
-	queue_prio->next = NULL;
-	return (queue_prio);
-}
 
 void	ft_init_last_compile(t_simulation *monitor)
 {

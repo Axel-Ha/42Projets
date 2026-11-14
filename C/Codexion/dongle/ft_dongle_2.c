@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:20:49 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 11:10:24 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/14 13:54:24 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ void	ft_lock_both_dongle(t_coder *coder)
 	pthread_mutex_lock(&coder->dongle_up->mutex_dongle);
 	pthread_mutex_lock(&coder->dongle_down->mutex_dongle);
 }
+
 int	ft_unlock_both_dongle(t_coder *coder)
 {
 	pthread_mutex_unlock(&coder->dongle_up->mutex_dongle);
 	pthread_mutex_unlock(&coder->dongle_down->mutex_dongle);
 	return (1);
 }
+
 void	ft_unlock_print_and_state(t_coder *coder)
 {
 	coder->dongle_up->etat = TAKEN;
