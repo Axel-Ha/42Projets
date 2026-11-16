@@ -24,8 +24,8 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
 run:
-	./$(NAME) 1 200 200 200 200 3 0 fifo
-	./$(NAME) 5 310 200 100 100 5 0 fifo
+	./$(NAME) 2 800 200 200 200 3 0 fifo
+	./$(NAME) 2 800 200 200 200 3 0 edf
 
 valgrind:
 	valgrind --leak-check=yes ./$(NAME) 5 100 30 40 50 3 20 fifo

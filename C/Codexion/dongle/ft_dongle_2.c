@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:20:49 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/14 13:54:24 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 12:30:21 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,21 @@ void	ft_unlock_print_and_state(t_coder *coder)
 	ft_print_logs(coder->struct_simulation, coder->id_coder, LOG_TAKING);
 	pthread_mutex_unlock(&coder->dongle_up->mutex_dongle);
 	pthread_mutex_unlock(&coder->dongle_down->mutex_dongle);
+}
+
+static int	ft_is_available(t_dongle *dongle)
+{
+	if (dongle->etat == TAKEN)
+		return (1);
+	if (dongle->time_before_ready > ft_get_time_in_ms())
+		return (1);
+	return (0);
+}
+
+int	ft_can_take_dongle(t_dongle *dongle, int id_coder)
+{
+	if (ft_is_available(dongle)
+		&& ft_get_head_heap(&(dongle->queue_priority)) == id_coder)
+		return (0);
+	return (1);
 }

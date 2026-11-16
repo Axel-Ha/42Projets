@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 14:32:24 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 12:37:53 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 12:21:21 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,38 +29,58 @@ static void	ft_wait_dongle(t_dongle *blocking)
 {
 	struct timespec	ts;
 
-	if (blocking->etat == TAKEN)
-		pthread_cond_wait(&blocking->cond_dongle, &blocking->mutex_dongle);
-	else
+	if (blocking->time_before_ready > ft_get_time_in_ms())
 	{
 		ft_ms_to_timespec(blocking->time_before_ready, &ts);
 		pthread_cond_timedwait(&blocking->cond_dongle, &blocking->mutex_dongle,
 			&ts);
 	}
+	else
+		pthread_cond_wait(&blocking->cond_dongle, &blocking->mutex_dongle);
 }
 
-static int	ft_is_available(t_dongle *dongle)
+long long	ft_get_key(t_coder *coder)
 {
-	if (dongle->etat == TAKEN)
-		return (0);
-	if (dongle->time_before_ready > ft_get_time_in_ms())
-		return (0);
-	return (1);
+	long long	key;
+	t_parsing	*config;
+
+	config = coder->struct_simulation->config;
+	if (config->scheduler == FIFO)
+		key = ft_take_ticket(coder->struct_simulation);
+	else
+	{
+		pthread_mutex_lock(&(coder->mutex_coder));
+		key = coder->time_last_compile + config->time_to_burnout;
+		pthread_mutex_unlock(&(coder->mutex_coder));
+	}
+	return (key);
 }
 
 int	ft_take_dongles(t_coder *coder)
 {
 	t_dongle	*blocking;
+	long long	key;
+	t_heap		*heap_up;
+	t_heap		*heap_down;
 
+	key = ft_get_key(coder);
+	heap_up = &coder->dongle_up->queue_priority;
+	heap_down = &coder->dongle_down->queue_priority;
+	ft_lock_both_dongle(coder);
+	ft_heap_push(heap_up, coder->id_coder, key);
+	ft_heap_push(heap_down, coder->id_coder, key);
 	while (1)
 	{
-		ft_lock_both_dongle(coder);
 		if (ft_get_is_simulation_finished(coder->struct_simulation) == 1)
+		{
+			ft_heap_remove(heap_up, coder->id_coder);
+			ft_heap_remove(heap_down, coder->id_coder);
 			return (ft_unlock_both_dongle(coder));
-		if (ft_is_available(coder->dongle_up)
-			&& ft_is_available(coder->dongle_down))
+		}
+		if (ft_can_take_dongle(coder->dongle_up, coder->id_coder)
+			&& ft_can_take_dongle(coder->dongle_down, coder->id_coder))
 			break ;
-		if (!ft_is_available(coder->dongle_up))
+		if (!ft_can_take_dongle(coder->dongle_up, coder->id_coder))
 		{
 			blocking = coder->dongle_up;
 			pthread_mutex_unlock(&coder->dongle_down->mutex_dongle);
@@ -72,7 +92,10 @@ int	ft_take_dongles(t_coder *coder)
 		}
 		ft_wait_dongle(blocking);
 		pthread_mutex_unlock(&blocking->mutex_dongle);
+		ft_lock_both_dongle(coder);
 	}
+	ft_heap_remove(heap_up, coder->id_coder);
+	ft_heap_remove(heap_down, coder->id_coder);
 	ft_unlock_print_and_state(coder);
 	return (0);
 }

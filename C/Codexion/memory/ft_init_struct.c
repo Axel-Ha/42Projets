@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 18:05:25 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/14 15:14:38 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 12:31:27 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_simulation	*init_struct_simulation(t_parsing *config)
 	simulation->array_coders = NULL;
 	simulation->array_dongles = NULL;
 	simulation->start_time_simulation = 0;
+	simulation->ticket = 0;
 	if (pthread_mutex_init(&simulation->mutex_status, NULL))
 	{
 		free(simulation);
@@ -80,10 +81,9 @@ t_dongle	*init_struct_dongle(int id)
 	return (dongle);
 }
 
-
 void	ft_init_last_compile(t_simulation *monitor)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < monitor->config->number_of_coders)

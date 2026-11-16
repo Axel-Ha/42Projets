@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 16:30:52 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/11 17:01:17 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 11:16:04 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_wake_up_all(t_simulation *monitor)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (i < monitor->config->number_of_coders)
@@ -24,4 +24,15 @@ void	ft_wake_up_all(t_simulation *monitor)
 		pthread_mutex_unlock(&monitor->array_dongles[i]->mutex_dongle);
 		i++;
 	}
+}
+
+long long	ft_take_ticket(t_simulation *monitor)
+{
+	long long	ticket;
+
+	pthread_mutex_lock(&(monitor->mutex_status));
+	ticket = monitor->ticket;
+	monitor->ticket++;
+	pthread_mutex_unlock(&(monitor->mutex_status));
+	return (ticket);
 }

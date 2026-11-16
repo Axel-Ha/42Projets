@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/14 18:47:52 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 12:30:10 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ typedef enum e_log_coder
 	LOG_DEAD
 }							t_log_coder;
 
+typedef enum e_scheduler
+{
+	FIFO = 0,
+	EDF
+}							t_scheduler;
+
 struct						s_parsing
 {
 	int						number_of_coders;
@@ -61,7 +67,7 @@ struct						s_parsing
 	int						time_to_refactor;
 	int						number_of_compiles_required;
 	int						dongle_cooldown;
-	char					*scheduler;
+	t_scheduler				scheduler;
 };
 
 struct						s_queue_node
@@ -108,6 +114,7 @@ struct						s_simulation
 	t_parsing				*config;
 	t_coder					**array_coders;
 	t_dongle				**array_dongles;
+	long long				ticket;
 };
 
 int							ft_check_atoi(const char *str);
@@ -125,7 +132,8 @@ void						ft_ms_to_timespec(long long time_ms,
 void						ft_print_logs(t_simulation *monitor, int id_coder,
 								t_log_coder log_coder);
 int							ft_take_dongles(t_coder *coder);
-int							ft_get_is_simulation_finished(t_simulation *monitor);
+int							ft_get_is_simulation_finished(
+								t_simulation *monitor);
 void						ft_set_simulation_ended(t_simulation *monitor);
 int							ft_thread_create_coder(t_simulation *monitor);
 int							ft_thread_create_monitor(t_simulation *monitor);
@@ -146,6 +154,9 @@ int							ft_unlock_both_dongle(t_coder *coder);
 int							ft_heap_less_timestamp(t_node a, t_node b);
 void						ft_heap_push(t_heap *heap, int id, long long key);
 int							ft_get_head_heap(t_heap *heap);
-void						ft_heap_remove(t_heap *heap, int id_coder);	
+void						ft_heap_remove(t_heap *heap, int id_coder);
+long long					ft_take_ticket(t_simulation *monitor);
+long long					ft_get_key(t_coder *coder);
+int							ft_can_take_dongle(t_dongle *dongle, int id_coder);
 
 #endif
