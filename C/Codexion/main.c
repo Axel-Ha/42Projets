@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/16 15:57:20 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 16:28:45 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,7 @@ int	main(int ac, char *av[])
 	monitor->start_time_simulation = ft_get_time_in_ms();
 	if (monitor->start_time_simulation == -1)
 		return (ft_free_simulation(monitor));
-	if ((ft_thread_create_coder(monitor)
-			|| ft_thread_create_monitor(monitor)) == 1)
+	if (ft_create_threads(monitor) != 0)
 		return (ft_free_simulation(monitor));
 	pthread_join(monitor->thread_monitor, NULL);
 	i = 0;

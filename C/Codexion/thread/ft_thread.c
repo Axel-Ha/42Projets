@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/06 14:42:55 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/13 12:39:10 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 16:30:48 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,22 @@ static void	*ft_monitor_routine(void *arg)
 	return (NULL);
 }
 
-int	ft_thread_create_coder(t_simulation *monitor)
+static int	ft_abort_creation(t_simulation *monitor, int coder_created)
+{
+	int	i;
+
+	ft_set_simulation_ended(monitor);
+	ft_wake_up_all(monitor);
+	i = 0;
+	while (i < coder_created)
+	{
+		pthread_join(monitor->array_coders[i]->id_thread_coder, NULL);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_create_threads(t_simulation *monitor)
 {
 	int	i;
 
@@ -97,16 +112,11 @@ int	ft_thread_create_coder(t_simulation *monitor)
 	{
 		if (pthread_create(&(monitor->array_coders[i]->id_thread_coder), NULL,
 				&ft_coder_routine, monitor->array_coders[i]) != 0)
-			return (1);
+			return (ft_abort_creation(monitor, i));
 		i++;
 	}
-	return (0);
-}
-
-int	ft_thread_create_monitor(t_simulation *monitor)
-{
-	if (pthread_create(&(monitor->thread_monitor), NULL, &ft_monitor_routine,
-			monitor) != 0)
-		return (1);
+	if (pthread_create(&(monitor->thread_monitor), NULL,
+			&ft_monitor_routine, monitor) != 0)
+		return (ft_abort_creation(monitor, i));
 	return (0);
 }

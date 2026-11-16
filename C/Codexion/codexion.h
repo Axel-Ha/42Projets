@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/16 16:23:44 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 16:27:51 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,7 @@ int							ft_take_dongles(t_coder *coder);
 int							ft_get_is_simulation_finished(
 								t_simulation *monitor);
 void						ft_set_simulation_ended(t_simulation *monitor);
-int							ft_thread_create_coder(t_simulation *monitor);
-int							ft_thread_create_monitor(t_simulation *monitor);
+int							ft_create_threads(t_simulation *monitor);
 void						ft_solo_coder(t_coder *coder);
 void						ft_wake_up_all(t_simulation *monitor);
 int							ft_debug(t_coder *coder);
