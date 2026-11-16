@@ -25,7 +25,8 @@ $(NAME): $(OBJECTS)
 
 run:
 	./$(NAME) 5 800 200 200 200 2 0 fifo
-#	./$(NAME) 2 800 200 200 200 3 0 edf
+	./$(NAME) 1 800 200 200 200 3 0 fifo
+	./$(NAME) 2 800 200 200 200 3 0 edf
 
 valgrind:
 	valgrind --leak-check=yes ./$(NAME) 5 100 30 40 50 3 20 fifo

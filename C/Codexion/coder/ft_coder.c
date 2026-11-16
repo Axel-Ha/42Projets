@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 14:21:39 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/14 13:54:07 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 14:54:52 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 int	ft_solo_coder(t_coder *coder)
 {
+	t_parsing *config; 
+
+	config = coder->struct_simulation->config;
 	coder->dongle_up->etat = TAKEN;
-	ft_print_logs(coder->struct_simulation, coder->id_coder, LOG_COMPILING);
-	if (ft_sleep(coder->struct_simulation,
-			coder->struct_simulation->config->time_to_burnout) == 1)
-		ft_print_death_coder(coder->struct_simulation, coder->id_coder);
+	ft_print_logs(coder->struct_simulation, coder->id_coder, LOG_TAKING);
+	ft_sleep(coder->struct_simulation, config->time_to_burnout);
 	return (0);
 }
 
