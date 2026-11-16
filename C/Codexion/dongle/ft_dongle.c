@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 14:32:24 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/16 12:21:21 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 13:00:10 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ int	ft_take_dongles(t_coder *coder)
 			ft_heap_remove(heap_down, coder->id_coder);
 			return (ft_unlock_both_dongle(coder));
 		}
-		if (ft_can_take_dongle(coder->dongle_up, coder->id_coder)
-			&& ft_can_take_dongle(coder->dongle_down, coder->id_coder))
+		if (ft_can_take_dongle(coder->dongle_up, coder->id_coder) == 1
+			&& ft_can_take_dongle(coder->dongle_down, coder->id_coder) == 1)
 			break ;
-		if (!ft_can_take_dongle(coder->dongle_up, coder->id_coder))
+		if (ft_can_take_dongle(coder->dongle_up, coder->id_coder) == 0)
 		{
 			blocking = coder->dongle_up;
 			pthread_mutex_unlock(&coder->dongle_down->mutex_dongle);

@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:20:49 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/16 12:30:21 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 12:56:00 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ void	ft_unlock_print_and_state(t_coder *coder)
 static int	ft_is_available(t_dongle *dongle)
 {
 	if (dongle->etat == TAKEN)
-		return (1);
+		return (0);
 	if (dongle->time_before_ready > ft_get_time_in_ms())
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 int	ft_can_take_dongle(t_dongle *dongle, int id_coder)
 {
-	if (ft_is_available(dongle)
+	if (ft_is_available(dongle) == 1
 		&& ft_get_head_heap(&(dongle->queue_priority)) == id_coder)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
