@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 16:00:01 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/14 18:47:01 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 16:23:17 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_swap(t_node *a, t_node *b)
 	*b = tmp;
 }
 
-int	ft_heap_less_timestamp(t_node a, t_node b)
+int	ft_has_higher_priority(t_node a, t_node b)
 {
 	if (a.key != b.key)
 		return (a.key < b.key);
@@ -35,7 +35,7 @@ void	ft_heap_push(t_heap *heap, int id, long long key)
 	heap->size++;
 	if (heap->size == 2)
 	{
-		if (ft_heap_less_timestamp(heap->node_coders[1], heap->node_coders[0]))
+		if (ft_has_higher_priority(heap->node_coders[1], heap->node_coders[0]))
 		{
 			ft_swap(&(heap->node_coders[0]), &(heap->node_coders[1]));
 		}

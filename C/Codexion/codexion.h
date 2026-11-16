@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/02 14:38:34 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/16 12:30:10 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 16:23:44 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,6 @@ typedef struct s_simulation	t_simulation;
 typedef struct s_queue_node	t_node;
 typedef struct s_queue_heap	t_heap;
 
-typedef enum e_coder_state
-{
-	WAITING = 0,
-	COMPILING,
-	DEBUGGING,
-	REFACTOR,
-	DEAD
-}							t_coder_state;
-
 typedef enum e_dongle_state
 {
 	FREE = 0,
@@ -48,8 +39,7 @@ typedef enum e_log_coder
 	LOG_TAKING = 0,
 	LOG_COMPILING,
 	LOG_DEBUGGING,
-	LOG_REFACTOR,
-	LOG_DEAD
+	LOG_REFACTOR
 }							t_log_coder;
 
 typedef enum e_scheduler
@@ -84,7 +74,6 @@ struct						s_queue_heap
 
 struct						s_dongle
 {
-	int						id_dongle;
 	int						etat;
 	long long				time_before_ready;
 	t_heap					queue_priority;
@@ -96,7 +85,6 @@ struct						s_coder
 {
 	int						id_coder;
 	pthread_t				id_thread_coder;
-	int						etat;
 	int						count_compilation;
 	long long				time_last_compile;
 	t_dongle				*dongle_up;
@@ -123,8 +111,8 @@ t_simulation				*init_struct_simulation(t_parsing *config);
 t_coder						*init_struct_coder(t_simulation *simulation,
 								t_dongle *dongle_up, t_dongle *dongle_down,
 								int id);
-t_dongle					*init_struct_dongle(int id);
-void						ft_free_simulation(t_simulation *monitor);
+t_dongle					*init_struct_dongle(void);
+int							ft_free_simulation(t_simulation *monitor);
 long long					ft_elapsed_time(t_simulation *monitor);
 long long					ft_get_time_in_ms(void);
 void						ft_ms_to_timespec(long long time_ms,
@@ -137,7 +125,7 @@ int							ft_get_is_simulation_finished(
 void						ft_set_simulation_ended(t_simulation *monitor);
 int							ft_thread_create_coder(t_simulation *monitor);
 int							ft_thread_create_monitor(t_simulation *monitor);
-int							ft_solo_coder(t_coder *coder);
+void						ft_solo_coder(t_coder *coder);
 void						ft_wake_up_all(t_simulation *monitor);
 int							ft_debug(t_coder *coder);
 int							ft_refactor(t_coder *coder);
@@ -148,10 +136,10 @@ void						ft_print_death_coder(t_simulation *monitor,
 								int id_coder);
 void						ft_init_last_compile(t_simulation *monitor);
 void						ft_release_dongle(t_coder *coder, t_dongle *dongle);
-void						ft_unlock_print_and_state(t_coder *coder);
+void						ft_state_print_and_unlock(t_coder *coder);
 void						ft_lock_both_dongle(t_coder *coder);
 int							ft_unlock_both_dongle(t_coder *coder);
-int							ft_heap_less_timestamp(t_node a, t_node b);
+int							ft_has_higher_priority(t_node a, t_node b);
 void						ft_heap_push(t_heap *heap, int id, long long key);
 int							ft_get_head_heap(t_heap *heap);
 void						ft_heap_remove(t_heap *heap, int id_coder);

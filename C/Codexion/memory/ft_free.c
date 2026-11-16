@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/30 14:29:53 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/14 14:15:53 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 15:50:49 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ void	ft_free_dongles(t_dongle **dongles, int num)
 	}
 }
 
-void	ft_free_simulation(t_simulation *monitor)
+int	ft_free_simulation(t_simulation *monitor)
 {
 	int	num;
 
 	if (!monitor)
-		return ;
+		return (1);
 	num = 0;
 	if (monitor->config)
 	{
@@ -69,4 +69,5 @@ void	ft_free_simulation(t_simulation *monitor)
 	ft_free_coders(monitor->array_coders, num);
 	pthread_mutex_destroy(&monitor->mutex_status);
 	free(monitor);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/12 13:47:38 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/12 19:26:27 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 15:57:20 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_create_coders_and_dongles(t_parsing *config, t_simulation *monitor,
 	num_coders = config->number_of_coders;
 	while (i < num_coders)
 	{
-		dgls[i] = init_struct_dongle(i + 1);
+		dgls[i] = init_struct_dongle();
 		if (!dgls[i])
 			return (1);
 		i++;
@@ -106,26 +106,17 @@ int	main(int ac, char *av[])
 	t_simulation	*monitor;
 	int				i;
 
-	if (ac == 9)
-	{
-		monitor = ft_parse_and_init(av);
-		if (!monitor)
-			return (1);
-	}
-	else
+	if (ac != 9)
+		return (1);
+	monitor = ft_parse_and_init(av);
+	if (!monitor)
 		return (1);
 	monitor->start_time_simulation = ft_get_time_in_ms();
 	if (monitor->start_time_simulation == -1)
-	{
-		ft_free_simulation(monitor);
-		return (1);
-	}
+		return (ft_free_simulation(monitor));
 	if ((ft_thread_create_coder(monitor)
 			|| ft_thread_create_monitor(monitor)) == 1)
-	{
-		ft_free_simulation(monitor);
-		return (1);
-	}
+		return (ft_free_simulation(monitor));
 	pthread_join(monitor->thread_monitor, NULL);
 	i = 0;
 	while (i < monitor->config->number_of_coders)

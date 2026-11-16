@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/27 18:05:25 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/16 12:31:27 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 16:22:42 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ t_coder	*init_struct_coder(t_simulation *simulation, t_dongle *dongle_up,
 	if (!coder)
 		return (NULL);
 	coder->id_coder = id;
-	coder->etat = WAITING;
 	coder->count_compilation = 0;
 	coder->dongle_up = dongle_up;
 	coder->dongle_down = dongle_down;
@@ -56,14 +55,13 @@ t_coder	*init_struct_coder(t_simulation *simulation, t_dongle *dongle_up,
 	return (coder);
 }
 
-t_dongle	*init_struct_dongle(int id)
+t_dongle	*init_struct_dongle(void)
 {
 	t_dongle	*dongle;
 
 	dongle = malloc(sizeof(t_dongle));
 	if (!dongle)
 		return (NULL);
-	dongle->id_dongle = id;
 	dongle->etat = FREE;
 	dongle->time_before_ready = 0;
 	dongle->queue_priority.size = 0;

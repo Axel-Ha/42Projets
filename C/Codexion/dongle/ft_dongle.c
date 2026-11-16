@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 14:32:24 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/16 13:00:10 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 16:12:25 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,46 +56,49 @@ long long	ft_get_key(t_coder *coder)
 	return (key);
 }
 
-int	ft_take_dongles(t_coder *coder)
+static void	ft_wait_blocking_dongle(t_coder *coder)
 {
 	t_dongle	*blocking;
+
+	if (ft_can_take_dongle(coder->dongle_up, coder->id_coder) == 0)
+	{
+		blocking = coder->dongle_up;
+		pthread_mutex_unlock(&coder->dongle_down->mutex_dongle);
+	}
+	else
+	{
+		blocking = coder->dongle_down;
+		pthread_mutex_unlock(&coder->dongle_up->mutex_dongle);
+	}
+	ft_wait_dongle(blocking);
+	pthread_mutex_unlock(&blocking->mutex_dongle);
+	ft_lock_both_dongle(coder);
+}
+
+int	ft_take_dongles(t_coder *coder)
+{
 	long long	key;
-	t_heap		*heap_up;
-	t_heap		*heap_down;
 
 	key = ft_get_key(coder);
-	heap_up = &coder->dongle_up->queue_priority;
-	heap_down = &coder->dongle_down->queue_priority;
 	ft_lock_both_dongle(coder);
-	ft_heap_push(heap_up, coder->id_coder, key);
-	ft_heap_push(heap_down, coder->id_coder, key);
+	ft_heap_push(&coder->dongle_up->queue_priority, coder->id_coder, key);
+	ft_heap_push(&coder->dongle_down->queue_priority, coder->id_coder, key);
 	while (1)
 	{
 		if (ft_get_is_simulation_finished(coder->struct_simulation) == 1)
 		{
-			ft_heap_remove(heap_up, coder->id_coder);
-			ft_heap_remove(heap_down, coder->id_coder);
+			ft_heap_remove(&coder->dongle_up->queue_priority, coder->id_coder);
+			ft_heap_remove(&coder->dongle_down->queue_priority,
+				coder->id_coder);
 			return (ft_unlock_both_dongle(coder));
 		}
 		if (ft_can_take_dongle(coder->dongle_up, coder->id_coder) == 1
 			&& ft_can_take_dongle(coder->dongle_down, coder->id_coder) == 1)
 			break ;
-		if (ft_can_take_dongle(coder->dongle_up, coder->id_coder) == 0)
-		{
-			blocking = coder->dongle_up;
-			pthread_mutex_unlock(&coder->dongle_down->mutex_dongle);
-		}
-		else
-		{
-			blocking = coder->dongle_down;
-			pthread_mutex_unlock(&coder->dongle_up->mutex_dongle);
-		}
-		ft_wait_dongle(blocking);
-		pthread_mutex_unlock(&blocking->mutex_dongle);
-		ft_lock_both_dongle(coder);
+		ft_wait_blocking_dongle(coder);
 	}
-	ft_heap_remove(heap_up, coder->id_coder);
-	ft_heap_remove(heap_down, coder->id_coder);
-	ft_unlock_print_and_state(coder);
+	ft_heap_remove(&coder->dongle_up->queue_priority, coder->id_coder);
+	ft_heap_remove(&coder->dongle_down->queue_priority, coder->id_coder);
+	ft_state_print_and_unlock(coder);
 	return (0);
 }

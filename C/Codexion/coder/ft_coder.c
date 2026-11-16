@@ -6,21 +6,20 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/09 14:21:39 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/16 14:54:52 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 16:22:13 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../codexion.h"
 
-int	ft_solo_coder(t_coder *coder)
+void	ft_solo_coder(t_coder *coder)
 {
-	t_parsing *config; 
+	t_parsing	*config;
 
 	config = coder->struct_simulation->config;
 	coder->dongle_up->etat = TAKEN;
 	ft_print_logs(coder->struct_simulation, coder->id_coder, LOG_TAKING);
 	ft_sleep(coder->struct_simulation, config->time_to_burnout);
-	return (0);
 }
 
 int	ft_compile(t_coder *coder)

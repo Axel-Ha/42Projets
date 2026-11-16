@@ -6,7 +6,7 @@
 /*   By: ahalifa <ahalifa@learner.42.tech>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 10:20:49 by ahalifa           #+#    #+#             */
-/*   Updated: 2026/11/16 12:56:00 by ahalifa          ###   ########.fr       */
+/*   Updated: 2026/11/16 16:12:25 by ahalifa          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_unlock_both_dongle(t_coder *coder)
 	return (1);
 }
 
-void	ft_unlock_print_and_state(t_coder *coder)
+void	ft_state_print_and_unlock(t_coder *coder)
 {
 	coder->dongle_up->etat = TAKEN;
 	coder->dongle_down->etat = TAKEN;
